@@ -1,4 +1,5 @@
 from pysamp import call_native_function
+from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
 
 def get_tick_rate():
     return call_native_function("Streamer_GetTickRate")
@@ -6,11 +7,11 @@ def get_tick_rate():
 def set_tick_rate(rate):
     return call_native_function("Streamer_SetTickRate", rate)
 
-def get_player_tick_rate(playerid: int):
-    return call_native_function("Streamer_GetPlayerTickRate", playerid)
+def get_player_tick_rate(player_id: int):
+    return call_native_function("Streamer_GetPlayerTickRate", player_id)
 
-def set_player_tick_rate(playerid: int, rate): 
-    return call_native_function("Streamer_SetPlayerTickRate", playerid, rate)
+def set_player_tick_rate(player_id: int, rate): 
+    return call_native_function("Streamer_SetPlayerTickRate", player_id, rate)
 
 def toggle_chunk_stream(toggle):
     return call_native_function("Streamer_ToggleChunkStream", toggle)
@@ -18,11 +19,11 @@ def toggle_chunk_stream(toggle):
 def is_toggle_chunk_stream():
     return call_native_function("Streamer_IsToggleChunkStream")
 
-def get_chunk_tick_rate(type, playerid: int = -1):
-    return call_native_function("Streamer_GetChunkTickRate", type, playerid)
+def get_chunk_tick_rate(type, player_id: int = -1):
+    return call_native_function("Streamer_GetChunkTickRate", type, player_id)
 
-def set_chunk_tick_rate(type, rate, playerid: int = -1):
-    return call_native_function("Streamer_SetChunkTickRate", type, rate, playerid)
+def set_chunk_tick_rate(type, rate, player_id: int = -1):
+    return call_native_function("Streamer_SetChunkTickRate", type, rate, player_id)
 
 def get_chunk_size(type):
     return call_native_function("Streamer_GetChunkSize", type)
@@ -36,17 +37,17 @@ def get_max_item(type):
 def set_max_items(type, items):
     return call_native_function("Streamer_SetMaxItems", type, items)
 
-def get_visible_items(type, playerid: int = -1):
-    return call_native_function("Streamer_GetVisibleItems", type, playerid)
+def get_visible_items(type, player_id: int = -1):
+    return call_native_function("Streamer_GetVisibleItems", type, player_id)
 
-def set_visible_items(type, items, playerid: int = -1):
-    return call_native_function("Streamer_SetVisibleItems", type, items, playerid)
+def set_visible_items(type, items, player_id: int = -1):
+    return call_native_function("Streamer_SetVisibleItems", type, items, player_id)
 
-def get_radiud_multiplier(type, multiplier: float, playerid: int = -1):
-    return call_native_function("Streamer_GetRadiusMultiplier", type, multiplier, playerid)
+def get_radiud_multiplier(type, multiplier: float, player_id: int = -1):
+    return call_native_function("Streamer_GetRadiusMultiplier", type, multiplier, player_id)
 
-def set_radius_multiplier(type, multiplier: float, playerid: int = -1):
-    return call_native_function("Streamer_SetRadiusMultiplier", type, multiplier, playerid)
+def set_radius_multiplier(type, multiplier: float, player_id: int = -1):
+    return call_native_function("Streamer_SetRadiusMultiplier", type, multiplier, player_id)
 
 def get_type_priority(types: list, maxtypes = 8):
     return call_native_function("Streamer_GetTypePriority", types, maxtypes)
@@ -98,32 +99,32 @@ def amx_unload_destroy_items(toggle):
 def process_active_items():
     return call_native_function("Streamer_ProcessActiveItems")
 
-def toggle_idle_update(playerid: int, toggle):
-    return call_native_function("Streamer_ToggleIdleUpdate", playerid, toggle)
+def toggle_idle_update(player_id: int, toggle):
+    return call_native_function("Streamer_ToggleIdleUpdate", player_id, toggle)
 
-def is_toggle_idle_update(playerid: int):
-    return call_native_function("Streamer_IsToggleIdleUpdate", playerid)
+def is_toggle_idle_update(player_id: int):
+    return call_native_function("Streamer_IsToggleIdleUpdate", player_id)
 
-def toggle_camera_update(playerid: int, toggle):
-    return call_native_function("Streamer_ToggleCameraUpdate", playerid, toggle)
+def toggle_camera_update(player_id: int, toggle):
+    return call_native_function("Streamer_ToggleCameraUpdate", player_id, toggle)
 
-def is_toggle_camera_update(playerid: int):
-    return call_native_function("Streamer_IsToggleCameraUpdate", playerid)
+def is_toggle_camera_update(player_id: int):
+    return call_native_function("Streamer_IsToggleCameraUpdate", player_id)
 
-def toggle_item_updadte(playerid: int, type, toggle):
-    return call_native_function("Streamer_ToggleItemUpdate", playerid, type, toggle)
+def toggle_item_updadte(player_id: int, type, toggle):
+    return call_native_function("Streamer_ToggleItemUpdate", player_id, type, toggle)
 
-def is_toggle_item_updadte(playerid: int, type):
-    return call_native_function("Streamer_IsToggleItemUpdate", playerid, type)
+def is_toggle_item_updadte(player_id: int, type):
+    return call_native_function("Streamer_IsToggleItemUpdate", player_id, type)
 
 def get_last_update_time(time: float):
     return call_native_function("Streamer_GetLastUpdateTime", time)
 
-def update(playerid: int, type: int = -1):
-    return call_native_function("Streamer_Update", playerid, type)
+def update(player_id: int, type: int = -1):
+    return call_native_function("Streamer_Update", player_id, type)
 
-def update_ex(playerid: int, x: float, y: float, z: float, world_id: int = -1, interior_id: int = -1, type: int = -1, compensated_time: int = -1, freeze_player: int = 1):
-    return call_native_function("Streamer_UpdateEx", playerid, x, y, z, world_id, interior_id, type, compensated_time, freeze_player)
+def update_ex(player_id: int, x: float, y: float, z: float, world_id: int = -1, interior_id: int = -1, type: int = -1, compensated_time: int = -1, freeze_player: int = 1):
+    return call_native_function("Streamer_UpdateEx", player_id, x, y, z, world_id, interior_id, type, compensated_time, freeze_player)
 
 # Natives (Data Manipulation)
 
@@ -176,30 +177,30 @@ def get_upper_bound(type):
 def get_distance_to_item(x: float, y: float, z: float, type, id, distance: float, dimensions: int = 3):
     return call_native_function("Streamer_GetDistanceToItem", x, y, z, type, id, distance, dimensions)
 
-def toggle_item(playerid: int, type, id, toggle):
-    return call_native_function("Streamer_ToggleItem", playerid, type, id, toggle)
+def toggle_item(player_id: int, type, id, toggle):
+    return call_native_function("Streamer_ToggleItem", player_id, type, id, toggle)
 
-def is_toggle_item(playerid: int, type, id):
-    return call_native_function("Streamer_IsToggleItem", playerid, type, id)
+def is_toggle_item(player_id: int, type, id):
+    return call_native_function("Streamer_IsToggleItem", player_id, type, id)
 
-def toggle_all_items(playerid: int, type, toggle, *exceptions):
+def toggle_all_items(player_id: int, type, toggle, *exceptions):
     maxexceptions = len(exceptions)
-    return call_native_function("Streamer_ToggleAllItems", playerid, type, toggle, exceptions, maxexceptions)
+    return call_native_function("Streamer_ToggleAllItems", player_id, type, toggle, exceptions, maxexceptions)
 
-def get_item_internal_id(playerid: int, type, streamer_id: int):
-    return call_native_function("Streamer_GetItemInternalID", playerid, type, streamer_id)
+def get_item_internal_id(player_id: int, type, streamer_id: int):
+    return call_native_function("Streamer_GetItemInternalID", player_id, type, streamer_id)
 
-def get_item_streamer_id(playerid: int, type, internal_id: int):
-    return call_native_function("Streamer_GetItemStreamerID", playerid, type, internal_id)
+def get_item_streamer_id(player_id: int, type, internal_id: int):
+    return call_native_function("Streamer_GetItemStreamerID", player_id, type, internal_id)
 
-def is_item_visible(playerid: int, type, id):
-    return call_native_function("Streamer_IsItemVisible", playerid, type, id)
+def is_item_visible(player_id: int, type, id):
+    return call_native_function("Streamer_IsItemVisible", player_id, type, id)
 
-def destroy_all_visible_items(playerid: int, type, server_wide: int = 1):
-    return call_native_function("Streamer_DestroyAllVisibleItems", playerid, type, server_wide)
+def destroy_all_visible_items(player_id: int, type, server_wide: int = 1):
+    return call_native_function("Streamer_DestroyAllVisibleItems", player_id, type, server_wide)
 
-def count_visible_items(playerid: int, type, server_wide: int = 1):
-    return call_native_function("Streamer_CountVisibleItems", playerid, type, server_wide)
+def count_visible_items(player_id: int, type, server_wide: int = 1):
+    return call_native_function("Streamer_CountVisibleItems", player_id, type, server_wide)
 
 def destroy_all_items(type, server_wide: int = 1):
     return call_native_function("Streamer_DestroyAllItems", type, server_wide)
@@ -211,9 +212,9 @@ def get_nearby_items(x: float, y: float, z: float, items: list, range: float = 3
     maxitems = len(items)
     return call_native_function("Streamer_GetNearbyItems", x, y, z, type, items, maxitems, range, world_id)
 
-def get_all_visible_items(playerid: int, type, items: list):
+def get_all_visible_items(player_id: int, type, items: list):
     maxitems = len(items)
-    return call_native_function("Streamer_GetAllVisibleItems", playerid, type, items, maxitems)
+    return call_native_function("Streamer_GetAllVisibleItems", player_id, type, items, maxitems)
 
 def get_item_pos(type, id, x: float, y: float, z: float):
     return call_native_function("Streamer_GetItemPos", type, id, x, y, z)
@@ -224,13 +225,13 @@ def set_item_pos(type, id, x: float, y: float, z:float):
 def get_item_off_set(type, id, x: float, y: float, z:float):
     return call_native_function("Streamer_GetItemOffset", type, id, x, y, z)
 
-def set_item_off_set(type, id, x: float, y: flloat, z: float):
+def set_item_off_set(type, id, x: float, y: float, z: float):
     return call_native_function("Streamer_SetItemOffset", type, id, x, y, z)
 
 # Natives (Objects)
 
-def create_dynamic_object(model_id: int, x: float, y: float, z: float, rotation_x: float, rotation_y: float, rotation_z: float, world_id: int = -1, playerid: int = -1, stream_distance: float = 300.0, draw_distance: float = 0.0, areaid: int = -1, priority: int = 0):
-    return call_native_function("CreateDynamicObject", model_id, x, y, z, rotation_x, rotation_y, rotation_z, world_id, playerid, stream_distance, draw_distance, areaid, priority)
+def create_dynamic_object(model_id: int, x: float, y: float, z: float, rotation_x: float, rotation_y: float, rotation_z: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, stream_distance: float = 300.0, draw_distance: float = 0.0, area_id: int = -1, priority = 0):
+    return call_native_function("CreateDynamicObject", model_id, x, y, z, rotation_x, rotation_y, rotation_z, world_id, interior_id, player_id, stream_distance, draw_distance, area_id, priority)
 
 def destroy_dynamic_object(object_id: int):
     return call_native_function("DestroyDynamicObject", object_id)
@@ -265,20 +266,20 @@ def stop_dynamic_object(object_id: int):
 def is_dynamic_object_moving(object_id: int):
     return call_native_function("IsDynamicObjectMoving", object_id)
 
-def attach_camera_to_dynamic_object(playerid: int, object_id: int):
-    return call_native_function("AttachCameraToDynamicObject", playerid, object_id)
+def attach_camera_to_dynamic_object(player_id: int, object_id: int):
+    return call_native_function("AttachCameraToDynamicObject", player_id, object_id)
 
 def attach_dynamic_object_to_object(object_id: int, attach_to_id: int, offset_x: float, offset_y: float, offset_z: float, rotation_x: float, rotation_y: float, rotation_z: float, syncrotation: int = 1):
     return call_native_function("AttachDynamicObjectToObject", object_id, attach_to_id, offset_x, offset_y, offset_z, rotation_x, rotation_y, rotation_z, syncrotation)
 
-def attach_dynamic_object_to_player(object_id: int, playerid: int, offset_x: float, offset_y: float, offset_z: float, rotation_x: float, rotation_y: float, rotation_z: float):
-    return call_native_function("AttachDynamicObjectToPlayer", object_id, playerid, offset_x, offset_y, offset_z, rotation_x, rotation_y, rotation_z)
+def attach_dynamic_object_to_player(object_id: int, player_id: int, offset_x: float, offset_y: float, offset_z: float, rotation_x: float, rotation_y: float, rotation_z: float):
+    return call_native_function("AttachDynamicObjectToPlayer", object_id, player_id, offset_x, offset_y, offset_z, rotation_x, rotation_y, rotation_z)
 
 def attach_dynamic_object_to_vehicle(object_id: int, vehicle_id: int, offset_x: float, offset_y: float, offset_z: float, rotation_x: float, rotation_y: float, rotation_z: float):
     return call_native_function("AttachDynamicObjectToVehicle", object_id, vehicle_id, offset_x, offset_y, offset_z, rotation_x, rotation_y, rotation_z)
 
-def edit_dynamic_object(playerid: int):
-    return call_native_function("EditDynamicObject", playerid)
+def edit_dynamic_object(player_id: int):
+    return call_native_function("EditDynamicObject", player_id)
 
 def is_dynamic_object_material_used(object_id: int, material_index):
     return call_native_function("IsDynamicObjectMaterialUsed", object_id, material_index)
@@ -306,5 +307,83 @@ def get_dynamic_object_material_text(object_id: int, material_index: int, text: 
 def set_dynamic_object_material_text(object_id: int, material_index: int, text: str, material_size: int = 90, font_face: str = "Arial", font_size: int = 24, bold: int = 1, font_color: int = 0xFFFFFFFF, back_color: int = 0, text_alignment: int = 0):
     return call_native_function("SetDynamicObjectMaterialText", object_id, material_index, text, material_size, font_face, font_size, bold, font_color, back_color, text_alignment)
 
-def get_player_camera_target_dyn_object(playerid: int):
-    return call_native_function("GetPlayerCameraTargetDynObject", playerid)
+def get_player_camera_target_dyn_object(player_id: int):
+    return call_native_function("GetPlayerCameraTargetDynObject", player_id)
+
+# Natives (Pickups)
+
+def create_dynamic_pickup(model_id: int, type: int, x: float, y: float, z: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicPickup", model_id, type, x, y, z, world_id, interior_id, player_id, stream_distance, area_id, priority)
+
+def destroy_dynamic_pickup(pickup_id: int):
+    return call_native_function("DestroyDynamicPickup", pickup_id)
+
+def is_valid_dynamic_pickup(pickup_id: int):
+    return call_native_function("IsValidDynamicPickup", pickup_id)
+
+# Natives (Checkpoints)
+
+def create_dynamic_cp(x: float, y: float, z: float, size: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicCP", x, y, z, size, world_id, interior_id, player_id, stream_distance, area_id, priority)
+
+def destroy_dynamic_cp(checkpoint_id: int):
+    return call_native_function("DestroyDynamicCP", checkpoint_id)
+
+def is_valid_dynamic_cp(checkpoint_id: int):
+    return call_native_function("IsValidDynamicCP", checkpoint_id)
+
+def is_player_in_dynamic_cp(player_id: int, checkpoint_id: int):
+    return call_native_function("IsPlayerInDynamicCP", player_id, checkpoint_id)
+
+def get_player_visible_dynamic_cp(player_id: int):
+    return call_native_function("GetPlayerVisibleDynamicCP", player_id)
+
+# Natives (Race Checkpoints)
+
+def create_dynamic_race_cp(type, x: float, y: float, z: float, next_x: float, next_y: float, next_z: float, size: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicRaceCP", type, x, y, z, next_x, next_y, next_z, size, world_id, interior_id, player_id, stream_distance, area_id, priority)
+
+def destroy_dynamic_race_cp(checkpoint_id: int):
+    return call_native_function("DestroyDynamicRaceCP", checkpoint_id)
+
+def is_valid_dynamic_race_cp(checkpoint_id: int):
+    return call_native_function("IsValidDynamicRaceCP", checkpoint_id)
+
+def is_player_in_dynamic_race_cp(player_id: int, checkpoint_id: int):
+    return call_native_function("IsPlayerInDynamicRaceCP", player_id, checkpoint_id)
+
+def get_player_visible_dynamic_race_cp(player_id: int):
+    return call_native_function("GetPlayerVisibleDynamicRaceCP", player_id)
+
+# Natives (Map Icons)
+
+def create_dynamic_map_icon(x: float, y: float, z: float, type, color, world_id: int = -1, interior_id: int = -1, playerid: int = -1, stream_distance: float = 200.0, style: int = 0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicMapIcon", x, y, z, type, color, world_id, interior_id, playerid, stream_distance, style, area_id, priority)
+
+def destroy_dynamic_map_icon(icon_id: int):
+    return call_native_function("DestroyDynamicMapIcon", icon_id)
+
+def is_valid_dynamic_map_icon(icon_id: int):
+    return call_native_function("IsValidDynamicMapIcon", icon_id)
+
+# Natives (3D Text Labels)
+
+def create_dynamic_3d_text_label(text: str, color: int, x: float, y: float, z: float, draw_distance: float, attachedplayer: int = INVALID_PLAYER_ID, attachedvehicle: int = INVALID_VEHICLE_ID, testlos: int = 0, world_id: int = -1, interior_id: int = -1, playerid: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamic3DTextLabel", text, color, x, y, z, draw_distance, attachedplayer, attachedvehicle, testlos, world_id, interior_id, playerid, stream_distance, priority)
+
+def destroy_dynamic_3e_text_label(id: int):
+    return call_native_function("DestroyDynamic3DTextLabel", id)
+
+def is_valid_dynamic_3d_text_label(id: int):
+    return call_native_function("IsValidDynamic3DTextLabel", id)
+
+def get_dynamic_3d_text_label_text(id: int, text: str):
+    maxtext = len(text)
+    return call_native_function("GetDynamic3DTextLabelText", id, text, maxtext)
+
+def update_dynamic_3d_text_label_text(id: int, color: int, text: str):
+    return call_native_function("UpdateDynamic3DTextLabelText", id, color, text)
+
+# Natives (Areas)
+
+
