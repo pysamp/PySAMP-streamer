@@ -1,5 +1,7 @@
 from pysamp import call_native_function
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
+from typing import List, Tuple
+
 
 def get_tick_rate():
     return call_native_function("Streamer_GetTickRate")
@@ -357,8 +359,8 @@ def get_player_visible_dynamic_race_cp(player_id: int):
 
 # Natives (Map Icons)
 
-def create_dynamic_map_icon(x: float, y: float, z: float, type, color, world_id: int = -1, interior_id: int = -1, playerid: int = -1, stream_distance: float = 200.0, style: int = 0, area_id: int = -1, priority: int = 0):
-    return call_native_function("CreateDynamicMapIcon", x, y, z, type, color, world_id, interior_id, playerid, stream_distance, style, area_id, priority)
+def create_dynamic_map_icon(x: float, y: float, z: float, type, color, world_id: int = -1, interior_id: int = -1, player_id: int = -1, stream_distance: float = 200.0, style: int = 0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicMapIcon", x, y, z, type, color, world_id, interior_id, player_id, stream_distance, style, area_id, priority)
 
 def destroy_dynamic_map_icon(icon_id: int):
     return call_native_function("DestroyDynamicMapIcon", icon_id)
@@ -368,8 +370,8 @@ def is_valid_dynamic_map_icon(icon_id: int):
 
 # Natives (3D Text Labels)
 
-def create_dynamic_3d_text_label(text: str, color: int, x: float, y: float, z: float, draw_distance: float, attachedplayer: int = INVALID_PLAYER_ID, attachedvehicle: int = INVALID_VEHICLE_ID, testlos: int = 0, world_id: int = -1, interior_id: int = -1, playerid: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
-    return call_native_function("CreateDynamic3DTextLabel", text, color, x, y, z, draw_distance, attachedplayer, attachedvehicle, testlos, world_id, interior_id, playerid, stream_distance, priority)
+def create_dynamic_3d_text_label(text: str, color: int, x: float, y: float, z: float, draw_distance: float, attachedplayer: int = INVALID_PLAYER_ID, attachedvehicle: int = INVALID_VEHICLE_ID, testlos: int = 0, world_id: int = -1, interior_id: int = -1, player_id: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamic3DTextLabel", text, color, x, y, z, draw_distance, attachedplayer, attachedvehicle, testlos, world_id, interior_id, player_id, stream_distance, priority)
 
 def destroy_dynamic_3e_text_label(id: int):
     return call_native_function("DestroyDynamic3DTextLabel", id)
@@ -385,5 +387,105 @@ def update_dynamic_3d_text_label_text(id: int, color: int, text: str):
     return call_native_function("UpdateDynamic3DTextLabelText", id, color, text)
 
 # Natives (Areas)
+
+def create_dynamic_circle(x: float, y: float, size: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicCircle", x, y, size, world_id, interior_id, player_id, priority)
+
+def create_dynamic_cylinder(x: float, y: float, min_z: float, max_z: float, size: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicCylinder", x, y, min_z, max_z, size, world_id, interior_id, player_id, priority)
+
+def create_dynamic_sphere(x: float, y: float, z: float, size: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicSphere", x, y, z, size, world_id, interior_id, player_id, priority)
+
+def crate_dynamic_rectangle(min_x: float, min_y: float, max_x: float, max_y: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicRectangle", min_x, min_y, max_x, max_y, world_id, interior_id, player_id, priority)
+
+def create_dynamic_cuboid(min_x: float, min_y: float, min_z: float, max_x: float, max_y: float, max_z: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicCuboid", min_x, min_y, min_z, max_x, max_y, max_z, world_id, interior_id, player_id, priority)
+
+def create_dynamic_cube(min_x: float, min_y: float, min_z: float, max_x: float, max_y: float, max_z: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicCube", min_x, min_y, min_z, max_x, max_y, max_z, world_id, interior_id, player_id, priority)
+
+def create_dynamic_polygon(points: List[float], min_z: float = -2139095040.0, max_z: float = 2139095040.0, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+    max_points = len(points)
+    return call_native_function("CreateDynamicPolygon", points, min_z, max_z, max_points, world_id, interior_id, player_id, priority)
+
+def destroi_dynamic_area(area_id: int):
+    return call_native_function("DestroyDynamicArea", area_id)
+
+def is_valid_dynamic_are(area_id: int):
+    return call_native_function("IsValidDynamicArea", area_id)
+
+def get_dynamic_area_type(area_id: int):
+    return call_native_function("GetDynamicAreaType", area_id)
+
+def get_dynamic_polygon_points(area_id: int, points: List[float]):
+    maxpoints = len(points)
+    return call_native_function("GetDynamicPolygonPoints", area_id, points, maxpoints)
+
+def get_dynamic_polygon_number_points(area_id: int):
+    return call_native_function("GetDynamicPolygonNumberPoints", area_id)
+
+def is_player_in_dynamic_area(player_id: int, area_id: int, recheck: int = 0):
+    return call_native_function("IsPlayerInDynamicArea", player_id, area_id, recheck)
+
+def is_player_in_any_dynamic_area(player_id: int, recheck: int = 0):
+    return call_native_function("IsPlayerInAnyDynamicArea", player_id, recheck)
+
+def is_any_player_in_dynamic_area(area_id: int, recheck: int = 0):
+    return call_native_function("IsAnyPlayerInDynamicArea", area_id, recheck)
+
+def is_any_player_in_any_dynamic_area(recheck: int = 0):
+    return call_native_function("IsAnyPlayerInAnyDynamicArea", recheck)
+
+def get_player_dynamic_areas(player_id: int, areas: list):
+    maxareas = len(areas)
+    return call_native_function("GetPlayerDynamicAreas", playerid, areas, maxareas)
+
+def get_player_number_dynamic_areas(player_id: int):
+    return call_native_function("GetPlayerNumberDynamicAreas", player_id)
+
+def is_point_in_dynamic_area(area_id: int, x: float, y: float, z: float):
+    return call_native_function("IsPointInDynamicArea", area_id, x, y, z)
+
+def is_point_in_any_dynamic_area(x: float, y: float, z: float):
+    return call_native_function("IsPointInAnyDynamicArea", x, y, z)
+
+def is_line_in_dynamic_area(area_id: int, x: float, y: float, z: float, x_1: float, y_1: float, z_1: float):
+    return call_native_function("IsLineInDynamicArea", area_id, x, y, z, x_1, y_1, z_1)
+
+def is_line_in_any_dynamic_area(x: float, y: float, z: float, x_1: float, y_1: float, z_1: float):
+    return call_native_function("IsLineInAnyDynamicArea", x, y, z, x_1, y_1, z_1)
+
+def get_dynamic_areas_for_point(x: float, y: float, z: float, areas: list):
+    maxareas = len(areas)
+    return call_native_function("GetDynamicAreasForPoint", x, y, z, areas, maxareas)
+
+def get_number_dynamic_areas_for_point(x: float, y: float, z: float):
+    return call_native_function("GetNumberDynamicAreasForPoint", x, y, z)
+
+def get_dynamic_areas_for_line(x: float, y: float, z: float, x_1: float, y_1: float, z_1: float, areas: list):
+    maxareas = len(areas)
+    return call_native_function("GetDynamicAreasForLine", x, y, z, x_1, y_1, z_1, areas)
+
+def get_number_dynamic_areas_for_line(x: float, y: float, z: float, x_1: float, y_1: float, z_1: float):
+    return call_native_function("GetNumberDynamicAreasForLine", x, y, z, x_1, y_1, z_1)
+
+def attach_dynamic_area_to_object(area_id: int, object_id: int, type: int = 2, player_id: int = INVALID_PLAYER_ID, offset_x: float = 0.0, offset_y: float = 0.0, offset_z: float = 0.0):
+    return call_native_function("AttachDynamicAreaToObject", area_id, object_id, type, player_id, offset_x, offset_y, offset_z)
+
+def attach_dynamic_area_to_player(area_id: int, player_id: int, offset_x: float = 0.0, offset_y: float = 0.0, offset_z: float = 0.0):
+    return call_native_function("AttachDynamicAreaToPlayer", area_id, player_id, offset_x, offset_y, offset_z)
+
+def attach_dynamic_area_to_vehicle(area_id: int, vehicle_id: int, offset_x: float = 0.0, offset_y: float = 0.0, offset_z: float = 0.0):
+    return call_native_function("AttachDynamicAreaToVehicle", area_id, vehicle_id, offset_x, offset_y, offset_z)
+
+def toggle_dyn_area_spectate_mode(area_id: int, toggle: int):
+    return call_native_function("ToggleDynAreaSpectateMode", area_id, toggle)
+
+def is_toggle_dyn_area_spectate_mode(area_id: int):
+    return call_native_function("IsToggleDynAreaSpectateMode", area_id)
+
+# Natives (Actors)
 
 

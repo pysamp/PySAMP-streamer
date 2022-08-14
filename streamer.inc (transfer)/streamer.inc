@@ -180,39 +180,6 @@ enum
 
 #define E_STREAMER_CUSTOM(%0) ((%0) | 0x40000000 & ~0x80000000)
 
-// Natives (Areas)
-
-native STREAMER_TAG_AREA:CreateDynamicCircle(x: float, y: float, size: float, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native STREAMER_TAG_AREA:CreateDynamicCylinder(x: float, y: float, Float:minz, Float:maxz, size: float, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native STREAMER_TAG_AREA:CreateDynamicSphere(x: float, y: float, z: float, size: float, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native STREAMER_TAG_AREA:CreateDynamicRectangle(Float:minx, Float:miny, Float:maxx, Float:maxy, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native STREAMER_TAG_AREA:CreateDynamicCuboid(Float:minx, Float:miny, Float:minz, Float:maxx, Float:maxy, Float:maxz, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native STREAMER_TAG_AREA:CreateDynamicCube(Float:minx, Float:miny, Float:minz, Float:maxx, Float:maxy, Float:maxz, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native STREAMER_TAG_AREA:CreateDynamicPolygon(const Float:points[], Float:minz = -FLOAT_INFINITY, Float:maxz = FLOAT_INFINITY, maxpoints = sizeof points, world_id: int = -1, interior_id: int = -1, playerid: int = -1, priority: int = 0);
-native DestroyDynamicArea(STREAMER_TAG_AREA:areaid);
-native IsValidDynamicArea(STREAMER_TAG_AREA:areaid);
-native GetDynamicAreaType(STREAMER_TAG_AREA:areaid);
-native GetDynamicPolygonPoints(STREAMER_TAG_AREA:areaid, Float:points[], maxpoints = sizeof points);
-native GetDynamicPolygonNumberPoints(STREAMER_TAG_AREA:areaid);
-native IsPlayerInDynamicArea(playerid: int, STREAMER_TAG_AREA:areaid, recheck = 0);
-native IsPlayerInAnyDynamicArea(playerid: int, recheck = 0);
-native IsAnyPlayerInDynamicArea(STREAMER_TAG_AREA:areaid, recheck = 0);
-native IsAnyPlayerInAnyDynamicArea(recheck = 0);
-native GetPlayerDynamicAreas(playerid: int, STREAMER_TAG_AREA:areas[], maxareas = sizeof areas);
-native GetPlayerNumberDynamicAreas(playerid: int);
-native IsPointInDynamicArea(STREAMER_TAG_AREA:areaid, x: float, y: float, z: float);
-native IsPointInAnyDynamicArea(x: float, y: float, z: float);
-native IsLineInDynamicArea(STREAMER_TAG_AREA:areaid, x: float1, y: float1, z: float1, x: float2, y: float2, z: float2);
-native IsLineInAnyDynamicArea(x: float1, y: float1, z: float1, x: float2, y: float2, z: float2);
-native GetDynamicAreasForPoint(x: float, y: float, z: float, STREAMER_TAG_AREA:areas[], maxareas = sizeof areas);
-native GetNumberDynamicAreasForPoint(x: float, y: float, z: float);
-native GetDynamicAreasForLine(x: float1, y: float1, z: float1, x: float2, y: float2, z: float2, STREAMER_TAG_AREA:areas[], maxareas = sizeof areas);
-native GetNumberDynamicAreasForLine(x: float1, y: float1, z: float1, x: float2, y: float2, z: float2);
-native AttachDynamicAreaToObject(STREAMER_TAG_AREA:areaid, STREAMER_TAG_OBJECT_ALT:objectid, type = STREAMER_OBJECT_TYPE_DYNAMIC, playerid: int = INVALID_PLAYER_ID, Float:offsetx = 0.0, Float:offsety = 0.0, Float:offsetz = 0.0);
-native AttachDynamicAreaToPlayer(STREAMER_TAG_AREA:areaid, playerid: int, Float:offsetx = 0.0, Float:offsety = 0.0, Float:offsetz = 0.0);
-native AttachDynamicAreaToVehicle(STREAMER_TAG_AREA:areaid, vehicleid, Float:offsetx = 0.0, Float:offsety = 0.0, Float:offsetz = 0.0);
-native ToggleDynAreaSpectateMode(STREAMER_TAG_AREA:areaid, toggle);
-native IsToggleDynAreaSpectateMode(STREAMER_TAG_AREA:areaid);
 
 // Natives (Actors)
 
