@@ -10,6 +10,6 @@
 
 ## Thanks to
 
-* streamer plugin dev
+* [Incognito](https://github.com/samp-incognito) for Streamer plugin
 * [denNorske](https://github.com/dennorske), [habecker](https://github.com/habecker), [Cheaterman](https://github.com/Cheaterman) for developing PySAMP
 * [Me](https://github.com/Ykpauneu) for handler

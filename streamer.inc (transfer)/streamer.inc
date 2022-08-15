@@ -181,27 +181,6 @@ enum
 #define E_STREAMER_CUSTOM(%0) ((%0) | 0x40000000 & ~0x80000000)
 
 
-// Natives (Actors)
-
-native STREAMER_TAG_ACTOR:CreateDynamicActor(modelid, x: float, y: float, z: float, Float:r, invulnerable = true, Float:health = 100.0, world_id: int = -1, interior_id: int = -1, playerid: int = -1, stream_distance: float = STREAMER_ACTOR_SD, STREAMER_TAG_AREA:areaid = STREAMER_TAG_AREA:-1, priority: int = 0);
-native DestroyDynamicActor(STREAMER_TAG_ACTOR:actorid);
-native IsValidDynamicActor(STREAMER_TAG_ACTOR:actorid);
-native IsDynamicActorStreamedIn(STREAMER_TAG_ACTOR:actorid, forplayerid: int);
-native GetDynamicActorVirtualWorld(STREAMER_TAG_ACTOR:actorid);
-native SetDynamicActorVirtualWorld(STREAMER_TAG_ACTOR:actorid, vworld);
-native GetDynamicActorAnimation(STREAMER_TAG_ACTOR:actorid, animlib[], animname[], &Float:fdelta, &loop, &lockx, &locky, &freeze, &time, maxanimlib = sizeof animlib, maxanimname = sizeof animname);
-native ApplyDynamicActorAnimation(STREAMER_TAG_ACTOR:actorid, const animlib[], const animname[], Float:fdelta, loop, lockx, locky, freeze, time);
-native ClearDynamicActorAnimations(STREAMER_TAG_ACTOR:actorid);
-native GetDynamicActorFacingAngle(STREAMER_TAG_ACTOR:actorid, &Float:ang);
-native SetDynamicActorFacingAngle(STREAMER_TAG_ACTOR:actorid, Float:ang);
-native GetDynamicActorPos(STREAMER_TAG_ACTOR:actorid, &x: float, &y: float, &z: float);
-native SetDynamicActorPos(STREAMER_TAG_ACTOR:actorid, x: float, y: float, z: float);
-native GetDynamicActorHealth(STREAMER_TAG_ACTOR:actorid, &Float:health);
-native SetDynamicActorHealth(STREAMER_TAG_ACTOR:actorid, Float:health);
-native SetDynamicActorInvulnerable(STREAMER_TAG_ACTOR:actorid, invulnerable = true);
-native IsDynamicActorInvulnerable(STREAMER_TAG_ACTOR:actorid);
-native STREAMER_TAG_ACTOR:GetPlayerTargetDynamicActor(playerid: int);
-native STREAMER_TAG_ACTOR:GetPlayerCameraTargetDynActor(playerid: int);
 
 // Natives (Extended)
 

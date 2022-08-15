@@ -406,7 +406,7 @@ def create_dynamic_cuboid(min_x: float, min_y: float, min_z: float, max_x: float
 def create_dynamic_cube(min_x: float, min_y: float, min_z: float, max_x: float, max_y: float, max_z: float, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
     return call_native_function("CreateDynamicCube", min_x, min_y, min_z, max_x, max_y, max_z, world_id, interior_id, player_id, priority)
 
-def create_dynamic_polygon(points: List[float], min_z: float = -2139095040.0, max_z: float = 2139095040.0, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
+def create_dynamic_polygon(points: list[float], min_z: float = -2139095040.0, max_z: float = 2139095040.0, world_id: int = -1, interior_id: int = -1, player_id: int = -1, priority: int = 0):
     max_points = len(points)
     return call_native_function("CreateDynamicPolygon", points, min_z, max_z, max_points, world_id, interior_id, player_id, priority)
 
@@ -419,7 +419,7 @@ def is_valid_dynamic_are(area_id: int):
 def get_dynamic_area_type(area_id: int):
     return call_native_function("GetDynamicAreaType", area_id)
 
-def get_dynamic_polygon_points(area_id: int, points: List[float]):
+def get_dynamic_polygon_points(area_id: int, points: list[float]):
     maxpoints = len(points)
     return call_native_function("GetDynamicPolygonPoints", area_id, points, maxpoints)
 
@@ -488,4 +488,46 @@ def is_toggle_dyn_area_spectate_mode(area_id: int):
 
 # Natives (Actors)
 
+def create_dynamic_actor(model_id: int, x: float, y: float, z: float, rotation: float, invulnerable: bool = True, health: float = 100.0, world_id: int = -1, interior_id: int = -1, playerid: int = -1, stream_distance: float = 200.0, area_id: int = -1, priority: int = 0):
+    return call_native_function("CreateDynamicActor", model_id, x, y, z, rotation, invulnerable, health, world_id, interior_id, playerid, stream_distance, area_id, priority)
+
+def destroy_dynamic_actor(actor_id: int):
+    return call_native_function("DestroyDynamicActor", actor_id)
+
+def is_valid_dynamic_actor(actor_id: int):
+    return call_native_function("IsValidDynamicActor", actor_id)
+
+def is_dynamic_actor_streamed_in(actor_id: int, for_player_id: int):
+    return call_native_function("IsDynamicActorStreamedIn", actor_id, for_player_id)
+
+def get_dynamic_actor_virtual_world(actor_id: int):
+    return call_native_function("GetDynamicActorVirtualWorld", actor_id)
+
+def set_dynamic_actor_virtual_world(actor_id: int, virtual_world: int):
+    return call_native_function("SetDynamicActorVirtualWorld", actor_id, virtual_world)
+
+def get_dynamic_actor_animation(actor_id: int, anim_lib: str, anim_name: str, fdelta: float, loop: int, lock_x: int, lock_y: int, freeze: int, time: int):
+    maxanimlib = len(anim_lib)
+    maxanimname = len(anim_name)
+    return call_native_function("GetDynamicActorAnimation", actor_id, anim_lib, anim_name, fdelta, loop, lock_x, lock_y, freeze, time)
+
+def apply_dynamic_actor_animation(actor_id: int, anim_lib: str, anim_name: str, fdelta: float, loop: int, lock_x: int, lock_y: int, freeze: int, time: int):
+    return call_native_function("ApplyDynamicActorAnimation", actor_id, anim_lib, anim_name, fdelta, loop, lock_x, lock_y, freeze, time)
+
+def clear_dynamic_actor_animations(actor_id: int):
+    return call_native_function("ClearDynamicActorAnimations", actor_id)
+
+def get_dynamic_actor_facing_angle(actor_id: int, angle: float):
+    return call_native_function("GetDynamicActorFacingAngle", actor_id, angle)
+
+# native GetDynamicActorFacingAngle(STREAMER_TAG_ACTOR:actorid, &Float:ang);
+# native SetDynamicActorFacingAngle(STREAMER_TAG_ACTOR:actorid, Float:ang);
+# native GetDynamicActorPos(STREAMER_TAG_ACTOR:actorid, &x: float, &y: float, &z: float);
+# native SetDynamicActorPos(STREAMER_TAG_ACTOR:actorid, x: float, y: float, z: float);
+# native GetDynamicActorHealth(STREAMER_TAG_ACTOR:actorid, &Float:health);
+# native SetDynamicActorHealth(STREAMER_TAG_ACTOR:actorid, Float:health);
+# native SetDynamicActorInvulnerable(STREAMER_TAG_ACTOR:actorid, invulnerable = true);
+# native IsDynamicActorInvulnerable(STREAMER_TAG_ACTOR:actorid);
+# native STREAMER_TAG_ACTOR:GetPlayerTargetDynamicActor(playerid: int);
+# native STREAMER_TAG_ACTOR:GetPlayerCameraTargetDynActor(playerid: int);
 
