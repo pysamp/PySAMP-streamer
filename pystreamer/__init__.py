@@ -1,7 +1,5 @@
 from pysamp import call_native_function
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
-from typing import List, Tuple
-
 
 def get_tick_rate():
     return call_native_function("Streamer_GetTickRate")
@@ -410,7 +408,7 @@ def create_dynamic_polygon(points: list[float], min_z: float = -2139095040.0, ma
     max_points = len(points)
     return call_native_function("CreateDynamicPolygon", points, min_z, max_z, max_points, world_id, interior_id, player_id, priority)
 
-def destroi_dynamic_area(area_id: int):
+def destroy_dynamic_area(area_id: int):
     return call_native_function("DestroyDynamicArea", area_id)
 
 def is_valid_dynamic_are(area_id: int):
@@ -638,3 +636,68 @@ def create_dynamic_actor_ex(model_id: int, x: float, y: float, z: float, rotatio
 
 # Natives (Deprecated)
 
+def destory_all_dynamic_object():
+    return call_native_function("DestroyAllDynamicObjects")
+
+def count_dynamic_object():
+    return call_native_function("CountDynamicObjects")
+
+def destroy_all_dynamic_pickups():
+    return call_native_function("DestroyAllDynamicPickups")
+
+def count_dynamic_pickups():
+    return call_native_function("CountDynamicPickups")
+
+def destroy_all_dynamic_cps():
+    return call_native_function("DestroyAllDynamicCPs")
+
+def count_dynamic_cps():
+    return call_native_function("CountDynamicCPs")
+
+def count_dynamic_cps():
+    return call_native_function("CountDynamicCPs")
+
+def destroy_all_dynamic_race_cps():
+    return call_native_function("DestroyAllDynamicRaceCPs")
+
+def count_dynamic_race_cps():
+    return call_native_function("CountDynamicRaceCPs")
+
+def destroy_all_dynamic_map_icons():
+    return call_native_function("DestroyAllDynamicMapIcons")
+
+def count_dynamic_map_icons():
+    return call_native_function("CountDynamicMapIcons")
+
+def destroy_all_dynamic_3d_text_labels():
+    return call_native_function("DestroyAllDynamic3DTextLabels")
+
+def count_dynamic_3d_text_labels():
+    return call_native_function("CountDynamic3DTextLabels")
+
+def destroy_all_dynamic_areas():
+    return call_native_function("DestroyAllDynamicAreas")
+
+def count_dynamic_areas():
+    return call_native_function("CountDynamicAreas")
+
+def toggle_player_dynamic_cp(player_id: int, checkpoint_id: int, toggle: int):
+    return call_native_function("TogglePlayerDynamicCP", player_id, checkpoint_id, toggle) 
+
+def toggle_player_all_dynamic_cps(player_id: int, toggle: int, exceptions: list[int] = -1):
+    maxexceptions = len(exceptions)
+    return call_native_function("TogglePlayerAllDynamicCPs", player_id, toggle, exceptions, maxexceptions)
+
+def toggle_player_all_dynamic_race_cp(player_id: int, checkpoint_id: int, toggle: int):
+    return call_native_function("TogglePlayerDynamicRaceCP", player_id, checkpoint_id, toggle)
+
+def toggle_player_all_dynamic_race_cps(player_id: int, toggle: int, exceptions: list[int] = -1):
+    maxexceptions = len(exceptions)
+    return call_native_function("TogglePlayerAllDynamicRaceCPs", player_id, toggle, exceptions, maxexceptions)
+
+def toggle_player_dynamic_area(player_id: int, area_id: int, toggle: int):
+    return call_native_function("TogglePlayerDynamicArea", player_id, area_id, toggle) 
+
+def toggle_player_all_dynamic_areas(player_id: int, toggle: int, exceptions: list[int] = -1):
+    maxexceptions = len(exceptions)
+    return call_native_function("TogglePlayerAllDynamicAreas", player_id, toggle, exceptions, maxexceptions)
