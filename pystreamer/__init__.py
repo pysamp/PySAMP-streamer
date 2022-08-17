@@ -43,9 +43,6 @@ def get_visible_items(type, player_id: int = -1):
 def set_visible_items(type, items, player_id: int = -1):
     return call_native_function("Streamer_SetVisibleItems", type, items, player_id)
 
-# def get_radiud_multiplier(type, multiplier: float, player_id: int = -1):
-#     return call_native_function("Streamer_GetRadiusMultiplier", type, multiplier, player_id)
-
 def set_radius_multiplier(type, multiplier: float, player_id: int = -1):
     return call_native_function("Streamer_SetRadiusMultiplier", type, multiplier, player_id)
 
@@ -55,14 +52,8 @@ def get_type_priority(types: list, maxtypes = 8):
 def set_type_priority(types: list, maxtypes = 8):
     return call_native_function("Streamer_SetTypePriority", types, maxtypes)
 
-# def get_cell_distance(distance: float):
-#     return call_native_function("Streamer_GetCellDistance", distance)
-
 def set_cell_distance(distance: float):
     return call_native_function("Streamer_SetCellDistance", distance)
-
-# def get_cell_size(size: float):
-#     return call_native_function("Streamer_GetCellSize", size)
 
 def set_cell_size(size: float):
     return call_native_function("Streamer_SetCellSize", size)
@@ -117,9 +108,6 @@ def toggle_item_updadte(player_id: int, type, toggle):
 def is_toggle_item_updadte(player_id: int, type):
     return call_native_function("Streamer_IsToggleItemUpdate", player_id, type)
 
-# def get_last_update_time(time: float):
-#     return call_native_function("Streamer_GetLastUpdateTime", time)
-
 def update(player_id: int, type: int = -1):
     return call_native_function("Streamer_Update", player_id, type)
 
@@ -127,9 +115,6 @@ def update_ex(player_id: int, x: float, y: float, z: float, world_id: int = -1, 
     return call_native_function("Streamer_UpdateEx", player_id, x, y, z, world_id, interior_id, type, compensated_time, freeze_player)
 
 # Natives (Data Manipulation)
-
-# def get_float_data(type, id, data, result: float):
-#     return call_native_function("Streamer_GetFloatData", type, id, data, result)
 
 def set_float_data(type, id, data, value: float):
     return call_native_function("Streamer_SetFloatData", type, id, data, value)
@@ -173,9 +158,6 @@ def get_upper_bound(type):
     return call_native_function("Streamer_GetUpperBound", type)
 
 # Natives (Miscellaneous)
-
-# def get_distance_to_item(x: float, y: float, z: float, type, id, distance: float, dimensions: int = 3):
-#     return call_native_function("Streamer_GetDistanceToItem", x, y, z, type, id, distance, dimensions)
 
 def toggle_item(player_id: int, type, id, toggle):
     return call_native_function("Streamer_ToggleItem", player_id, type, id, toggle)
@@ -222,9 +204,6 @@ def get_item_pos(type, id, x: float, y: float, z: float):
 def set_item_pos(type, id, x: float, y: float, z:float):
     return call_native_function("Streamer_SetItemPos", type, id, x, y, z)
 
-# def get_item_off_set(type, id, x: float, y: float, z:float):
-#     return call_native_function("Streamer_GetItemOffset", type, id, x, y, z)
-
 def set_item_off_set(type, id, x: float, y: float, z: float):
     return call_native_function("Streamer_SetItemOffset", type, id, x, y, z)
 
@@ -239,14 +218,8 @@ def destroy_dynamic_object(object_id: int):
 def is_valid_dynamic_object(object_id: int):
     return call_native_function("IsValidDynamicObject", object_id)
 
-# def get_dynamic_object_pos(object_id: int, x: float, y: float, z: float):
-#     return call_native_function("GetDynamicObjectPos", object_id, x, y, z)
-
 def set_dynamic_object_pos(object_id: int, x: float, y: float, z: float):
     return call_native_function("SetDynamicObjectPos", object_id, x, y, z)
-
-# def get_dynamic_object_rot(object_id: int, rotation_x: float, rotation_y: float, rotation_z: float):
-#     return call_native_function("GetDynamicObjectRot", object_id, rotation_x, rotation_y, rotation_z)
 
 def set_dynamic_object_rot(object_id: int, rotation_x: float, rotation_y: float, rotation_z: float):
     return call_native_function("SetDynamicObjectRot", object_id, rotation_x, rotation_y, rotation_z)   
