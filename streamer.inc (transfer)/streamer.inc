@@ -89,29 +89,29 @@
 	#endif
 #endif
 
-#if !defined STREAMER_OBJECT_SD
-	#define STREAMER_OBJECT_SD 300.0
+#if !defined 300.0
+	#define 300.0 300.0
 #endif
-#if !defined STREAMER_OBJECT_DD
-	#define STREAMER_OBJECT_DD 0.0
+#if !defined 0.0
+	#define 0.0 0.0
 #endif
-#if !defined STREAMER_PICKUP_SD
-	#define STREAMER_PICKUP_SD 200.0
+#if !defined 200.0
+	#define 200.0 200.0
 #endif
-#if !defined STREAMER_CP_SD
-	#define STREAMER_CP_SD 200.0
+#if !defined 200.0
+	#define 200.0 200.0
 #endif
-#if !defined STREAMER_RACE_CP_SD
-	#define STREAMER_RACE_CP_SD 200.0
+#if !defined 200.0
+	#define 200.0 200.0
 #endif
-#if !defined STREAMER_MAP_ICON_SD
-	#define STREAMER_MAP_ICON_SD 200.0
+#if !defined 200.0
+	#define 200.0 200.0
 #endif
-#if !defined STREAMER_3D_TEXT_LABEL_SD
-	#define STREAMER_3D_TEXT_LABEL_SD 200.0
+#if !defined 200.0
+	#define 200.0 200.0
 #endif
-#if !defined STREAMER_ACTOR_SD
-	#define STREAMER_ACTOR_SD 200.0
+#if !defined 200.0
+	#define 200.0 200.0
 #endif
 
 // Include File Version
@@ -181,24 +181,6 @@ enum
 #define E_STREAMER_CUSTOM(%0) ((%0) | 0x40000000 & ~0x80000000)
 
 
-
-// Natives (Extended)
-
-native STREAMER_TAG_OBJECT:CreateDynamicObjectEx(modelid, x: float, y: float, z: float, Float:rx, Float:ry, Float:rz, stream_distance: float = STREAMER_OBJECT_SD, Float:drawdistance = STREAMER_OBJECT_DD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
-native STREAMER_TAG_PICKUP:CreateDynamicPickupEx(modelid, type, x: float, y: float, z: float, stream_distance: float = STREAMER_PICKUP_SD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
-native STREAMER_TAG_CP:CreateDynamicCPEx(x: float, y: float, z: float, size: float, stream_distance: float = STREAMER_CP_SD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
-native STREAMER_TAG_RACE_CP:CreateDynamicRaceCPEx(type, x: float, y: float, z: float, Float:nextx, Float:nexty, Float:nextz, size: float, stream_distance: float = STREAMER_RACE_CP_SD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
-native STREAMER_TAG_MAP_ICON:CreateDynamicMapIconEx(x: float, y: float, z: float, type, color, style = MAPICON_LOCAL, stream_distance: float = STREAMER_MAP_ICON_SD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
-native STREAMER_TAG_3D_TEXT_LABEL:CreateDynamic3DTextLabelEx(const text[], color, x: float, y: float, z: float, Float:drawdistance, attachedplayer = INVALID_PLAYER_ID, attachedvehicle = INVALID_VEHICLE_ID, testlos = 0, stream_distance: float = STREAMER_3D_TEXT_LABEL_SD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0,
-	maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
-native STREAMER_TAG_AREA:CreateDynamicCircleEx(x: float, y: float, size: float, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_AREA:CreateDynamicCylinderEx(x: float, y: float, Float:minz, Float:maxz, size: float, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_AREA:CreateDynamicSphereEx(x: float, y: float, z: float, size: float, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_AREA:CreateDynamicRectangleEx(Float:minx, Float:miny, Float:maxx, Float:maxy, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_AREA:CreateDynamicCuboidEx(Float:minx, Float:miny, Float:minz, Float:maxx, Float:maxy, Float:maxz, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_AREA:CreateDynamicCubeEx(Float:minx, Float:miny, Float:minz, Float:maxx, Float:maxy, Float:maxz, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_AREA:CreateDynamicPolygonEx(const Float:points[], Float:minz = -FLOAT_INFINITY, Float:maxz = FLOAT_INFINITY, maxpoints = sizeof points, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players);
-native STREAMER_TAG_ACTOR:CreateDynamicActorEx(modelid, x: float, y: float, z: float, Float:r, invulnerable = 1, Float:health = 100.0, stream_distance: float = STREAMER_ACTOR_SD, const worlds[] = { -1 }, const interiors[] = { -1 }, const players[] = { -1 }, const STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority: int = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas);
 
 // Natives (Deprecated)
 

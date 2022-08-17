@@ -45,8 +45,8 @@ def get_visible_items(type, player_id: int = -1):
 def set_visible_items(type, items, player_id: int = -1):
     return call_native_function("Streamer_SetVisibleItems", type, items, player_id)
 
-def get_radiud_multiplier(type, multiplier: float, player_id: int = -1):
-    return call_native_function("Streamer_GetRadiusMultiplier", type, multiplier, player_id)
+# def get_radiud_multiplier(type, multiplier: float, player_id: int = -1):
+#     return call_native_function("Streamer_GetRadiusMultiplier", type, multiplier, player_id)
 
 def set_radius_multiplier(type, multiplier: float, player_id: int = -1):
     return call_native_function("Streamer_SetRadiusMultiplier", type, multiplier, player_id)
@@ -57,14 +57,14 @@ def get_type_priority(types: list, maxtypes = 8):
 def set_type_priority(types: list, maxtypes = 8):
     return call_native_function("Streamer_SetTypePriority", types, maxtypes)
 
-def get_cell_distance(distance: float):
-    return call_native_function("Streamer_GetCellDistance", distance)
+# def get_cell_distance(distance: float):
+#     return call_native_function("Streamer_GetCellDistance", distance)
 
 def set_cell_distance(distance: float):
     return call_native_function("Streamer_SetCellDistance", distance)
 
-def get_cell_size(size: float):
-    return call_native_function("Streamer_GetCellSize", size)
+# def get_cell_size(size: float):
+#     return call_native_function("Streamer_GetCellSize", size)
 
 def set_cell_size(size: float):
     return call_native_function("Streamer_SetCellSize", size)
@@ -119,8 +119,8 @@ def toggle_item_updadte(player_id: int, type, toggle):
 def is_toggle_item_updadte(player_id: int, type):
     return call_native_function("Streamer_IsToggleItemUpdate", player_id, type)
 
-def get_last_update_time(time: float):
-    return call_native_function("Streamer_GetLastUpdateTime", time)
+# def get_last_update_time(time: float):
+#     return call_native_function("Streamer_GetLastUpdateTime", time)
 
 def update(player_id: int, type: int = -1):
     return call_native_function("Streamer_Update", player_id, type)
@@ -130,8 +130,8 @@ def update_ex(player_id: int, x: float, y: float, z: float, world_id: int = -1, 
 
 # Natives (Data Manipulation)
 
-def get_float_data(type, id, data, result: float):
-    return call_native_function("Streamer_GetFloatData", type, id, data, result)
+# def get_float_data(type, id, data, result: float):
+#     return call_native_function("Streamer_GetFloatData", type, id, data, result)
 
 def set_float_data(type, id, data, value: float):
     return call_native_function("Streamer_SetFloatData", type, id, data, value)
@@ -176,8 +176,8 @@ def get_upper_bound(type):
 
 # Natives (Miscellaneous)
 
-def get_distance_to_item(x: float, y: float, z: float, type, id, distance: float, dimensions: int = 3):
-    return call_native_function("Streamer_GetDistanceToItem", x, y, z, type, id, distance, dimensions)
+# def get_distance_to_item(x: float, y: float, z: float, type, id, distance: float, dimensions: int = 3):
+#     return call_native_function("Streamer_GetDistanceToItem", x, y, z, type, id, distance, dimensions)
 
 def toggle_item(player_id: int, type, id, toggle):
     return call_native_function("Streamer_ToggleItem", player_id, type, id, toggle)
@@ -224,8 +224,8 @@ def get_item_pos(type, id, x: float, y: float, z: float):
 def set_item_pos(type, id, x: float, y: float, z:float):
     return call_native_function("Streamer_SetItemPos", type, id, x, y, z)
 
-def get_item_off_set(type, id, x: float, y: float, z:float):
-    return call_native_function("Streamer_GetItemOffset", type, id, x, y, z)
+# def get_item_off_set(type, id, x: float, y: float, z:float):
+#     return call_native_function("Streamer_GetItemOffset", type, id, x, y, z)
 
 def set_item_off_set(type, id, x: float, y: float, z: float):
     return call_native_function("Streamer_SetItemOffset", type, id, x, y, z)
@@ -241,14 +241,14 @@ def destroy_dynamic_object(object_id: int):
 def is_valid_dynamic_object(object_id: int):
     return call_native_function("IsValidDynamicObject", object_id)
 
-def get_dynamic_object_pos(object_id: int, x: float, y: float, z: float):
-    return call_native_function("GetDynamicObjectPos", object_id, x, y, z)
+# def get_dynamic_object_pos(object_id: int, x: float, y: float, z: float):
+#     return call_native_function("GetDynamicObjectPos", object_id, x, y, z)
 
 def set_dynamic_object_pos(object_id: int, x: float, y: float, z: float):
     return call_native_function("SetDynamicObjectPos", object_id, x, y, z)
 
-def get_dynamic_object_rot(object_id: int, rotation_x: float, rotation_y: float, rotation_z: float):
-    return call_native_function("GetDynamicObjectRot", object_id, rotation_x, rotation_y, rotation_z)
+# def get_dynamic_object_rot(object_id: int, rotation_x: float, rotation_y: float, rotation_z: float):
+#     return call_native_function("GetDynamicObjectRot", object_id, rotation_x, rotation_y, rotation_z)
 
 def set_dynamic_object_rot(object_id: int, rotation_x: float, rotation_y: float, rotation_z: float):
     return call_native_function("SetDynamicObjectRot", object_id, rotation_x, rotation_y, rotation_z)   
@@ -289,10 +289,10 @@ def is_dynamic_object_material_used(object_id: int, material_index):
 def remove_dynamic_object_material(object_id: int, material_index):
     return call_native_function("RemoveDynamicObjectMaterial", object_id, material_index)
 
-def get_dynamic_object_material(object_id: int, material_index: int, model_id: int, txd_name: str, texturename: str, material_color: int= 0):
-    maxtxdname = len(txd_name)
-    maxtexturename = len(texturename)
-    return call_native_function("GetDynamicObjectMaterial", object_id, material_index, model_id, txd_name, texturename, material_color)
+# def get_dynamic_object_material(object_id: int, material_index: int, model_id: int, txd_name: str, texturename: str, material_color: int= 0):
+#     maxtxdname = len(txd_name)
+#     maxtexturename = len(texturename)
+#     return call_native_function("GetDynamicObjectMaterial", object_id, material_index, model_id, txd_name, texturename, material_color)
 
 def set_dynamic_object_material(object_id: int, material_index: int, model_id: int, txd_name: str, texturename: str, material_color: int = 0):
     return call_native_function("SetDynamicObjectMaterial", object_id, material_color, model_id, txd_name, texturename, material_color)
@@ -303,8 +303,8 @@ def is_dynamic_object_material_text_used(object_id: int, material_index: int):
 def remove_dynamic_object_material_text(object_id: int, material_index: int):
     return call_native_function("RemoveDynamicObjectMaterialText", object_id, material_index)
 
-def get_dynamic_object_material_text(object_id: int, material_index: int, text: str, material_size: int, font_face: str, font_size: int, bold: int, font_color: int, back_color: int, text_alignment: int):
-    return call_native_function("GetDynamicObjectMaterialText", object_id, material_index, text, material_size, font_face, font_size, bold, font_color, back_color, text_alignment)
+# def get_dynamic_object_material_text(object_id: int, material_index: int, text: str, material_size: int, font_face: str, font_size: int, bold: int, font_color: int, back_color: int, text_alignment: int):
+#     return call_native_function("GetDynamicObjectMaterialText", object_id, material_index, text, material_size, font_face, font_size, bold, font_color, back_color, text_alignment)
 
 def set_dynamic_object_material_text(object_id: int, material_index: int, text: str, material_size: int = 90, font_face: str = "Arial", font_size: int = 24, bold: int = 1, font_color: int = 0xFFFFFFFF, back_color: int = 0, text_alignment: int = 0):
     return call_native_function("SetDynamicObjectMaterialText", object_id, material_index, text, material_size, font_face, font_size, bold, font_color, back_color, text_alignment)
@@ -517,17 +517,124 @@ def apply_dynamic_actor_animation(actor_id: int, anim_lib: str, anim_name: str, 
 def clear_dynamic_actor_animations(actor_id: int):
     return call_native_function("ClearDynamicActorAnimations", actor_id)
 
-def get_dynamic_actor_facing_angle(actor_id: int, angle: float):
-    return call_native_function("GetDynamicActorFacingAngle", actor_id, angle)
+# def get_dynamic_actor_facing_angle(actor_id: int, angle: float):
+#     return call_native_function("GetDynamicActorFacingAngle", actor_id, angle)
 
-# native GetDynamicActorFacingAngle(STREAMER_TAG_ACTOR:actorid, &Float:ang);
-# native SetDynamicActorFacingAngle(STREAMER_TAG_ACTOR:actorid, Float:ang);
-# native GetDynamicActorPos(STREAMER_TAG_ACTOR:actorid, &x: float, &y: float, &z: float);
-# native SetDynamicActorPos(STREAMER_TAG_ACTOR:actorid, x: float, y: float, z: float);
-# native GetDynamicActorHealth(STREAMER_TAG_ACTOR:actorid, &Float:health);
-# native SetDynamicActorHealth(STREAMER_TAG_ACTOR:actorid, Float:health);
-# native SetDynamicActorInvulnerable(STREAMER_TAG_ACTOR:actorid, invulnerable = true);
-# native IsDynamicActorInvulnerable(STREAMER_TAG_ACTOR:actorid);
-# native STREAMER_TAG_ACTOR:GetPlayerTargetDynamicActor(playerid: int);
-# native STREAMER_TAG_ACTOR:GetPlayerCameraTargetDynActor(playerid: int);
+def set_dynamic_actor_facing_angle(actor_id: int, angle: float):
+    return call_native_function("SetDynamicActorFacingAngle", actor_id, angle)
+
+def set_dynamic_actor_pos(actor_id: int, x: float, y: float, z: float):
+    return call_native_function("SetDynamicActorPos", actor_id, x, y, z)
+
+def set_dynamic_actor_health(actor_id: int, health: float):
+    return call_native_function("SetDynamicActorHealth", actor_id, health)
+
+def set_dynamic_actor_invulnerable(actor_id: int, invulnerable: bool = True):
+    return call_native_function("SetDynamicActorInvulnerable", actor_id, invulnerable)
+
+def is_dynamic_actor_invulnerable(actor_id: int):
+    return call_native_function("IsDynamicActorInvulnerable", actor_id)
+
+def get_player_target_dynamic_actor(player_id: int):
+    return call_native_function("GetPlayerTargetDynamicActor", player_id)
+
+def get_player_camera_target_dyn_actor(player_id: int):
+    return call_native_function("GetPlayerCameraTargetDynActor", player_id)
+
+# Natives (Extended)
+
+def create_dynamic_object_ex(model_id: int, x: float, y: float, z: float, rotation_x: float, rotation_y: float, rotation_z: float, stream_distance: float = 300.0, draw_distance: float = 0.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas)
+    return CreateDynamicObjectEx("CreateDynamicObjectEx", model_id, x, y, z, rotation_x, rotation_y, rotation_z, stream_distance, draw_distance, world, interiors, players, areas, priority, maxworlds, maxinteriors, maxplayers, maxareas)
+
+def create_dynamic_pickup_ex(model_id: int, type: int, x: float, y: float, z: float, stream_distance: float = 200.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas)
+    return call_native_function("CreateDynamicPickupEx", model_id, type, x, y, z, stream_distance, world, interiors, players, areas, priority, maxworlds, maxinteriors, maxplayers, maxareas)
+
+
+def create_dynamic_cp_ex(x: float, y: float, z: float, size: float, stream_distance: float = 200.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas)
+    return call_native_function("CreateDynamicCPEx", x, y, z, stream_distance, world, interiors, players, areas, priority, maxworlds, maxinteriors, maxplayers, maxareas)
+
+def create_dynamic_race_cp_ex(type, x: float, y: float, z: float, next_x: float, next_y: float, next_z: float, size: float, stream_distance: float = 200.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas)
+    return call_native_function("CreateDynamicRaceCPEx", type, x, y, z, next_x, next_y, next_z, size, stream_distance, worlds, interiors, players, areas, priority, maxworlds, maxinteriors, maxplayers, maxareas)
+
+def create_dynamic_map_icon_ex(x: float, y: float, z: float, type: int, color: int, style: int = 0, stream_distance: float = 200.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas) 
+    return call_native_function("CreateDynamicMapIconEx", x, y, z, type, color, style, stream_distance, world, interiors, players, areas, priority, maxworlds, maxinteriors, maxplayers, maxareas)
+
+def create_dynamic_3d_text_label_ex(text: str, color: int, x: float, y: float, z: float, draw_distance: float, attached_player: int = INVALID_PLAYER_ID, attached_vehicle: int = INVALID_VEHICLE_ID, testlos: int = 0, stream_distance: float = 200.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas) 
+    return call_native_function("CreateDynamic3DTextLabelEx", text, color, x, y, z, draw_distance, attached_player, attached_vehicle, testlos, stream_distance, worlds, interiors, players, areas, priority, maxworlds, maxinteriors, maxplayers, maxareas)
+
+def create_dynamic_circle_ex(x: float, y: float, size: float, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)   
+    return call_native_function("CreateDynamicCircleEx", x, y, size, worlds, interiors, players, priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_cylinder_ex(x: float, y: float, min_z: float, max_z: float, size: float, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)   
+    return call_native_function("CreateDynamicCylinderEx", x, y, min_z, max_z, size, worlds, interiors, players, priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_sphere_ex(x: float, y: float, z: float, size: float, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)       
+    return call_native_function("CreateDynamicSphereEx", x, y, z, size, worlds, interiors, players, priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_rectangle_ex(min_x: float, min_y: float, max_x: float, max_y: float, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)    
+    return call_native_function("CreateDynamicRectangleEx", min_x, min_y, max_x, max_y, worlds, interiors, players, priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_cuboid_ex(min_x: float, min_y: float, min_z: float, max_x: float, max_y: float, max_z: float, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)    
+    return call_native_function("CreateDynamicCuboidEx", min_x, min_y, min_z, max_x, max_y, max_z, worlds, interiors, players, priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_cube_ex(min_x: float, min_y: float, min_z: float, max_x: float, max_y: float, max_z: float, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)    
+    return call_native_function("CreateDynamicCubeEx", min_x, min_y, min_z, max_x, max_y, max_z, worlds, interiors, players, priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_polygon_ex(points: list[float], min_z: float = -2139095040.0, max_z: float = 2139095040.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, priority: int = 0):
+    maxpoints = len(points)
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)    
+    return call_native_function("CreateDynamicPolygonEx", points, min_z, max_z, maxpoints, worlds, interiors, players. priority, maxworlds, maxinteriors, maxplayers)
+
+def create_dynamic_actor_ex(model_id: int, x: float, y: float, z: float, rotation: float, invulnerable: int = 1, health: float = 100.0, stream_distance: float = 200.0, worlds: list[int] = -1, interiors: list[int] = -1, players: list[int] = -1, areas: list[int] = -1, priority: int = 0):
+    maxworlds = len(worlds)
+    maxinteriors = len(interiors)
+    maxplayers = len(players)
+    maxareas = len(areas) 
+    return call_native_function("CreateDynamicActorEx", model_id, x, y, z, rotation, invulnerable, health, stream_distance, worlds, interiors, players, areas, priority, maxareas, maxworlds, maxinteriors, maxplayers)
+
+# Natives (Deprecated)
 
