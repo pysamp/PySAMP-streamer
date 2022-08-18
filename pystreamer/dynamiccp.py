@@ -15,6 +15,7 @@ class DynamicCheckpoint:
 
     @classmethod
     def create(
+        cls,
         x: float,
         y: float,
         z: float,

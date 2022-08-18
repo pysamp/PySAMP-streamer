@@ -14,6 +14,7 @@ class DynamicTextLabel:
 
     @classmethod
     def create(
+        cls,
         text: str,
         color: int,
         x: float,
@@ -29,7 +30,7 @@ class DynamicTextLabel:
         stream_distance: float = 200.0,
         area_id: int = -1,
         priority: int = 0,
-    ):
+    ) -> "DynamicTextLabel":
         return cls(
             create_dynamic_3d_text_label(
                 text,

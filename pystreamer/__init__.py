@@ -925,7 +925,7 @@ def create_dynamic_sphere(
     )
 
 
-def crate_dynamic_rectangle(
+def create_dynamic_rectangle(
     min_x: float,
     min_y: float,
     max_x: float,
@@ -1029,7 +1029,7 @@ def destroy_dynamic_area(area_id: int):
     return call_native_function("DestroyDynamicArea", area_id)
 
 
-def is_valid_dynamic_are(area_id: int):
+def is_valid_dynamic_area(area_id: int):
     return call_native_function("IsValidDynamicArea", area_id)
 
 

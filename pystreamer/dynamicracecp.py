@@ -15,6 +15,7 @@ class DynamicRaceChecpoint:
 
     @classmethod
     def create(
+        cls,
         type,
         x: float,
         y: float,
@@ -67,4 +68,4 @@ class DynamicRaceChecpoint:
         return is_player_in_dynamic_race_cp(player_id, self.id)
 
     def get_player_visible(self, player_id: int):
-        get_player_visible_dynamic_race_cp(player_id)
+        return get_player_visible_dynamic_race_cp(player_id)

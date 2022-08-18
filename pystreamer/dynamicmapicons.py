@@ -11,6 +11,7 @@ class DynamicMapIcon:
 
     @classmethod
     def create(
+        cls,
         x: float,
         y: float,
         z: float,
@@ -23,7 +24,7 @@ class DynamicMapIcon:
         style: int = 0,
         area_id: int = -1,
         priority: int = 0,
-    ):
+    ) -> "DynamicMapIcon":
         return cls(
             create_dynamic_map_icon(
                 x,
