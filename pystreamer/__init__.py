@@ -1322,12 +1322,6 @@ def clear_dynamic_actor_animations(actor_id: int):
     return call_native_function("ClearDynamicActorAnimations", actor_id)
 
 
-# def get_dynamic_actor_facing_angle(actor_id: int, angle: float):
-#     return call_native_function(
-#         "GetDynamicActorFacingAngle", actor_id, angle
-#     )
-
-
 def set_dynamic_actor_facing_angle(actor_id: int, angle: float):
     return call_native_function("SetDynamicActorFacingAngle", actor_id, angle)
 

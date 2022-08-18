@@ -1,5 +1,6 @@
 from . import (
     create_dynamic_actor,
+    create_dynamic_actor_ex,
     destroy_dynamic_actor,
     is_valid_dynamic_actor,
     is_dynamic_actor_streamed_in,
@@ -58,6 +59,46 @@ class DynamicActor:
                 player_id,
                 stream_distance,
                 area_id,
+                priority,
+            ),
+            x,
+            y,
+            z,
+            rotation,
+            health,
+        )
+
+    @classmethod
+    def create_ex(
+        cls,
+        model_id: int,
+        x: float,
+        y: float,
+        z: float,
+        rotation: float,
+        invulnerable: int = 1,
+        health: float = 100.0,
+        stream_distance: float = 200.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        areas: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicActor":
+        return cls(
+            create_dynamic_actor_ex(
+                model_id,
+                x,
+                y,
+                z,
+                rotation,
+                invulnerable,
+                health,
+                stream_distance,
+                worlds,
+                interiors,
+                players,
+                areas,
                 priority,
             ),
             x,
