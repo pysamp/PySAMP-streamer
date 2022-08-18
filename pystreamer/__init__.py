@@ -1,5 +1,7 @@
 from pysamp import call_native_function
+from pysamp.event import registry
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
+import functools
 
 def get_tick_rate():
     return call_native_function("Streamer_GetTickRate")
@@ -260,11 +262,6 @@ def is_dynamic_object_material_used(object_id: int, material_index):
 def remove_dynamic_object_material(object_id: int, material_index):
     return call_native_function("RemoveDynamicObjectMaterial", object_id, material_index)
 
-# def get_dynamic_object_material(object_id: int, material_index: int, model_id: int, txd_name: str, texturename: str, material_color: int= 0):
-#     maxtxdname = len(txd_name)
-#     maxtexturename = len(texturename)
-#     return call_native_function("GetDynamicObjectMaterial", object_id, material_index, model_id, txd_name, texturename, material_color)
-
 def set_dynamic_object_material(object_id: int, material_index: int, model_id: int, txd_name: str, texturename: str, material_color: int = 0):
     return call_native_function("SetDynamicObjectMaterial", object_id, material_color, model_id, txd_name, texturename, material_color)
 
@@ -273,9 +270,6 @@ def is_dynamic_object_material_text_used(object_id: int, material_index: int):
 
 def remove_dynamic_object_material_text(object_id: int, material_index: int):
     return call_native_function("RemoveDynamicObjectMaterialText", object_id, material_index)
-
-# def get_dynamic_object_material_text(object_id: int, material_index: int, text: str, material_size: int, font_face: str, font_size: int, bold: int, font_color: int, back_color: int, text_alignment: int):
-#     return call_native_function("GetDynamicObjectMaterialText", object_id, material_index, text, material_size, font_face, font_size, bold, font_color, back_color, text_alignment)
 
 def set_dynamic_object_material_text(object_id: int, material_index: int, text: str, material_size: int = 90, font_face: str = "Arial", font_size: int = 24, bold: int = 1, font_color: int = 0xFFFFFFFF, back_color: int = 0, text_alignment: int = 0):
     return call_native_function("SetDynamicObjectMaterialText", object_id, material_index, text, material_size, font_face, font_size, bold, font_color, back_color, text_alignment)

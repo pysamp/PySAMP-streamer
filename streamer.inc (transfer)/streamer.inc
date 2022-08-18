@@ -1,7 +1,5 @@
 // Callbacks
 
-forward OnDynamicObjectMoved(STREAMER_TAG_OBJECT:objectid);
-forward OnPlayerEditDynamicObject(playerid: int, STREAMER_TAG_OBJECT:objectid, response, x: float, y: float, z: float, Float:rx, Float:ry, Float:rz);
 forward OnPlayerSelectDynamicObject(playerid: int, STREAMER_TAG_OBJECT:objectid, modelid, x: float, y: float, z: float);
 forward OnPlayerShootDynamicObject(playerid: int, weaponid, STREAMER_TAG_OBJECT:objectid, x: float, y: float, z: float);
 forward OnPlayerPickUpDynamicPickup(playerid: int, STREAMER_TAG_PICKUP:pickupid);
