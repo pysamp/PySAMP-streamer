@@ -760,8 +760,8 @@ def create_dynamic_map_icon(
     x: float,
     y: float,
     z: float,
-    type,
-    color,
+    type: int,
+    color: int,
     world_id: int = -1,
     interior_id: int = -1,
     player_id: int = -1,
@@ -805,8 +805,8 @@ def create_dynamic_3d_text_label(
     y: float,
     z: float,
     draw_distance: float,
-    attachedplayer: int = INVALID_PLAYER_ID,
-    attachedvehicle: int = INVALID_VEHICLE_ID,
+    attached_player: int = INVALID_PLAYER_ID,
+    attached_vehicle: int = INVALID_VEHICLE_ID,
     testlos: int = 0,
     world_id: int = -1,
     interior_id: int = -1,
@@ -823,8 +823,8 @@ def create_dynamic_3d_text_label(
         y,
         z,
         draw_distance,
-        attachedplayer,
-        attachedvehicle,
+        attached_player,
+        attached_vehicle,
         testlos,
         world_id,
         interior_id,
@@ -1856,7 +1856,7 @@ def create_dynamic_actor_ex(
 # Natives (Deprecated)
 
 
-def destory_all_dynamic_object():
+def destroy_all_dynamic_object():
     return call_native_function("DestroyAllDynamicObjects")
 
 
@@ -1931,7 +1931,7 @@ def toggle_player_all_dynamic_cps(
     )
 
 
-def toggle_player_all_dynamic_race_cp(
+def toggle_player_dynamic_race_cp(
     player_id: int, checkpoint_id: int, toggle: int
 ):
     return call_native_function(

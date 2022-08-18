@@ -1,4 +1,3 @@
-from pysamp.event import event
 from . import (
     create_dynamic_object,
     destroy_dynamic_object,
