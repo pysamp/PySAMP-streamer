@@ -1,5 +1,6 @@
 from . import (
     create_dynamic_3d_text_label,
+    create_dynamic_3d_text_label_ex,
     destroy_dynamic_3e_text_label,
     is_valid_dynamic_3d_text_label,
     get_dynamic_3d_text_label_text,
@@ -47,6 +48,45 @@ class DynamicTextLabel:
                 player_id,
                 stream_distance,
                 area_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_ex(
+        cls,
+        text: str,
+        color: int,
+        x: float,
+        y: float,
+        z: float,
+        draw_distance: float,
+        attached_player: int = INVALID_PLAYER_ID,
+        attached_vehicle: int = INVALID_VEHICLE_ID,
+        testlos: int = 0,
+        stream_distance: float = 200.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        areas: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicTextLabel":
+        return cls(
+            create_dynamic_3d_text_label_ex(
+                text,
+                color,
+                x,
+                y,
+                z,
+                draw_distance,
+                attached_player,
+                attached_vehicle,
+                testlos,
+                stream_distance,
+                worlds,
+                interiors,
+                players,
+                areas,
                 priority,
             )
         )

@@ -1,5 +1,6 @@
 from . import (
     create_dynamic_cp,
+    create_dynamic_cp_ex,
     destroy_dynamic_cp,
     is_valid_dynamic_cp,
     toggle_player_dynamic_cp,
@@ -38,6 +39,34 @@ class DynamicCheckpoint:
                 player_id,
                 stream_distance,
                 area_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_ex(
+        cls,
+        x: float,
+        y: float,
+        z: float,
+        size: float,
+        stream_distance: float = 200.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        areas: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicCheckpoint":
+        return cls(
+            create_dynamic_cp_ex(
+                x,
+                y,
+                z,
+                stream_distance,
+                worlds,
+                interiors,
+                players,
+                areas,
                 priority,
             )
         )

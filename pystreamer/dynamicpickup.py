@@ -1,5 +1,6 @@
 from . import (
     create_dynamic_pickup,
+    create_dynamic_pickup_ex,
     destroy_dynamic_pickup,
     is_valid_dynamic_pickup,
 )
@@ -36,6 +37,37 @@ class DynamicPickup:
                 player_id,
                 stream_distance,
                 area_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_ex(
+        cls,
+        model_id: int,
+        type: int,
+        x: float,
+        y: float,
+        z: float,
+        stream_distance: float = 200.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        areas: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicPickup":
+        return cls(
+            create_dynamic_pickup_ex(
+                model_id,
+                type,
+                x,
+                y,
+                z,
+                stream_distance,
+                worlds,
+                interiors,
+                players,
+                areas,
                 priority,
             )
         )

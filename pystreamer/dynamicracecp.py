@@ -1,5 +1,6 @@
 from . import (
     create_dynamic_race_cp,
+    create_dynamic_race_cp_ex,
     destroy_dynamic_race_cp,
     is_valid_dynamic_race_cp,
     toggle_player_dynamic_race_cp,
@@ -46,6 +47,43 @@ class DynamicRaceChecpoint:
                 player_id,
                 stream_distance,
                 area_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_ex(
+        cls,
+        type,
+        x: float,
+        y: float,
+        z: float,
+        next_x: float,
+        next_y: float,
+        next_z: float,
+        size: float,
+        stream_distance: float = 200.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        areas: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicRaceCheckpoint":
+        return cls(
+            create_dynamic_race_cp_ex(
+                type,
+                x,
+                y,
+                z,
+                next_x,
+                next_y,
+                next_z,
+                size,
+                stream_distance,
+                worlds,
+                interiors,
+                players,
+                areas,
                 priority,
             )
         )

@@ -1,5 +1,6 @@
 from . import (
     create_dynamic_map_icon,
+    create_dynamic_map_icon_ex,
     destroy_dynamic_map_icon,
     is_valid_dynamic_map_icon,
 )
@@ -38,6 +39,39 @@ class DynamicMapIcon:
                 stream_distance,
                 style,
                 area_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_ex(
+        cls,
+        x: float,
+        y: float,
+        z: float,
+        type: int,
+        color: int,
+        style: int = 0,
+        stream_distance: float = 200.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        areas: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicMapIcon":
+        return cls(
+            create_dynamic_map_icon_ex(
+                x,
+                y,
+                z,
+                type,
+                color,
+                style,
+                stream_distance,
+                worlds,
+                interiors,
+                players,
+                areas,
                 priority,
             )
         )

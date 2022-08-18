@@ -1,10 +1,18 @@
 from . import (
     create_dynamic_circle,
+    create_dynamic_circle_ex,
     create_dynamic_cylinder,
+    create_dynamic_cylinder_ex,
     create_dynamic_sphere,
+    create_dynamic_sphere_ex,
     create_dynamic_rectangle,
+    create_dynamic_rectangle_ex,
     create_dynamic_cuboid,
+    create_dynamic_cuboid_ex,
+    create_dynamic_cube,
+    create_dynamic_cube_ex,
     create_dynamic_polygon,
+    create_dynamic_polygon_ex,
     destroy_dynamic_area,
     is_valid_dynamic_area,
     get_dynamic_area_type,
@@ -55,6 +63,29 @@ class DynamicZone:
         )
 
     @classmethod
+    def create_circle_ex(
+        cls,
+        x: float,
+        y: float,
+        size: float,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_circle_ex(
+                x,
+                y,
+                size,
+                worlds,
+                interiors,
+                players,
+                priority,
+            )
+        )
+
+    @classmethod
     def create_cylinder(
         cls,
         x: float,
@@ -82,6 +113,33 @@ class DynamicZone:
         )
 
     @classmethod
+    def create_cylinder_ex(
+        cls,
+        x: float,
+        y: float,
+        min_z: float,
+        max_z: float,
+        size: float,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_cylinder_ex(
+                x,
+                y,
+                min_z,
+                max_z,
+                size,
+                worlds,
+                interiors,
+                players,
+                priority,
+            )
+        )
+
+    @classmethod
     def create_sphere(
         cls,
         x: float,
@@ -96,6 +154,31 @@ class DynamicZone:
         return cls(
             create_dynamic_sphere(
                 x, y, z, size, world_id, interior_id, player_id, priority
+            )
+        )
+
+    @classmethod
+    def create_sphere_ex(
+        cls,
+        x: float,
+        y: float,
+        z: float,
+        size: float,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_sphere_ex(
+                x,
+                y,
+                z,
+                size,
+                worlds,
+                interiors,
+                players,
+                priority,
             )
         )
 
@@ -120,6 +203,31 @@ class DynamicZone:
                 world_id,
                 interior_id,
                 player_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_rectangle_ex(
+        cls,
+        min_x: float,
+        min_y: float,
+        max_x: float,
+        max_y: float,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_rectangle_ex(
+                min_x,
+                min_y,
+                max_x,
+                max_y,
+                worlds,
+                interiors,
+                players,
                 priority,
             )
         )
@@ -154,6 +262,93 @@ class DynamicZone:
         )
 
     @classmethod
+    def create_cuboid_ex(
+        cls,
+        min_x: float,
+        min_y: float,
+        min_z: float,
+        max_x: float,
+        max_y: float,
+        max_z: float,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_cuboid_ex(
+                min_x,
+                min_y,
+                min_z,
+                max_x,
+                max_y,
+                max_z,
+                worlds,
+                interiors,
+                players,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_cube(
+        cls,
+        min_x: float,
+        min_y: float,
+        min_z: float,
+        max_x: float,
+        max_y: float,
+        max_z: float,
+        world_id: int = -1,
+        interior_id: int = -1,
+        player_id: int = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_cube(
+                min_x,
+                min_y,
+                min_z,
+                max_x,
+                max_y,
+                max_z,
+                world_id,
+                interior_id,
+                player_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_cube_ex(
+        cls,
+        min_x: float,
+        min_y: float,
+        min_z: float,
+        max_x: float,
+        max_y: float,
+        max_z: float,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_cube_ex(
+                min_x,
+                min_y,
+                min_z,
+                max_x,
+                max_y,
+                max_z,
+                worlds,
+                interiors,
+                players,
+                priority,
+            )
+        )
+
+    @classmethod
     def create_polygon(
         cls,
         points: list[float],
@@ -172,6 +367,30 @@ class DynamicZone:
                 world_id,
                 interior_id,
                 player_id,
+                priority,
+            )
+        )
+
+    @classmethod
+    def create_polygon_ex(
+        cls,
+        points: list[float],
+        min_z: float = -2139095040.0,
+        max_z: float = 2139095040.0,
+        worlds: list[int] = -1,
+        interiors: list[int] = -1,
+        players: list[int] = -1,
+        priority: int = 0,
+    ) -> "DynamicZone":
+        return cls(
+            create_dynamic_polygon_ex(
+                points,
+                min_z,
+                max_z,
+                maxpoints,
+                worlds,
+                interiors,
+                players,
                 priority,
             )
         )
