@@ -531,8 +531,8 @@ def attach_dynamic_object_to_vehicle(
     )
 
 
-def edit_dynamic_object(player_id: int):
-    return call_native_function("EditDynamicObject", player_id)
+def edit_dynamic_object(player_id: int, object_id: int):
+    return call_native_function("EditDynamicObject", player_id, object_id)
 
 
 def is_dynamic_object_material_used(object_id: int, material_index):

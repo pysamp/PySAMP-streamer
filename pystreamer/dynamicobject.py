@@ -1,5 +1,4 @@
 from pysamp.event import event
-from pysamp import call_native_function
 from . import (
     create_dynamic_object,
     destroy_dynamic_object,
@@ -15,6 +14,7 @@ from . import (
     attach_dynamic_object_to_object,
     attach_dynamic_object_to_player,
     attach_dynamic_object_to_vehicle,
+    edit_dynamic_object,
     is_dynamic_object_material_used,
     remove_dynamic_object_material,
     set_dynamic_object_material,
@@ -134,7 +134,7 @@ class DynamicObject:
         rotation_z: float = -1000.0,
     ):
         return move_dynamic_object(
-            self.id, x, y, z, speed, rotation_x, rotation_y.rotation_z
+            self.id, x, y, z, speed, rotation_x, rotation_y, rotation_z
         )
 
     def stop(self):
@@ -213,6 +213,9 @@ class DynamicObject:
             syncrotation,
         )
 
+    def edit(self, player_id: int):
+        return edit_dynamic_object(player_id, self.id)
+
     def is_material_used(self, material_index: int):
         return is_dynamic_object_material_used(self.id, material_index)
 
@@ -280,34 +283,4 @@ class DynamicObject:
             self._font_color,
             self._back_color,
             self._text_alignment,
-        )
-
-    @event("OnDynamicObjectMoved")
-    def on_moved(cls, object_id: int):
-        return call_native_function("OnDynamicObjectMoved", cls(object_id))
-
-    @event("OnPlayerEditDynamicObject")
-    def on_player_edit(
-        cls,
-        player_id: int,
-        object_id: int,
-        response,
-        x: float,
-        y: float,
-        z: float,
-        rotation_x: float,
-        rotation_y: float,
-        rotation_z: float,
-    ):
-        return call_native_function(
-            "OnPlayerEditDynamicObject",
-            Player(player_id),
-            cls(object_id),
-            response,
-            x,
-            y,
-            z,
-            rotation_x,
-            rotation_y,
-            rotation_z,
         )
