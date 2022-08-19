@@ -2,6 +2,7 @@ from pysamp.event import registry
 from pysamp import call_native_function
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID, RegisterCallback
 
+
 def register_callbacks():
     RegisterCallback("OnDynamicObjectMoved", "i")
     RegisterCallback("OnPlayerSelectDynamicObject", "iiifff")

@@ -21,7 +21,9 @@ from typing import Tuple
 
 
 class DynamicActor:
-    def __init__(self, id, x=None, y=None, z=None, rotation=None, health=None) -> None:
+    def __init__(
+        self, id, x=None, y=None, z=None, rotation=None, health=None
+    ) -> None:
         self.id = id
         self._x = x
         self._y = y
@@ -176,7 +178,14 @@ class DynamicActor:
         return get_player_camera_target_dyn_actor(player_id)
 
     @event("OnPlayerGiveDamageDynamicActor")
-    def on_player_give_damage(cls, player_id: int, actor_id: int, amount: float, weapon_id: int, body_part: int):
+    def on_player_give_damage(
+        cls,
+        player_id: int,
+        actor_id: int,
+        amount: float,
+        weapon_id: int,
+        body_part: int,
+    ):
         return (Player(player_id), cls(actor_id), amount, weapon_id, body_part)
 
     @event("OnDynamicActorStreamIn")

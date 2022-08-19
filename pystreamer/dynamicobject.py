@@ -28,7 +28,15 @@ from typing import Tuple
 
 class DynamicObject:
     def __init__(
-        self, id, x=None, y=None, z=None, rotation_x=None, rotation_y=None, rotation_z=None, model_id=None
+        self,
+        id,
+        x=None,
+        y=None,
+        z=None,
+        rotation_x=None,
+        rotation_y=None,
+        rotation_z=None,
+        model_id=None,
     ) -> None:
         self.id = id
         self._x = x
@@ -332,14 +340,28 @@ class DynamicObject:
 
     @event("OnDynamicObjectMoved")
     def on_moved(cls, object_id: int):
-        return (cls(object_id), )
+        return (cls(object_id),)
 
     @event("OnPlayerSelectDynamicObject")
-    def on_player_select(cls, player_id: int, object_id: int, model_id: int, x: float, y: float, z: float):
+    def on_player_select(
+        cls,
+        player_id: int,
+        object_id: int,
+        model_id: int,
+        x: float,
+        y: float,
+        z: float,
+    ):
         return (Player(player_id), cls(object_id), model_id, x, y, z)
 
     @event("OnPlayerShootDynamicObject")
-    def on_player_shoot(cls, playerid: int, weapon_id: int, object_id: int, x: float, y: float, z: float):
+    def on_player_shoot(
+        cls,
+        playerid: int,
+        weapon_id: int,
+        object_id: int,
+        x: float,
+        y: float,
+        z: float,
+    ):
         return (Player(playerid), weapon_id, cls(object_id), x, y, z)
-
-    

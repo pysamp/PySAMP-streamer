@@ -516,6 +516,3 @@ class DynamicZone:
     @event("OnPlayerLeaveDynamicArea")
     def on_player_leave(cls, player_id: int, area_id: int):
         return (Player(player_id), cls(area_id))
-
-
-    

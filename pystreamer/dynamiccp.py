@@ -97,4 +97,3 @@ class DynamicCheckpoint:
     @event("OnPlayerLeaveDynamicCP")
     def on_player_leave(cls, player_id: int, checkpoint_id: int):
         return cls(Player(player_id), cls(checkpoint_id))
-        
