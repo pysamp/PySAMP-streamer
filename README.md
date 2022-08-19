@@ -11,13 +11,22 @@
 ## Example
 
 ```python
+from .pystreamer import register_callbacks
 from .pystreamer.dynamicobject import DynamicObject
-from pysamp import on_gamemode_init
+from pysamp import on_gamemode_init, callbacks
 
 @on_gamemode_init
 def on_ready():
+    register_callbacks()
     global obj
     obj = DynamicObject.create(994, 1161.73767, -1741.43555, 13.06450, 0.0, 0.0, 0.0)
+
+@DynamocObject.on_moved
+def on_dynamicobject_moved(object: DynamicObject):
+    ...
+
+
+callbacks.hook()
 ```
 
 ## Thanks to

@@ -1,5 +1,24 @@
+from pysamp.event import registry
 from pysamp import call_native_function
-from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
+from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID, RegisterCallback
+
+def register_callbacks():
+    RegisterCallback("OnDynamicObjectMoved", "i")
+    RegisterCallback("OnPlayerSelectDynamicObject", "iiifff")
+    RegisterCallback("OnPlayerShootDynamicObject", "iiifff")
+    RegisterCallback("OnPlayerPickUpDynamicPickup", "ii")
+    RegisterCallback("OnPlayerEnterDynamicCP", "ii")
+    RegisterCallback("OnPlayerLeaveDynamicCP", "ii")
+    RegisterCallback("OnPlayerEnterDynamicRaceCP", "ii")
+    RegisterCallback("OnPlayerLeaveDynamicRaceCP", "ii")
+    RegisterCallback("OnPlayerEnterDynamicArea", "ii")
+    RegisterCallback("OnPlayerLeaveDynamicArea", "ii")
+    RegisterCallback("OnPlayerGiveDamageDynamicActor", "iifii")
+    RegisterCallback("OnDynamicActorStreamIn", "ii")
+    RegisterCallback("OnDynamicActorStreamOut", "ii")
+    RegisterCallback("Streamer_OnItemStreamIn", "iii")
+    RegisterCallback("Streamer_OnItemStreamOut", "iii")
+    RegisterCallback("Streamer_OnPluginError", "y")
 
 
 def get_tick_rate():

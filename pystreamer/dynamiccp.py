@@ -1,3 +1,4 @@
+from pysamp.event import event
 from . import (
     create_dynamic_cp,
     create_dynamic_cp_ex,
@@ -88,3 +89,12 @@ class DynamicCheckpoint:
 
     def get_player_visible(self, player_id: int):
         return get_player_visible_dynamic_cp(player_id)
+
+    @event("OnPlayerEnterDynamicCP")
+    def on_player_enter(cls, player_id: int, checkpoint_id: int):
+        return (Player(player_id), cls(checkpoint_id))
+
+    @event("OnPlayerLeaveDynamicCP")
+    def on_player_leave(cls, player_id: int, checkpoint_id: int):
+        return cls(Player(player_id), cls(checkpoint_id))
+        

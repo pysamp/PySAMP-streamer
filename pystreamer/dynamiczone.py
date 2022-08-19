@@ -1,3 +1,4 @@
+from pysamp.event import event
 from . import (
     create_dynamic_circle,
     create_dynamic_circle_ex,
@@ -507,3 +508,14 @@ class DynamicZone:
 
     def is_toggle_area_spectate_mode(self):
         return is_toggle_dyn_area_spectate_mode(self.id)
+
+    @event("OnPlayerEnterDynamicArea")
+    def on_player_enter(cls, player_id: int, area_id: int):
+        return (Player(player_id), cls(area_id))
+
+    @event("OnPlayerLeaveDynamicArea")
+    def on_player_leave(cls, player_id: int, area_id: int):
+        return (Player(player_id), cls(area_id))
+
+
+    

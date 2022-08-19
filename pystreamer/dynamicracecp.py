@@ -1,3 +1,4 @@
+from pysamp.event import event
 from . import (
     create_dynamic_race_cp,
     create_dynamic_race_cp_ex,
@@ -107,3 +108,11 @@ class DynamicRaceChecpoint:
 
     def get_player_visible(self, player_id: int):
         return get_player_visible_dynamic_race_cp(player_id)
+
+    @event("OnPlayerEnterDynamicRaceCP")
+    def on_player_enter(cls, player_id: int, checkpoint_id: int):
+        return (Player(player_id), cls(checkpoint_id))
+
+    @event("OnPlayerLeaveDynamicRaceCP")
+    def on_player_leave(cls, player_id: int, checkpoint_id: int):
+        return (Player(player_id), cls(checkpoint_id))

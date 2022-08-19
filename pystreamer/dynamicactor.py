@@ -1,3 +1,4 @@
+from pysamp.event import event
 from . import (
     create_dynamic_actor,
     create_dynamic_actor_ex,
@@ -20,7 +21,7 @@ from typing import Tuple
 
 
 class DynamicActor:
-    def __init__(self, id, x, y, z, rotation, health) -> None:
+    def __init__(self, id, x=None, y=None, z=None, rotation=None, health=None) -> None:
         self.id = id
         self._x = x
         self._y = y
@@ -173,3 +174,15 @@ class DynamicActor:
 
     def get_player_camera_target(self, player_id: int):
         return get_player_camera_target_dyn_actor(player_id)
+
+    @event("OnPlayerGiveDamageDynamicActor")
+    def on_player_give_damage(cls, player_id: int, actor_id: int, amount: float, weapon_id: int, body_part: int):
+        return (Player(player_id), cls(actor_id), amount, weapon_id, body_part)
+
+    @event("OnDynamicActorStreamIn")
+    def on_stream_in(cls, actor_id: int, for_player: int):
+        return (cls(actorr_id), Player(for_player))
+
+    @event("OnDynamicActorStreamOut")
+    def on_stream_out(cls, actor_id: int, for_player: int):
+        return (cls(actorr_id), Player(for_player))
