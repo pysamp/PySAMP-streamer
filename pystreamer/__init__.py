@@ -19,7 +19,7 @@ def register_callbacks():
     RegisterCallback("OnDynamicActorStreamOut", "ii")
     RegisterCallback("Streamer_OnItemStreamIn", "iii")
     RegisterCallback("Streamer_OnItemStreamOut", "iii")
-    RegisterCallback("Streamer_OnPluginError", "y")
+    RegisterCallback("Streamer_OnPluginError", "s")
 
 
 def get_tick_rate():
