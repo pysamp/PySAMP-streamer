@@ -6,7 +6,7 @@
 
 1. To install, you need to download the streamer plugin. After that you must put `streamer.dll` into your server folder (`serverfolder/plugins`).
 
-2. After that, download the repository and put the pystreamer folder in the python folder).
+2. After that, download the repository and put the pystreamer folder in the python folder.
 
 ## Example
 
