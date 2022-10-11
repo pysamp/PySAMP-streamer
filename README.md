@@ -1,4 +1,4 @@
-# PyStreamer
+# PySAMP-streamer
 
 [Streamer](https://github.com/samp-incognito/samp-streamer-plugin) plugin handler for [PySAMP](https://github.com/pysamp/PySAMP)
 
