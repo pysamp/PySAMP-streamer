@@ -1,4 +1,4 @@
-# PyStreamer
+# PySAMP-streamer
 
 [Streamer](https://github.com/samp-incognito/samp-streamer-plugin) plugin handler for [PySAMP](https://github.com/pysamp/PySAMP)
 
@@ -6,14 +6,14 @@
 
 1. To install, you need to download the streamer plugin. After that you must put `streamer.dll` into your server folder (`serverfolder/plugins`).
 
-2. After that, download the repository and put the pystreamer folder in the python folder).
+2. After that, download the repository and put the pystreamer folder in your server folder.
 
 ## Example
 
 ```python
-from .pystreamer import register_callbacks
-from .pystreamer.dynamicobject import DynamicObject
-from pysamp import on_gamemode_init, callbacks
+from pystreamer import register_callbacks
+from pystreamer.dynamicobject import DynamicObject
+from pysamp import on_gamemode_init
 
 @on_gamemode_init
 def on_ready():
@@ -22,11 +22,13 @@ def on_ready():
     obj = DynamicObject.create(994, 1161.73767, -1741.43555, 13.06450, 0.0, 0.0, 0.0)
 
 @DynamicObject.on_moved
+<<<<<<< HEAD
 def on_dynamicobject_moved(object: DynamicObject):
+=======
+def on_dynamic_object_moved(object: DynamicObject):
+>>>>>>> 353a0912495eeb7529b93ec3d2c2c16900ce3764
     ...
 
-
-callbacks.hook()
 ```
 
 ## Thanks to
