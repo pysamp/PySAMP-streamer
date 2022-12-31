@@ -1,4 +1,6 @@
 from pysamp.event import event
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_actor,
     create_dynamic_actor_ex,
@@ -117,8 +119,8 @@ class DynamicActor:
     def is_valid(self):
         return is_valid_dynamic_actor(self.id)
 
-    def is_streamed_in(self, for_player_id: int):
-        return is_dynamic_actor_streamed_in(self.id, for_player_id)
+    def is_streamed_in(self, for_player: "Player"):
+        return is_dynamic_actor_streamed_in(self.id, for_player.id)
 
     def get_virtual_world(self):
         return get_dynamic_actor_virtual_world(self.id)
@@ -171,8 +173,8 @@ class DynamicActor:
     def is_invulnerable(self):
         return is_dynamic_actor_invulnerable(self.id)
 
-    def get_player_target(self, player_id: int):
-        return get_player_target_dynamic_actor(player_id)
+    def get_player_target(self, player: "Player"):
+        return get_player_target_dynamic_actor(player.id)
 
     def get_player_camera_target(self, player_id: int):
         return get_player_camera_target_dyn_actor(player_id)
@@ -195,3 +197,5 @@ class DynamicActor:
     @event("OnDynamicActorStreamOut")
     def on_stream_out(cls, actor_id: int, for_player: int):
         return (cls(actorr_id), Player(for_player))
+
+from pysamp.player import Player  # noqa

@@ -1,4 +1,6 @@
 from pysamp.event import event
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_cp,
     create_dynamic_cp_ex,
@@ -78,17 +80,17 @@ class DynamicCheckpoint:
     def is_valid(self):
         return is_valid_dynamic_cp(self.id)
 
-    def toggle_player(self, player_id: int, toggle: int):
-        return toggle_player_dynamic_cp(player_id, self.id, toggle)
+    def toggle_player(self, player: "Player", toggle: int):
+        return toggle_player_dynamic_cp(player.id, self.id, toggle)
 
-    def toggle_player_all(self, player_id: int, toggle: int):
-        return toggle_player_all_dynamic_cps(player_id, toggle)
+    def toggle_player_all(self, player: "Player", toggle: int):
+        return toggle_player_all_dynamic_cps(player.id, toggle)
 
-    def is_player_in(self, player_id: int):
-        return is_player_in_dynamic_cp(player_id, self.id)
+    def is_player_in(self, player: "Player"):
+        return is_player_in_dynamic_cp(player.id, self.id)
 
-    def get_player_visible(self, player_id: int):
-        return get_player_visible_dynamic_cp(player_id)
+    def get_player_visible(self, player: "Player"):
+        return get_player_visible_dynamic_cp(player.id)
 
     @event("OnPlayerEnterDynamicCP")
     def on_player_enter(cls, player_id: int, checkpoint_id: int):

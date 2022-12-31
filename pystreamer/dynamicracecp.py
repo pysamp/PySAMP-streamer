@@ -9,7 +9,8 @@ from . import (
     is_player_in_dynamic_race_cp,
     get_player_visible_dynamic_race_cp,
 )
-
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 
 class DynamicRaceChecpoint:
     def __init__(self, id) -> None:
@@ -95,19 +96,19 @@ class DynamicRaceChecpoint:
     def is_valid(self):
         return is_valid_dynamic_race_cp(self.id)
 
-    def toggle_player(self, player_id: int, toggle: int):
-        return toggle_player_dynamic_race_cp(player_id, self.id, toggle)
+    def toggle_player(self, player: "Player", toggle: int):
+        return toggle_player_dynamic_race_cp(player.id, self.id, toggle)
 
     def toggle_player_all(
-        self, player_id: int, toggle: int, exceptions: list[int] = -1
+        self, player: "Player", toggle: int, exceptions: list[int] = -1
     ):
-        return toggle_player_all_dynamic_race_cp(player_id, toggle, exceptions)
+        return toggle_player_all_dynamic_race_cp(player.id, toggle, exceptions)
 
-    def is_player_in(self, player_id: int):
-        return is_player_in_dynamic_race_cp(player_id, self.id)
+    def is_player_in(self, player: "Player"):
+        return is_player_in_dynamic_race_cp(player.id, self.id)
 
-    def get_player_visible(self, player_id: int):
-        return get_player_visible_dynamic_race_cp(player_id)
+    def get_player_visible(self, player: "Player"):
+        return get_player_visible_dynamic_race_cp(player.id)
 
     @event("OnPlayerEnterDynamicRaceCP")
     def on_player_enter(cls, player_id: int, checkpoint_id: int):
@@ -116,3 +117,5 @@ class DynamicRaceChecpoint:
     @event("OnPlayerLeaveDynamicRaceCP")
     def on_player_leave(cls, player_id: int, checkpoint_id: int):
         return (Player(player_id), cls(checkpoint_id))
+
+from pysamp.player import Player  # noqa

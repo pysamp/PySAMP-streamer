@@ -7,7 +7,8 @@ from . import (
     update_dynamic_3d_text_label_text,
 )
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
-
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 
 class DynamicTextLabel:
     def __init__(self, id) -> None:

@@ -1,4 +1,6 @@
 from pysamp.event import event
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_circle,
     create_dynamic_circle_ex,
@@ -411,11 +413,11 @@ class DynamicZone:
     def get_polygon_number_points(self):
         return get_dynamic_polygon_number_points(self.id)
 
-    def is_player_in_area(self, player_id: int, recheck: int = 0):
-        return is_player_in_dynamic_area(player_id, self.id, recheck)
+    def is_player_in_area(self, player: "Player", recheck: int = 0):
+        return is_player_in_dynamic_area(player.id, self.id, recheck)
 
-    def is_player_in_any_area(self, player_id: int, recheck: int = 0):
-        return is_player_in_any_dynamic_area(player_id, recheck)
+    def is_player_in_any_area(self, player: "Player", recheck: int = 0):
+        return is_player_in_any_dynamic_area(player.id, recheck)
 
     def is_any_player_in_area(self, recheck: int = 0):
         return is_any_player_in_dynamic_area(self.id, recheck)
@@ -423,11 +425,11 @@ class DynamicZone:
     def is_any_player_in_any_area(self, recheck: int = 0):
         return is_any_player_in_any_dynamic_area(recheck)
 
-    def get_player_areas(self, player_id: int, areas: list):
-        return get_player_dynamic_areas(player_id, areas)
+    def get_player_areas(self, player: "Player", areas: list):
+        return get_player_dynamic_areas(player.id, areas)
 
-    def get_player_number_areas(self, player_id: int):
-        return get_player_number_dynamic_areas(player_id)
+    def get_player_number_areas(self, player: "Player"):
+        return get_player_number_dynamic_areas(player.id)
 
     def is_point_in_area(self, area_id: int, x: float, y: float, z: float):
         return is_point_in_dynamic_area(area_id, x, y, z)
@@ -483,24 +485,24 @@ class DynamicZone:
 
     def attach_area_to_player(
         self,
-        player_id: int,
+        player: "Player",
         offset_x: float = 0.0,
         offset_y: float = 0.0,
         offset_z: float = 0.0,
     ):
         return attach_dynamic_area_to_player(
-            self.id, player_id, offset_x, offset_y, offset_z
+            self.id, player.id, offset_x, offset_y, offset_z
         )
 
     def attach_area_to_vehicle(
         self,
-        vehicle_id: int,
+        vehicle: "Vehicle",
         offset_x: float = 0.0,
         offset_y: float = 0.0,
         offset_z: float = 0.0,
     ):
         return attach_dynamic_area_to_vehicle(
-            self.id, vehicle_id, offset_x, offset_y, offset_z
+            self.id, vehicle.id, offset_x, offset_y, offset_z
         )
 
     def toggle_area_spectate_mode(self, toggle: int):
@@ -516,3 +518,5 @@ class DynamicZone:
     @event("OnPlayerLeaveDynamicArea")
     def on_player_leave(cls, player_id: int, area_id: int):
         return (Player(player_id), cls(area_id))
+
+from pysamp.player import Player  # noqa

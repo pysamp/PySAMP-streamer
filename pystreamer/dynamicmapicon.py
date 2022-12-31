@@ -4,7 +4,8 @@ from . import (
     destroy_dynamic_map_icon,
     is_valid_dynamic_map_icon,
 )
-
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 
 class DynamicMapIcon:
     def __init__(self, id) -> None:

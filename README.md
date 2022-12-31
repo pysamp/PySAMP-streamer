@@ -21,7 +21,7 @@ def on_ready():
     global obj
     obj = DynamicObject.create(994, 1161.73767, -1741.43555, 13.06450, 0.0, 0.0, 0.0)
 
-@DynamocObject.on_moved
+@DynamicObject.on_moved
 def on_dynamicobject_moved(object: DynamicObject):
     ...
 

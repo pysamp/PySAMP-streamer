@@ -5,7 +5,8 @@ from . import (
     destroy_dynamic_pickup,
     is_valid_dynamic_pickup,
 )
-
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 
 class DynamicPickup:
     def __init__(self, id) -> None:
@@ -82,3 +83,5 @@ class DynamicPickup:
     @event("OnPlayerPickUpDynamicPickup")
     def on_player_pick_up(cls, player_id: int, pickup_id: int):
         return (Player(player_id), cls(pickup_id))
+
+from pysamp.player import Player  # noqa

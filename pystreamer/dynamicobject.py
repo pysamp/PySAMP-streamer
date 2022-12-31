@@ -1,4 +1,6 @@
 from pysamp.event import event
+from pysamp.player import Player
+from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_object,
     create_dynamic_object_ex,
@@ -266,8 +268,8 @@ class DynamicObject:
             syncrotation,
         )
 
-    def edit(self, player_id: int):
-        return edit_dynamic_object(player_id, self.id)
+    def edit(self, player: "Player"):
+        return edit_dynamic_object(player.id, self.id)
 
     def is_material_used(self, material_index: int):
         return is_dynamic_object_material_used(self.id, material_index)
@@ -340,7 +342,7 @@ class DynamicObject:
 
     @event("OnDynamicObjectMoved")
     def on_moved(cls, object_id: int):
-        return (cls(object_id),)
+        return (cls(object_id), )
 
     @event("OnPlayerSelectDynamicObject")
     def on_player_select(
@@ -365,3 +367,5 @@ class DynamicObject:
         z: float,
     ):
         return (Player(playerid), weapon_id, cls(object_id), x, y, z)
+
+from pysamp.player import Player  # noqa
