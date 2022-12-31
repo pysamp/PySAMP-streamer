@@ -22,11 +22,7 @@ def on_ready():
     obj = DynamicObject.create(994, 1161.73767, -1741.43555, 13.06450, 0.0, 0.0, 0.0)
 
 @DynamicObject.on_moved
-<<<<<<< HEAD
 def on_dynamicobject_moved(object: DynamicObject):
-=======
-def on_dynamic_object_moved(object: DynamicObject):
->>>>>>> 353a0912495eeb7529b93ec3d2c2c16900ce3764
     ...
 
 ```
