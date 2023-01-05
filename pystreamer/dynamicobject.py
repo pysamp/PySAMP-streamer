@@ -285,7 +285,7 @@ class DynamicObject:
         texturename: int,
         material_color: int = 0,
     ):
-        self.material_color = material_color
+        self._material_color = material_color
         return set_dynamic_object_material(
             self.id,
             material_index,
