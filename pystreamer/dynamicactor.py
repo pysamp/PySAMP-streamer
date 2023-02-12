@@ -1,6 +1,4 @@
 from pysamp.event import event
-from pysamp.player import Player
-from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_actor,
     create_dynamic_actor_ex,
@@ -176,8 +174,8 @@ class DynamicActor:
     def get_player_target(self, player: "Player"):
         return get_player_target_dynamic_actor(player.id)
 
-    def get_player_camera_target(self, player_id: int):
-        return get_player_camera_target_dyn_actor(player_id)
+    def get_player_camera_target(self, player: "Player"):
+        return get_player_camera_target_dyn_actor(player.id)
 
     @event("OnPlayerGiveDamageDynamicActor")
     def on_player_give_damage(
@@ -192,10 +190,11 @@ class DynamicActor:
 
     @event("OnDynamicActorStreamIn")
     def on_stream_in(cls, actor_id: int, for_player: int):
-        return (cls(actorr_id), Player(for_player))
+        return (cls(actor_id), Player(for_player))
 
     @event("OnDynamicActorStreamOut")
     def on_stream_out(cls, actor_id: int, for_player: int):
-        return (cls(actorr_id), Player(for_player))
+        return (cls(actor_id), Player(for_player))
 
 from pysamp.player import Player  # noqa
+from pysamp.vehicle import Vehicle # noqa

@@ -1,6 +1,4 @@
 from pysamp.event import event
-from pysamp.player import Player
-from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_object,
     create_dynamic_object_ex,
@@ -368,4 +366,5 @@ class DynamicObject:
     ):
         return (Player(playerid), weapon_id, cls(object_id), x, y, z)
 
-from pysamp.player import Player  # noqa
+from pysamp.player import Player # noqa
+from pysamp.vehicle import Vehicle # noqa

@@ -9,8 +9,7 @@ from . import (
     is_player_in_dynamic_race_cp,
     get_player_visible_dynamic_race_cp,
 )
-from pysamp.player import Player
-from pysamp.vehicle import Vehicle
+
 
 class DynamicRaceChecpoint:
     def __init__(self, id) -> None:
@@ -118,4 +117,5 @@ class DynamicRaceChecpoint:
     def on_player_leave(cls, player_id: int, checkpoint_id: int):
         return (Player(player_id), cls(checkpoint_id))
 
-from pysamp.player import Player  # noqa
+from pysamp.player import Player # noqa
+from pysamp.vehicle import Vehicle # noqa

@@ -1,6 +1,4 @@
 from pysamp.event import event
-from pysamp.player import Player
-from pysamp.vehicle import Vehicle
 from . import (
     create_dynamic_circle,
     create_dynamic_circle_ex,
@@ -519,4 +517,5 @@ class DynamicZone:
     def on_player_leave(cls, player_id: int, area_id: int):
         return (Player(player_id), cls(area_id))
 
-from pysamp.player import Player  # noqa
+from pysamp.player import Player # noqa
+from pysamp.vehicle import Vehicle # noqa
