@@ -578,7 +578,7 @@ def set_dynamic_object_material(
     return call_native_function(
         "SetDynamicObjectMaterial",
         object_id,
-        material_color,
+        material_index,
         model_id,
         txd_name,
         texturename,
