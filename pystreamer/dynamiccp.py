@@ -96,7 +96,7 @@ class DynamicCheckpoint:
 
     @event("OnPlayerLeaveDynamicCP")
     def on_player_leave(cls, player_id: int, checkpoint_id: int):
-        return cls(Player(player_id), cls(checkpoint_id))
+        return (Player(player_id), cls(checkpoint_id))
 
 from pysamp.player import Player # noqa
 from pysamp.vehicle import Vehicle # noqa
