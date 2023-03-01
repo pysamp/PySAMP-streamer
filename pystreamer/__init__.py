@@ -850,6 +850,7 @@ def create_dynamic_3d_text_label(
         interior_id,
         player_id,
         stream_distance,
+        area_id,
         priority,
     )
 
