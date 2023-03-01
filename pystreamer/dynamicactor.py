@@ -137,7 +137,17 @@ class DynamicActor:
         freeze: int,
         time: int,
     ):
-        return apply_dynamic_actor_animation(self.id)
+        return apply_dynamic_actor_animation(
+            self.id,
+            anim_lib,
+            anim_name,
+            fdelta,
+            loop,
+            lock_x,
+            lock_y,
+            freeze,
+            time
+        )
 
     def clear_animations(self):
         return clear_dynamic_actor_animations(self.id)
