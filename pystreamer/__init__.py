@@ -5,6 +5,7 @@ from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID, RegisterCallback
 
 def register_callbacks():
     RegisterCallback("OnDynamicObjectMoved", "i")
+    RegisterCallback("OnPlayerEditDynamicObject", "iiiffffff")
     RegisterCallback("OnPlayerSelectDynamicObject", "iiifff")
     RegisterCallback("OnPlayerShootDynamicObject", "iiifff")
     RegisterCallback("OnPlayerPickUpDynamicPickup", "ii")
