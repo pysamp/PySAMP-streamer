@@ -92,7 +92,7 @@ class DynamicTextLabel:
         )
 
     def destroy(self):
-        return destroy_dynamic_3e_text_label(self.id)
+        return destroy_dynamic_3d_text_label(self.id)
 
     def is_valid(self):
         return is_valid_dynamic_3d_text_label(self.id)

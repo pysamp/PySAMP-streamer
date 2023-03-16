@@ -856,7 +856,7 @@ def create_dynamic_3d_text_label(
     )
 
 
-def destroy_dynamic_3e_text_label(id: int):
+def destroy_dynamic_3d_text_label(id: int):
     return call_native_function("DestroyDynamic3DTextLabel", id)
 
 
