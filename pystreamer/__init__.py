@@ -1,26 +1,25 @@
-from pysamp.event import registry
-from pysamp import call_native_function
-from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID, RegisterCallback
+from pysamp import call_native_function, register_callback
+from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
 
 
 def register_callbacks():
-    RegisterCallback("OnDynamicObjectMoved", "i")
-    RegisterCallback("OnPlayerEditDynamicObject", "iiiffffff")
-    RegisterCallback("OnPlayerSelectDynamicObject", "iiifff")
-    RegisterCallback("OnPlayerShootDynamicObject", "iiifff")
-    RegisterCallback("OnPlayerPickUpDynamicPickup", "ii")
-    RegisterCallback("OnPlayerEnterDynamicCP", "ii")
-    RegisterCallback("OnPlayerLeaveDynamicCP", "ii")
-    RegisterCallback("OnPlayerEnterDynamicRaceCP", "ii")
-    RegisterCallback("OnPlayerLeaveDynamicRaceCP", "ii")
-    RegisterCallback("OnPlayerEnterDynamicArea", "ii")
-    RegisterCallback("OnPlayerLeaveDynamicArea", "ii")
-    RegisterCallback("OnPlayerGiveDamageDynamicActor", "iifii")
-    RegisterCallback("OnDynamicActorStreamIn", "ii")
-    RegisterCallback("OnDynamicActorStreamOut", "ii")
-    RegisterCallback("Streamer_OnItemStreamIn", "iii")
-    RegisterCallback("Streamer_OnItemStreamOut", "iii")
-    RegisterCallback("Streamer_OnPluginError", "s")
+    register_callback("OnDynamicObjectMoved", "i")
+    register_callback("OnPlayerEditDynamicObject", "iiiffffff")
+    register_callback("OnPlayerSelectDynamicObject", "iiifff")
+    register_callback("OnPlayerShootDynamicObject", "iiifff")
+    register_callback("OnPlayerPickUpDynamicPickup", "ii")
+    register_callback("OnPlayerEnterDynamicCP", "ii")
+    register_callback("OnPlayerLeaveDynamicCP", "ii")
+    register_callback("OnPlayerEnterDynamicRaceCP", "ii")
+    register_callback("OnPlayerLeaveDynamicRaceCP", "ii")
+    register_callback("OnPlayerEnterDynamicArea", "ii")
+    register_callback("OnPlayerLeaveDynamicArea", "ii")
+    register_callback("OnPlayerGiveDamageDynamicActor", "iifii")
+    register_callback("OnDynamicActorStreamIn", "ii")
+    register_callback("OnDynamicActorStreamOut", "ii")
+    register_callback("Streamer_OnItemStreamIn", "iii")
+    register_callback("Streamer_OnItemStreamOut", "iii")
+    register_callback("Streamer_OnPluginError", "s")
 
 
 def get_tick_rate():
