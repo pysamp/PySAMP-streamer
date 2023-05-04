@@ -279,8 +279,8 @@ class DynamicObject:
         self,
         material_index: int,
         model_id: int,
-        txd_name: int,
-        texturename: int,
+        txd_name: str,
+        texturename: str,
         material_color: int = 0,
     ):
         self._material_color = material_color

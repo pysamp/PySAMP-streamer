@@ -388,7 +388,6 @@ class DynamicZone:
                 points,
                 min_z,
                 max_z,
-                maxpoints,
                 worlds,
                 interiors,
                 players,

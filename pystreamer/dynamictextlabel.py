@@ -1,7 +1,7 @@
 from . import (
     create_dynamic_3d_text_label,
     create_dynamic_3d_text_label_ex,
-    destroy_dynamic_3e_text_label,
+    destroy_dynamic_3d_text_label,
     is_valid_dynamic_3d_text_label,
     get_dynamic_3d_text_label_text,
     update_dynamic_3d_text_label_text,

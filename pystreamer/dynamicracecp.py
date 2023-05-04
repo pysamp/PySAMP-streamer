@@ -5,13 +5,13 @@ from . import (
     destroy_dynamic_race_cp,
     is_valid_dynamic_race_cp,
     toggle_player_dynamic_race_cp,
-    toggle_player_all_dynamic_race_cp,
+    toggle_player_all_dynamic_race_cps,
     is_player_in_dynamic_race_cp,
     get_player_visible_dynamic_race_cp,
 )
 
 
-class DynamicRaceChecpoint:
+class DynamicRaceCheckpoint:
     def __init__(self, id) -> None:
         self.id = id
 
@@ -101,7 +101,7 @@ class DynamicRaceChecpoint:
     def toggle_player_all(
         self, player: "Player", toggle: int, exceptions: list[int] = -1
     ):
-        return toggle_player_all_dynamic_race_cp(player.id, toggle, exceptions)
+        return toggle_player_all_dynamic_race_cps(player.id, toggle, exceptions)
 
     def is_player_in(self, player: "Player"):
         return is_player_in_dynamic_race_cp(player.id, self.id)
