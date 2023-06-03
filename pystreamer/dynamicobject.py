@@ -252,7 +252,6 @@ class DynamicObject:
         rotation_x: float,
         rotation_y: float,
         rotation_z: float,
-        syncrotation: int = 1,
     ):
         return attach_dynamic_object_to_vehicle(
             self.id,
@@ -263,7 +262,6 @@ class DynamicObject:
             rotation_x,
             rotation_y,
             rotation_z,
-            syncrotation,
         )
 
     def edit(self, player: "Player"):
