@@ -145,7 +145,7 @@ class DynamicObject:
     def destroy(self):
         return destroy_dynamic_object(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return is_valid_dynamic_object(self.id)
 
     def set_postition(self, x: float, y: float, z: float):
@@ -193,7 +193,7 @@ class DynamicObject:
     def stop(self):
         return stop_dynamic_object(self.id)
 
-    def is_moving(self):
+    def is_moving(self) -> bool:
         return is_dynamic_object_moving(self.id)
 
     def attach_camera_to_object(self, player: "Player"):
@@ -267,7 +267,7 @@ class DynamicObject:
     def edit(self, player: "Player"):
         return edit_dynamic_object(player.id, self.id)
 
-    def is_material_used(self, material_index: int):
+    def is_material_used(self, material_index: int) -> bool:
         return is_dynamic_object_material_used(self.id, material_index)
 
     def remove_material(self, material_index: int):
@@ -307,7 +307,7 @@ class DynamicObject:
         material_size: int = 90,
         font_face: str = "Arial",
         font_size: int = 24,
-        bold: int = 1,
+        bold: bool = True,
         font_color: int = 0xFFFFFFFF,
         back_color: int = 0,
         text_alignment: int = 0,

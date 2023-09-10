@@ -79,7 +79,7 @@ class DynamicActor:
         y: float,
         z: float,
         rotation: float,
-        invulnerable: int = 1,
+        invulnerable: bool = True,
         health: float = 100.0,
         stream_distance: float = 200.0,
         worlds: list[int] = -1,
@@ -114,10 +114,10 @@ class DynamicActor:
     def destroy(self):
         return destroy_dynamic_actor(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return is_valid_dynamic_actor(self.id)
 
-    def is_streamed_in(self, for_player: "Player"):
+    def is_streamed_in(self, for_player: "Player") -> bool:
         return is_dynamic_actor_streamed_in(self.id, for_player.id)
 
     def get_virtual_world(self):
@@ -178,7 +178,7 @@ class DynamicActor:
     def set_invulnerable(self, invulnerable: bool = True):
         return set_dynamic_actor_invulnerable(self.id, invulnerable)
 
-    def is_invulnerable(self):
+    def is_invulnerable(self) -> bool:
         return is_dynamic_actor_invulnerable(self.id)
 
     def get_player_target(self, player: "Player"):

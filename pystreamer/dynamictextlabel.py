@@ -6,7 +6,7 @@ from . import (
     get_dynamic_3d_text_label_text,
     update_dynamic_3d_text_label_text,
 )
-from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
+from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID # type: ignore
 
 
 class DynamicTextLabel:
@@ -24,7 +24,7 @@ class DynamicTextLabel:
         draw_distance: float,
         attached_player: int = INVALID_PLAYER_ID,
         attached_vehicle: int = INVALID_VEHICLE_ID,
-        testlos: int = 0,
+        testlos: bool = False,
         world_id: int = -1,
         interior_id: int = -1,
         player_id: int = -1,
@@ -63,7 +63,7 @@ class DynamicTextLabel:
         draw_distance: float,
         attached_player: int = INVALID_PLAYER_ID,
         attached_vehicle: int = INVALID_VEHICLE_ID,
-        testlos: int = 0,
+        testlos: bool = False,
         stream_distance: float = 200.0,
         worlds: list[int] = -1,
         interiors: list[int] = -1,
@@ -94,7 +94,7 @@ class DynamicTextLabel:
     def destroy(self):
         return destroy_dynamic_3d_text_label(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> True:
         return is_valid_dynamic_3d_text_label(self.id)
 
     def get_text(self, text: str):

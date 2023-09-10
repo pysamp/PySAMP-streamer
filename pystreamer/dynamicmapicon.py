@@ -79,7 +79,7 @@ class DynamicMapIcon:
     def destroy(self):
         return destroy_dynamic_map_icon(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return is_valid_dynamic_map_icon(self.id)
 
 from pysamp.player import Player # noqa

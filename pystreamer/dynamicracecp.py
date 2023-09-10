@@ -92,18 +92,18 @@ class DynamicRaceCheckpoint:
     def destroy(self):
         return destroy_dynamic_race_cp(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return is_valid_dynamic_race_cp(self.id)
 
-    def toggle_player(self, player: "Player", toggle: int):
+    def toggle_player(self, player: "Player", toggle: bool):
         return toggle_player_dynamic_race_cp(player.id, self.id, toggle)
 
     def toggle_player_all(
-        self, player: "Player", toggle: int, exceptions: list[int] = -1
+        self, player: "Player", toggle: bool, exceptions: list[int] = -1
     ):
         return toggle_player_all_dynamic_race_cps(player.id, toggle, exceptions)
 
-    def is_player_in(self, player: "Player"):
+    def is_player_in(self, player: "Player") -> bool:
         return is_player_in_dynamic_race_cp(player.id, self.id)
 
     def get_player_visible(self, player: "Player"):

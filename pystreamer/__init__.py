@@ -1,5 +1,5 @@
 from pysamp import call_native_function, register_callback
-from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID
+from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID # type: ignore
 
 
 def register_callbacks():
@@ -827,7 +827,7 @@ def create_dynamic_3d_text_label(
     draw_distance: float,
     attached_player: int = INVALID_PLAYER_ID,
     attached_vehicle: int = INVALID_VEHICLE_ID,
-    testlos: int = 0,
+    testlos: bool = False,
     world_id: int = -1,
     interior_id: int = -1,
     player_id: int = -1,
@@ -1217,7 +1217,7 @@ def attach_dynamic_area_to_vehicle(
     )
 
 
-def toggle_dyn_area_spectate_mode(area_id: int, toggle: int):
+def toggle_dyn_area_spectate_mode(area_id: int, toggle: bool):
     return call_native_function("ToggleDynAreaSpectateMode", area_id, toggle)
 
 
@@ -1581,7 +1581,7 @@ def create_dynamic_3d_text_label_ex(
     draw_distance: float,
     attached_player: int = INVALID_PLAYER_ID,
     attached_vehicle: int = INVALID_VEHICLE_ID,
-    testlos: int = 0,
+    testlos: bool = False,
     stream_distance: float = 200.0,
     worlds: list[int] = -1,
     interiors: list[int] = -1,
@@ -1834,7 +1834,7 @@ def create_dynamic_actor_ex(
     y: float,
     z: float,
     rotation: float,
-    invulnerable: int = 1,
+    invulnerable: bool = True,
     health: float = 100.0,
     stream_distance: float = 200.0,
     worlds: list[int] = -1,
@@ -1928,14 +1928,14 @@ def count_dynamic_areas():
     return call_native_function("CountDynamicAreas")
 
 
-def toggle_player_dynamic_cp(player_id: int, checkpoint_id: int, toggle: int):
+def toggle_player_dynamic_cp(player_id: int, checkpoint_id: int, toggle: bool):
     return call_native_function(
         "TogglePlayerDynamicCP", player_id, checkpoint_id, toggle
     )
 
 
 def toggle_player_all_dynamic_cps(
-    player_id: int, toggle: int, exceptions: list[int] = -1
+    player_id: int, toggle: bool, exceptions: list[int] = -1
 ):
     maxexceptions = len(exceptions)
     return call_native_function(
@@ -1948,7 +1948,7 @@ def toggle_player_all_dynamic_cps(
 
 
 def toggle_player_dynamic_race_cp(
-    player_id: int, checkpoint_id: int, toggle: int
+    player_id: int, checkpoint_id: int, toggle: bool
 ):
     return call_native_function(
         "TogglePlayerDynamicRaceCP", player_id, checkpoint_id, toggle
@@ -1956,7 +1956,7 @@ def toggle_player_dynamic_race_cp(
 
 
 def toggle_player_all_dynamic_race_cps(
-    player_id: int, toggle: int, exceptions: list[int] = -1
+    player_id: int, toggle: bool, exceptions: list[int] = -1
 ):
     maxexceptions = len(exceptions)
     return call_native_function(
@@ -1968,14 +1968,14 @@ def toggle_player_all_dynamic_race_cps(
     )
 
 
-def toggle_player_dynamic_area(player_id: int, area_id: int, toggle: int):
+def toggle_player_dynamic_area(player_id: int, area_id: int, toggle: bool):
     return call_native_function(
         "TogglePlayerDynamicArea", player_id, area_id, toggle
     )
 
 
 def toggle_player_all_dynamic_areas(
-    player_id: int, toggle: int, exceptions: list[int] = -1
+    player_id: int, toggle: bool, exceptions: list[int] = -1
 ):
     maxexceptions = len(exceptions)
     return call_native_function(

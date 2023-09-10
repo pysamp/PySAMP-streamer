@@ -39,7 +39,7 @@ from . import (
     toggle_dyn_area_spectate_mode,
     is_toggle_dyn_area_spectate_mode,
 )
-from samp import INVALID_PLAYER_ID
+from samp import INVALID_PLAYER_ID # type: ignore
 
 
 class DynamicZone:
@@ -398,7 +398,7 @@ class DynamicZone:
     def destroy(self):
         return destroy_dynamic_area(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return is_valid_dynamic_area(self.id)
 
     def get_polygon_points(self, points: list[float]):
@@ -410,16 +410,16 @@ class DynamicZone:
     def get_polygon_number_points(self):
         return get_dynamic_polygon_number_points(self.id)
 
-    def is_player_in_area(self, player: "Player", recheck: int = 0):
+    def is_player_in_area(self, player: "Player", recheck: bool = False) -> bool:
         return is_player_in_dynamic_area(player.id, self.id, recheck)
 
-    def is_player_in_any_area(self, player: "Player", recheck: int = 0):
+    def is_player_in_any_area(self, player: "Player", recheck: bool = False) -> bool:
         return is_player_in_any_dynamic_area(player.id, recheck)
 
-    def is_any_player_in_area(self, recheck: int = 0):
+    def is_any_player_in_area(self, recheck: bool = False) -> bool:
         return is_any_player_in_dynamic_area(self.id, recheck)
 
-    def is_any_player_in_any_area(self, recheck: int = 0):
+    def is_any_player_in_any_area(self, recheck: bool = False) -> bool:
         return is_any_player_in_any_dynamic_area(recheck)
 
     def get_player_areas(self, player: "Player", areas: list):
@@ -428,20 +428,20 @@ class DynamicZone:
     def get_player_number_areas(self, player: "Player"):
         return get_player_number_dynamic_areas(player.id)
 
-    def is_point_in_area(self, area_id: int, x: float, y: float, z: float):
+    def is_point_in_area(self, area_id: int, x: float, y: float, z: float) -> bool:
         return is_point_in_dynamic_area(area_id, x, y, z)
 
-    def is_point_in_any_area(self, x: float, y: float, z: float):
+    def is_point_in_any_area(self, x: float, y: float, z: float) -> bool:
         return is_point_in_any_dynamic_area(x, y, z)
 
     def is_line_in_area(
         self, x: float, y: float, z: float, x_1: float, y_1: float, z_1: float
-    ):
+    ) -> bool:
         return is_line_in_dynamic_area(self.id, x, y, z, x_1, y_1, z_1)
 
     def is_line_in_any_dynamic_area(
         self, x: float, y: float, z: float, x_1: float, y_1: float, z_1: float
-    ):
+    ) -> bool:
         return is_line_in_any_dynamic_area(x, y, z, x_1, y_1, z_1)
 
     def get_areas_for_point(self, x: float, y: float, z: float, areas: list):
@@ -502,10 +502,10 @@ class DynamicZone:
             self.id, vehicle.id, offset_x, offset_y, offset_z
         )
 
-    def toggle_area_spectate_mode(self, toggle: int):
+    def toggle_area_spectate_mode(self, toggle: bool):
         return toggle_dyn_area_spectate_mode(self.id, toggle)
 
-    def is_toggle_area_spectate_mode(self):
+    def is_toggle_area_spectate_mode(self) -> bool:
         return is_toggle_dyn_area_spectate_mode(self.id)
 
     @event("OnPlayerEnterDynamicArea")

@@ -76,7 +76,7 @@ class DynamicPickup:
     def destroy(self):
         return destroy_dynamic_pickup(self.id)
 
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return is_valid_dynamic_pickup(self.id)
 
     @event("OnPlayerPickUpDynamicPickup")
