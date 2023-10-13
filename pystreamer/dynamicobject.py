@@ -148,7 +148,7 @@ class DynamicObject:
     def is_valid(self) -> bool:
         return is_valid_dynamic_object(self.id)
 
-    def set_postition(self, x: float, y: float, z: float):
+    def set_position(self, x: float, y: float, z: float):
         self._x = x
         self._y = y
         self._z = z
@@ -281,7 +281,7 @@ class DynamicObject:
         texturename: str,
         material_color: int = 0,
     ):
-        self._material_color = material_color
+        self._model_id = model_id
         return set_dynamic_object_material(
             self.id,
             material_index,
