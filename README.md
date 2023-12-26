@@ -27,7 +27,17 @@ def on_dynamic_object_moved(object: DynamicObject):
 
 ```
 
-## Thanks to
+## Important
+
+Change the order in which plugins are loaded
+
+```
+plugins streamer PySAMP
+```
+
+Otherwise, loading PySAMP **before** streamer leads to various **bugs**
+
+## Thanks tobefore
 
 * [Incognito](https://github.com/samp-incognito) for Streamer plugin
 * [denNorske](https://github.com/dennorske), [habecker](https://github.com/habecker), [Cheaterman](https://github.com/Cheaterman) for developing PySAMP
