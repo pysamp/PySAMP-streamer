@@ -37,9 +37,8 @@ plugins streamer PySAMP
 
 Otherwise, loading PySAMP **before** streamer leads to various **bugs**
 
-## Thanks tobefore
+## Thanks to
 
 * [Incognito](https://github.com/samp-incognito) for Streamer plugin
 * [denNorske](https://github.com/dennorske), [habecker](https://github.com/habecker), [Cheaterman](https://github.com/Cheaterman) for developing PySAMP
 * [Me](https://github.com/Ykpauneu) for handler
-*
