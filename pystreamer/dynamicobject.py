@@ -353,7 +353,17 @@ class DynamicObject:
         rotation_y: float,
         rotation_z: float
     ):
-        return (Player(player_id), cls(object_id), response, x, y, z, rotation_x, rotation_y, rotation_z)
+        return (
+            Player(player_id),
+            cls(object_id),
+            response,
+            x,
+            y,
+            z,
+            rotation_x,
+            rotation_y,
+            rotation_z
+        )
 
     @event("OnPlayerSelectDynamicObject")
     def on_player_select(

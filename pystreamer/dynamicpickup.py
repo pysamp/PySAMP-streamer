@@ -85,4 +85,3 @@ class DynamicPickup:
 
 from pysamp.player import Player # noqa
 from pysamp.vehicle import Vehicle # noqa
-

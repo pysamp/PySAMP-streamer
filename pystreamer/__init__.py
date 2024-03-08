@@ -144,9 +144,6 @@ def amx_unload_destroy_items(toggle):
     return call_native_function("Streamer_AmxUnloadDestroyItems", toggle)
 
 
-# Natives (Updates)
-
-
 def process_active_items():
     return call_native_function("Streamer_ProcessActiveItems")
 
@@ -206,9 +203,6 @@ def update_ex(
         compensated_time,
         freeze_player,
     )
-
-
-# Natives (Data Manipulation)
 
 
 def set_float_data(type, id, data, value: float):
@@ -273,9 +267,6 @@ def get_array_data_length(type, id, data):
 
 def get_upper_bound(type):
     return call_native_function("Streamer_GetUpperBound", type)
-
-
-# Natives (Miscellaneous)
 
 
 def toggle_item(player_id: int, type, id, toggle):
@@ -375,9 +366,6 @@ def set_item_pos(type, id, x: float, y: float, z: float):
 
 def set_item_off_set(type, id, x: float, y: float, z: float):
     return call_native_function("Streamer_SetItemOffset", type, id, x, y, z)
-
-
-# Natives (Objects)
 
 
 def create_dynamic_object(
@@ -629,9 +617,6 @@ def get_player_camera_target_dyn_object(player_id: int):
     return call_native_function("GetPlayerCameraTargetDynObject", player_id)
 
 
-# Natives (Pickups)
-
-
 def create_dynamic_pickup(
     model_id: int,
     type: int,
@@ -667,9 +652,6 @@ def destroy_dynamic_pickup(pickup_id: int):
 
 def is_valid_dynamic_pickup(pickup_id: int):
     return call_native_function("IsValidDynamicPickup", pickup_id)
-
-
-# Natives (Checkpoints)
 
 
 def create_dynamic_cp(
@@ -715,9 +697,6 @@ def is_player_in_dynamic_cp(player_id: int, checkpoint_id: int):
 
 def get_player_visible_dynamic_cp(player_id: int):
     return call_native_function("GetPlayerVisibleDynamicCP", player_id)
-
-
-# Natives (Race Checkpoints)
 
 
 def create_dynamic_race_cp(
@@ -773,9 +752,6 @@ def get_player_visible_dynamic_race_cp(player_id: int):
     return call_native_function("GetPlayerVisibleDynamicRaceCP", player_id)
 
 
-# Natives (Map Icons)
-
-
 def create_dynamic_map_icon(
     x: float,
     y: float,
@@ -813,9 +789,6 @@ def destroy_dynamic_map_icon(icon_id: int):
 
 def is_valid_dynamic_map_icon(icon_id: int):
     return call_native_function("IsValidDynamicMapIcon", icon_id)
-
-
-# Natives (3D Text Labels)
 
 
 def create_dynamic_3d_text_label(
@@ -872,9 +845,6 @@ def update_dynamic_3d_text_label_text(id: int, color: int, text: str):
     return call_native_function(
         "UpdateDynamic3DTextLabelText", id, color, text
     )
-
-
-# Natives (Areas)
 
 
 def create_dynamic_circle(
@@ -1225,9 +1195,6 @@ def is_toggle_dyn_area_spectate_mode(area_id: int):
     return call_native_function("IsToggleDynAreaSpectateMode", area_id)
 
 
-# Natives (Actors)
-
-
 def create_dynamic_actor(
     model_id: int,
     x: float,
@@ -1371,9 +1338,6 @@ def get_player_target_dynamic_actor(player_id: int):
 
 def get_player_camera_target_dyn_actor(player_id: int):
     return call_native_function("GetPlayerCameraTargetDynActor", player_id)
-
-
-# Natives (Extended)
 
 
 def create_dynamic_object_ex(
