@@ -15,15 +15,23 @@ git clone https://github.com/pysamp/PySAMP-streamer.git
 ## Example
 
 ```python
-from pystreamer import register_callbacks
-from pystreamer.dynamicobject import DynamicObject
 from pysamp import on_gamemode_init
+import pystreamer
+from pystreamer.dynamicobject import DynamicObject
 
 @on_gamemode_init
 def on_ready():
-    register_callbacks()
-    global obj
-    obj = DynamicObject.create(994, 1161.73767, -1741.43555, 13.06450, 0.0, 0.0, 0.0)
+    pystreamer.register_callbacks()
+    global my_object
+    my_object = DynamicObject.create(
+        994,
+        1161.73767,
+        -1741.43555,
+        13.06450,
+        0.0,
+        0.0,
+        0.0
+    )
 
 @DynamicObject.on_moved
 def on_dynamic_object_moved(object: DynamicObject):
