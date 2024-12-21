@@ -1,7 +1,4 @@
-from enum import Enum
-
-
-class StreamerTypes(int, Enum):
+class StreamerTypes:
     INVALID_ID: int = 0
     ANY: int = -1
     OBJECT_SD: float = 300.0
