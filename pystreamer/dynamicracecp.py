@@ -9,10 +9,11 @@ from . import (
     is_player_in_dynamic_race_cp,
     get_player_visible_dynamic_race_cp,
 )
+from .types import StreamerTypes
 
 
 class DynamicRaceCheckpoint:
-    def __init__(self, id) -> None:
+    def __init__(self, id: int) -> None:
         self.id = id
 
     @classmethod
@@ -26,11 +27,11 @@ class DynamicRaceCheckpoint:
         next_y: float,
         next_z: float,
         size: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
-        stream_distance: float = 200.0,
-        area_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
+        stream_distance: float = StreamerTypes.RACE_CP_SD,
+        area_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicRaceCheckpoint":
         return cls(
@@ -63,11 +64,11 @@ class DynamicRaceCheckpoint:
         next_y: float,
         next_z: float,
         size: float,
-        stream_distance: float = 200.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
-        areas: list[int] = -1,
+        stream_distance: float = StreamerTypes.RACE_CP_SD,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
+        areas: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicRaceCheckpoint":
         return cls(
@@ -99,9 +100,12 @@ class DynamicRaceCheckpoint:
         return toggle_player_dynamic_race_cp(player.id, self.id, toggle)
 
     def toggle_player_all(
-        self, player: "Player", toggle: bool, exceptions: list[int] = -1
+        self, player: "Player", toggle: bool, exceptions: list[int] = [-1]
     ):
-        return toggle_player_all_dynamic_race_cps(player.id, toggle, exceptions)
+        return toggle_player_all_dynamic_race_cps(
+            player.id,
+            toggle, exceptions
+        )
 
     def is_player_in(self, player: "Player") -> bool:
         return is_player_in_dynamic_race_cp(player.id, self.id)

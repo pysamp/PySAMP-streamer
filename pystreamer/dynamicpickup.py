@@ -5,10 +5,11 @@ from . import (
     destroy_dynamic_pickup,
     is_valid_dynamic_pickup,
 )
+from .types import StreamerTypes
 
 
 class DynamicPickup:
-    def __init__(self, id) -> None:
+    def __init__(self, id: int) -> None:
         self.id = id
 
     @classmethod
@@ -19,11 +20,11 @@ class DynamicPickup:
         x: float,
         y: float,
         z: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
-        stream_distance: float = 200.0,
-        area_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int =  StreamerTypes.ANY,
+        player_id: int =  StreamerTypes.ANY,
+        stream_distance: float = StreamerTypes.PICKUP_SD,
+        area_id: int =  StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicPickup":
         return cls(
@@ -50,11 +51,11 @@ class DynamicPickup:
         x: float,
         y: float,
         z: float,
-        stream_distance: float = 200.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
-        areas: list[int] = -1,
+        stream_distance: float = StreamerTypes.PICKUP_SD,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
+        areas: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicPickup":
         return cls(

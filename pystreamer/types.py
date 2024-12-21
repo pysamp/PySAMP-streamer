@@ -12,4 +12,3 @@ class StreamerTypes(int, Enum):
     MAP_ICON_SD: float = 200.0
     TEXT_LABEL_SD: float = 200.0
     ACTOR_SD: float = 200.0
-

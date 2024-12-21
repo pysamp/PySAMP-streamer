@@ -24,19 +24,20 @@ from . import (
     set_dynamic_object_material_text,
 )
 from typing import Tuple
+from .types import StreamerTypes
 
 
 class DynamicObject:
     def __init__(
         self,
-        id,
-        x=None,
-        y=None,
-        z=None,
-        rotation_x=None,
-        rotation_y=None,
-        rotation_z=None,
-        model_id=None,
+        id: int,
+        x: float = None,
+        y: float = None,
+        z: float = None,
+        rotation_x: float = None,
+        rotation_y: float = None,
+        rotation_z: float = None,
+        model_id: int = None,
     ) -> None:
         self.id = id
         self._x = x
@@ -64,12 +65,12 @@ class DynamicObject:
         rotation_x: float,
         rotation_y: float,
         rotation_z: float,
-        world_id: int = -1,
-        interior_id=-1,
-        player_id: int = -1,
-        stream_distance: float = 300.0,
-        draw_distance: float = 0.0,
-        area_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
+        stream_distance: float = StreamerTypes.OBJECT_SD,
+        draw_distance: float = StreamerTypes.OBJECT_DD,
+        area_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicObject":
         return cls(
@@ -108,12 +109,12 @@ class DynamicObject:
         rotation_x: float,
         rotation_y: float,
         rotation_z: float,
-        stream_distance: float = 300.0,
-        draw_distance: float = 0.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
-        areas: list[int] = -1,
+        stream_distance: float = StreamerTypes.OBJECT_SD,
+        draw_distance: float = StreamerTypes.OBJECT_DD,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
+        areas: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicObject":
         return cls(
@@ -208,7 +209,7 @@ class DynamicObject:
         rotation_x: float,
         rotation_y: float,
         rotation_z: float,
-        syncrotation: int = 1,
+        syncrotation: bool = True,
     ):
         return attach_dynamic_object_to_object(
             self.id,
@@ -309,7 +310,7 @@ class DynamicObject:
         font_size: int = 24,
         bold: bool = True,
         font_color: int = 0xFFFFFFFF,
-        back_color: int = 0,
+        back_color: int = 0x00000000,
         text_alignment: int = 0,
     ):
         return set_dynamic_object_material_text(

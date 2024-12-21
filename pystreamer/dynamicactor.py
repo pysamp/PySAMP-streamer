@@ -18,11 +18,18 @@ from . import (
     get_player_camera_target_dyn_actor,
 )
 from typing import Tuple
+from .types import StreamerTypes
 
 
 class DynamicActor:
     def __init__(
-        self, id, x=None, y=None, z=None, rotation=None, health=None
+        self,
+        id: int,
+        x: float = None,
+        y: float = None,
+        z: float = None,
+        rotation: float = None,
+        health: float = None,
     ) -> None:
         self.id = id
         self._x = x
@@ -41,11 +48,11 @@ class DynamicActor:
         rotation: float,
         invulnerable: bool = True,
         health: float = 100.0,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
-        stream_distance: float = 200.0,
-        area_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
+        stream_distance: float = StreamerTypes.ACTOR_SD,
+        area_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicActor":
         return cls(
@@ -81,11 +88,11 @@ class DynamicActor:
         rotation: float,
         invulnerable: bool = True,
         health: float = 100.0,
-        stream_distance: float = 200.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
-        areas: list[int] = -1,
+        stream_distance: float = StreamerTypes.ACTOR_SD,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
+        areas: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicActor":
         return cls(
@@ -196,7 +203,9 @@ class DynamicActor:
         weapon_id: int,
         body_part: int,
     ):
-        return (Player(player_id), cls(actor_id), amount, weapon_id, body_part)
+        return (
+            Player(player_id), cls(actor_id), amount, weapon_id, body_part
+        )
 
     @event("OnDynamicActorStreamIn")
     def on_stream_in(cls, actor_id: int, for_player: int):
