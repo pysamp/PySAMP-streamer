@@ -7,7 +7,7 @@ from . import (
     update_dynamic_3d_text_label_text,
 )
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID # type: ignore
-
+from .types import StreamerTypes
 
 class DynamicTextLabel:
     def __init__(self, id) -> None:
@@ -25,11 +25,11 @@ class DynamicTextLabel:
         attached_player: int = INVALID_PLAYER_ID,
         attached_vehicle: int = INVALID_VEHICLE_ID,
         testlos: bool = False,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
-        stream_distance: float = 200.0,
-        area_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
+        stream_distance: float = StreamerTypes.TEXT_LABEL_SD,
+        area_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicTextLabel":
         return cls(
@@ -64,11 +64,11 @@ class DynamicTextLabel:
         attached_player: int = INVALID_PLAYER_ID,
         attached_vehicle: int = INVALID_VEHICLE_ID,
         testlos: bool = False,
-        stream_distance: float = 200.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
-        areas: list[int] = -1,
+        stream_distance: float = StreamerTypes.TEXT_LABEL_SD,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
+        areas: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicTextLabel":
         return cls(
@@ -94,10 +94,10 @@ class DynamicTextLabel:
     def destroy(self):
         return destroy_dynamic_3d_text_label(self.id)
 
-    def is_valid(self) -> True:
+    def is_valid(self) -> bool:
         return is_valid_dynamic_3d_text_label(self.id)
 
-    def get_text(self, text: str):
+    def get_text(self, text: str) -> str:
         return get_dynamic_3d_text_label_text(self.id, text)
 
     def update_text(self, color: int, text: str):

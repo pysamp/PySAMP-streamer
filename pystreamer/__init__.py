@@ -38,11 +38,11 @@ def set_player_tick_rate(player_id: int, rate):
     return call_native_function("Streamer_SetPlayerTickRate", player_id, rate)
 
 
-def toggle_chunk_stream(toggle):
+def toggle_chunk_stream(toggle: bool):
     return call_native_function("Streamer_ToggleChunkStream", toggle)
 
 
-def is_toggle_chunk_stream():
+def is_toggle_chunk_stream() -> bool:
     return call_native_function("Streamer_IsToggleChunkStream")
 
 
@@ -108,7 +108,7 @@ def toggle_item_static(type, id, toggle):
     return call_native_function("Streamer_ToggleItemStatic", type, id, toggle)
 
 
-def is_toggle_item_static(type, id):
+def is_toggle_item_static(type, id) -> bool:
     return call_native_function("Streamer_IsToggleItemStatic", type, id)
 
 
@@ -118,7 +118,7 @@ def toggle_item_inv_areas(type, id, toggle):
     )
 
 
-def is_toggle_item_inv_areas(type, id, toggle):
+def is_toggle_item_inv_areas(type, id) -> bool:
     return call_native_function("Streamer_IsToggleItemInvAreas", type, id)
 
 
@@ -128,7 +128,7 @@ def toggle_item_callbacks(type, id, toggle):
     )
 
 
-def is_toggle_item_callbacks(type, id):
+def is_toggle_item_callbacks(type, id) -> bool:
     return call_native_function("Streamer_IsToggleItemCallbacks", type, id)
 
 
@@ -136,7 +136,7 @@ def toggle_error_callback(toggle):
     return call_native_function("Streamer_ToggleErrorCallback", toggle)
 
 
-def is_toggle_error_callback():
+def is_toggle_error_callback() -> bool:
     return call_native_function("Streamer_IsToggleErrorCallback")
 
 
@@ -152,7 +152,7 @@ def toggle_idle_update(player_id: int, toggle):
     return call_native_function("Streamer_ToggleIdleUpdate", player_id, toggle)
 
 
-def is_toggle_idle_update(player_id: int):
+def is_toggle_idle_update(player_id: int) -> bool:
     return call_native_function("Streamer_IsToggleIdleUpdate", player_id)
 
 
@@ -162,7 +162,7 @@ def toggle_camera_update(player_id: int, toggle):
     )
 
 
-def is_toggle_camera_update(player_id: int):
+def is_toggle_camera_update(player_id: int) -> bool:
     return call_native_function("Streamer_IsToggleCameraUpdate", player_id)
 
 
@@ -172,7 +172,7 @@ def toggle_item_updadte(player_id: int, type, toggle):
     )
 
 
-def is_toggle_item_updadte(player_id: int, type):
+def is_toggle_item_updadte(player_id: int, type) -> bool:
     return call_native_function("Streamer_IsToggleItemUpdate", player_id, type)
 
 
@@ -189,7 +189,7 @@ def update_ex(
     interior_id: int = -1,
     type: int = -1,
     compensated_time: int = -1,
-    freeze_player: int = 1,
+    freeze_player: bool = True,
 ):
     return call_native_function(
         "Streamer_UpdateEx",
@@ -205,7 +205,7 @@ def update_ex(
     )
 
 
-def set_float_data(type, id, data, value: float):
+def set_float_data(type, id, data, value: float) -> bool:
     return call_native_function("Streamer_SetFloatData", type, id, data, value)
 
 
@@ -213,51 +213,51 @@ def get_int_data(type, id, data):
     return call_native_function("Streamer_GetIntData", type, id, data)
 
 
-def set_int_data(type, id, data, value):
+def set_int_data(type, id, data, value) -> bool:
     return call_native_function("Streamer_SetIntData", type, id, data, value)
 
 
-def remove_int_data(type, id, data):
+def remove_int_data(type, id, data) -> bool:
     return call_native_function("Streamer_RemoveIntData", type, id, data)
 
 
-def has_int_data(type, id, data):
+def has_int_data(type, id, data) -> bool:
     return call_native_function("Streamer_HasIntData", type, id, data)
 
 
-def get_array_data(type, id, data, dest: list):
+def get_array_data(type, id, data, dest: list) -> bool:
     maxdest = len(dest)
     return call_native_function(
         "Streamer_GetArrayData", type, id, dest, maxdest
     )
 
 
-def set_array_data(type, id, data, scr: list):
+def set_array_data(type, id, data, scr: list) -> bool:
     maxscr = len(scr)
     return call_native_function(
         "Streamer_SetArrayData", type, id, data, scr, maxscr
     )
 
 
-def is_in_array_data(type, id, data, value):
+def is_in_array_data(type, id, data, value) -> bool:
     return call_native_function(
         "Streamer_IsInArrayData", type, id, data, value
     )
 
 
-def append_array_data(type, id, data, value):
+def append_array_data(type, id, data, value) -> bool:
     return call_native_function(
         "Streamer_AppendArrayData", type, id, data, value
     )
 
 
-def remove_array_data(type, id, data, value):
+def remove_array_data(type, id, data, value) -> bool:
     return call_native_function(
         "Streamer_RemoveArrayData", type, id, data, value
     )
 
 
-def has_array_data(type, id, data):
+def has_array_data(type, id, data) -> bool:
     return call_native_function("Streamer_HasArrayData", type, id, data)
 
 
@@ -269,13 +269,13 @@ def get_upper_bound(type):
     return call_native_function("Streamer_GetUpperBound", type)
 
 
-def toggle_item(player_id: int, type, id, toggle):
+def toggle_item(player_id: int, type, id, toggle: bool):
     return call_native_function(
         "Streamer_ToggleItem", player_id, type, id, toggle
     )
 
 
-def is_toggle_item(player_id: int, type, id):
+def is_toggle_item(player_id: int, type, id) -> bool:
     return call_native_function("Streamer_IsToggleItem", player_id, type, id)
 
 
@@ -303,27 +303,27 @@ def get_item_streamer_id(player_id: int, type, internal_id: int):
     )
 
 
-def is_item_visible(player_id: int, type, id):
+def is_item_visible(player_id: int, type, id) -> bool:
     return call_native_function("Streamer_IsItemVisible", player_id, type, id)
 
 
-def destroy_all_visible_items(player_id: int, type, server_wide: int = 1):
+def destroy_all_visible_items(player_id: int, type, server_wide: bool = True):
     return call_native_function(
         "Streamer_DestroyAllVisibleItems", player_id, type, server_wide
     )
 
 
-def count_visible_items(player_id: int, type, server_wide: int = 1):
+def count_visible_items(player_id: int, type, server_wide: bool = True):
     return call_native_function(
         "Streamer_CountVisibleItems", player_id, type, server_wide
     )
 
 
-def destroy_all_items(type, server_wide: int = 1):
+def destroy_all_items(type, server_wide: bool = True):
     return call_native_function("Streamer_DestroyAllItems", type, server_wide)
 
 
-def count_items(type, server_wide: int = 1):
+def count_items(type, server_wide: bool = True):
     return call_native_function("Streamer_CountItems", type, server_wide)
 
 
@@ -407,7 +407,7 @@ def destroy_dynamic_object(object_id: int):
     return call_native_function("DestroyDynamicObject", object_id)
 
 
-def is_valid_dynamic_object(object_id: int):
+def is_valid_dynamic_object(object_id: int) -> bool:
     return call_native_function("IsValidDynamicObject", object_id)
 
 
@@ -458,7 +458,7 @@ def stop_dynamic_object(object_id: int):
     return call_native_function("StopDynamicObject", object_id)
 
 
-def is_dynamic_object_moving(object_id: int):
+def is_dynamic_object_moving(object_id: int) -> bool:
     return call_native_function("IsDynamicObjectMoving", object_id)
 
 
@@ -477,7 +477,7 @@ def attach_dynamic_object_to_object(
     rotation_x: float,
     rotation_y: float,
     rotation_z: float,
-    syncrotation: int = 1,
+    syncrotation: bool = True,
 ):
     return call_native_function(
         "AttachDynamicObjectToObject",
@@ -543,7 +543,7 @@ def edit_dynamic_object(player_id: int, object_id: int):
     return call_native_function("EditDynamicObject", player_id, object_id)
 
 
-def is_dynamic_object_material_used(object_id: int, material_index):
+def is_dynamic_object_material_used(object_id: int, material_index) -> bool:
     return call_native_function(
         "IsDynamicObjectMaterialUsed", object_id, material_index
     )
@@ -561,7 +561,7 @@ def set_dynamic_object_material(
     model_id: int,
     txd_name: str,
     texturename: str,
-    material_color: int = 0,
+    material_color: int = 0x00000000,
 ):
     return call_native_function(
         "SetDynamicObjectMaterial",
@@ -574,7 +574,9 @@ def set_dynamic_object_material(
     )
 
 
-def is_dynamic_object_material_text_used(object_id: int, material_index: int):
+def is_dynamic_object_material_text_used(
+    object_id: int, material_index: int
+) -> bool:
     return call_native_function(
         "IsDynamicObjectMaterialTextUsed", object_id, material_index
     )
@@ -593,9 +595,9 @@ def set_dynamic_object_material_text(
     material_size: int = 90,
     font_face: str = "Arial",
     font_size: int = 24,
-    bold: int = 1,
+    bold: bool = True,
     font_color: int = 0xFFFFFFFF,
-    back_color: int = 0,
+    back_color: int = 0x00000000,
     text_alignment: int = 0,
 ):
     return call_native_function(
@@ -650,7 +652,7 @@ def destroy_dynamic_pickup(pickup_id: int):
     return call_native_function("DestroyDynamicPickup", pickup_id)
 
 
-def is_valid_dynamic_pickup(pickup_id: int):
+def is_valid_dynamic_pickup(pickup_id: int) -> bool:
     return call_native_function("IsValidDynamicPickup", pickup_id)
 
 
@@ -685,11 +687,11 @@ def destroy_dynamic_cp(checkpoint_id: int):
     return call_native_function("DestroyDynamicCP", checkpoint_id)
 
 
-def is_valid_dynamic_cp(checkpoint_id: int):
+def is_valid_dynamic_cp(checkpoint_id: int) -> bool:
     return call_native_function("IsValidDynamicCP", checkpoint_id)
 
 
-def is_player_in_dynamic_cp(player_id: int, checkpoint_id: int):
+def is_player_in_dynamic_cp(player_id: int, checkpoint_id: int) -> bool:
     return call_native_function(
         "IsPlayerInDynamicCP", player_id, checkpoint_id
     )
@@ -738,11 +740,11 @@ def destroy_dynamic_race_cp(checkpoint_id: int):
     return call_native_function("DestroyDynamicRaceCP", checkpoint_id)
 
 
-def is_valid_dynamic_race_cp(checkpoint_id: int):
+def is_valid_dynamic_race_cp(checkpoint_id: int) -> bool:
     return call_native_function("IsValidDynamicRaceCP", checkpoint_id)
 
 
-def is_player_in_dynamic_race_cp(player_id: int, checkpoint_id: int):
+def is_player_in_dynamic_race_cp(player_id: int, checkpoint_id: int) -> bool:
     return call_native_function(
         "IsPlayerInDynamicRaceCP", player_id, checkpoint_id
     )
@@ -787,7 +789,7 @@ def destroy_dynamic_map_icon(icon_id: int):
     return call_native_function("DestroyDynamicMapIcon", icon_id)
 
 
-def is_valid_dynamic_map_icon(icon_id: int):
+def is_valid_dynamic_map_icon(icon_id: int) -> bool:
     return call_native_function("IsValidDynamicMapIcon", icon_id)
 
 
@@ -832,11 +834,11 @@ def destroy_dynamic_3d_text_label(id: int):
     return call_native_function("DestroyDynamic3DTextLabel", id)
 
 
-def is_valid_dynamic_3d_text_label(id: int):
+def is_valid_dynamic_3d_text_label(id: int) -> bool:
     return call_native_function("IsValidDynamic3DTextLabel", id)
 
 
-def get_dynamic_3d_text_label_text(id: int, text: str):
+def get_dynamic_3d_text_label_text(id: int, text: str) -> str:
     maxtext = len(text)
     return call_native_function("GetDynamic3DTextLabelText", id, text, maxtext)
 
@@ -1020,7 +1022,7 @@ def destroy_dynamic_area(area_id: int):
     return call_native_function("DestroyDynamicArea", area_id)
 
 
-def is_valid_dynamic_area(area_id: int):
+def is_valid_dynamic_area(area_id: int) -> bool:
     return call_native_function("IsValidDynamicArea", area_id)
 
 
@@ -1039,21 +1041,31 @@ def get_dynamic_polygon_number_points(area_id: int):
     return call_native_function("GetDynamicPolygonNumberPoints", area_id)
 
 
-def is_player_in_dynamic_area(player_id: int, area_id: int, recheck: int = 0):
+def is_player_in_dynamic_area(
+    player_id: int,
+    area_id: int,
+    recheck: bool = False
+) -> bool:
     return call_native_function(
         "IsPlayerInDynamicArea", player_id, area_id, recheck
     )
 
 
-def is_player_in_any_dynamic_area(player_id: int, recheck: int = 0):
+def is_player_in_any_dynamic_area(
+    player_id: int,
+    recheck: bool = False
+) -> bool:
     return call_native_function("IsPlayerInAnyDynamicArea", player_id, recheck)
 
 
-def is_any_player_in_dynamic_area(area_id: int, recheck: int = 0):
+def is_any_player_in_dynamic_area(
+    area_id: int,
+    recheck: bool = False
+) -> bool:
     return call_native_function("IsAnyPlayerInDynamicArea", area_id, recheck)
 
 
-def is_any_player_in_any_dynamic_area(recheck: int = 0):
+def is_any_player_in_any_dynamic_area(recheck: bool = False):
     return call_native_function("IsAnyPlayerInAnyDynamicArea", recheck)
 
 
@@ -1068,11 +1080,20 @@ def get_player_number_dynamic_areas(player_id: int):
     return call_native_function("GetPlayerNumberDynamicAreas", player_id)
 
 
-def is_point_in_dynamic_area(area_id: int, x: float, y: float, z: float):
+def is_point_in_dynamic_area(
+    area_id: int,
+    x: float,
+    y: float,
+    z: float
+) -> bool:
     return call_native_function("IsPointInDynamicArea", area_id, x, y, z)
 
 
-def is_point_in_any_dynamic_area(x: float, y: float, z: float):
+def is_point_in_any_dynamic_area(
+    x: float,
+    y: float,
+    z: float
+) -> bool:
     return call_native_function("IsPointInAnyDynamicArea", x, y, z)
 
 
@@ -1084,7 +1105,7 @@ def is_line_in_dynamic_area(
     x_1: float,
     y_1: float,
     z_1: float,
-):
+) -> bool:
     return call_native_function(
         "IsLineInDynamicArea", area_id, x, y, z, x_1, y_1, z_1
     )
@@ -1092,7 +1113,7 @@ def is_line_in_dynamic_area(
 
 def is_line_in_any_dynamic_area(
     x: float, y: float, z: float, x_1: float, y_1: float, z_1: float
-):
+) -> bool:
     return call_native_function(
         "IsLineInAnyDynamicArea", x, y, z, x_1, y_1, z_1
     )
@@ -1191,7 +1212,7 @@ def toggle_dyn_area_spectate_mode(area_id: int, toggle: bool):
     return call_native_function("ToggleDynAreaSpectateMode", area_id, toggle)
 
 
-def is_toggle_dyn_area_spectate_mode(area_id: int):
+def is_toggle_dyn_area_spectate_mode(area_id: int) -> bool:
     return call_native_function("IsToggleDynAreaSpectateMode", area_id)
 
 
@@ -1232,11 +1253,11 @@ def destroy_dynamic_actor(actor_id: int):
     return call_native_function("DestroyDynamicActor", actor_id)
 
 
-def is_valid_dynamic_actor(actor_id: int):
+def is_valid_dynamic_actor(actor_id: int) -> bool:
     return call_native_function("IsValidDynamicActor", actor_id)
 
 
-def is_dynamic_actor_streamed_in(actor_id: int, for_player_id: int):
+def is_dynamic_actor_streamed_in(actor_id: int, for_player_id: int) -> bool:
     return call_native_function(
         "IsDynamicActorStreamedIn", actor_id, for_player_id
     )
@@ -1328,7 +1349,7 @@ def set_dynamic_actor_invulnerable(actor_id: int, invulnerable: bool = True):
     )
 
 
-def is_dynamic_actor_invulnerable(actor_id: int):
+def is_dynamic_actor_invulnerable(actor_id: int) -> bool:
     return call_native_function("IsDynamicActorInvulnerable", actor_id)
 
 
@@ -1350,10 +1371,10 @@ def create_dynamic_object_ex(
     rotation_z: float,
     stream_distance: float = 300.0,
     draw_distance: float = 0.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1390,10 +1411,10 @@ def create_dynamic_pickup_ex(
     y: float,
     z: float,
     stream_distance: float = 200.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1426,10 +1447,10 @@ def create_dynamic_cp_ex(
     z: float,
     size: float,
     stream_distance: float = 200.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1464,10 +1485,10 @@ def create_dynamic_race_cp_ex(
     next_z: float,
     size: float,
     stream_distance: float = 200.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1505,10 +1526,10 @@ def create_dynamic_map_icon_ex(
     color: int,
     style: int = 0,
     stream_distance: float = 200.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1547,10 +1568,10 @@ def create_dynamic_3d_text_label_ex(
     attached_vehicle: int = INVALID_VEHICLE_ID,
     testlos: bool = False,
     stream_distance: float = 200.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1585,9 +1606,9 @@ def create_dynamic_circle_ex(
     x: float,
     y: float,
     size: float,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1614,9 +1635,9 @@ def create_dynamic_cylinder_ex(
     min_z: float,
     max_z: float,
     size: float,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1644,9 +1665,9 @@ def create_dynamic_sphere_ex(
     y: float,
     z: float,
     size: float,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1673,9 +1694,9 @@ def create_dynamic_rectangle_ex(
     min_y: float,
     max_x: float,
     max_y: float,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1704,9 +1725,9 @@ def create_dynamic_cuboid_ex(
     max_x: float,
     max_y: float,
     max_z: float,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1737,9 +1758,9 @@ def create_dynamic_cube_ex(
     max_x: float,
     max_y: float,
     max_z: float,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1767,9 +1788,9 @@ def create_dynamic_polygon_ex(
     points: list[float],
     min_z: float = -2139095040.0,
     max_z: float = 2139095040.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
     priority: int = 0,
 ):
     maxpoints = len(points)
@@ -1801,10 +1822,10 @@ def create_dynamic_actor_ex(
     invulnerable: bool = True,
     health: float = 100.0,
     stream_distance: float = 200.0,
-    worlds: list[int] = -1,
-    interiors: list[int] = -1,
-    players: list[int] = -1,
-    areas: list[int] = -1,
+    worlds: list[int] = [-1],
+    interiors: list[int] = [-1],
+    players: list[int] = [-1],
+    areas: list[int] = [-1],
     priority: int = 0,
 ):
     maxworlds = len(worlds)
@@ -1899,7 +1920,7 @@ def toggle_player_dynamic_cp(player_id: int, checkpoint_id: int, toggle: bool):
 
 
 def toggle_player_all_dynamic_cps(
-    player_id: int, toggle: bool, exceptions: list[int] = -1
+    player_id: int, toggle: bool, exceptions: list[int] = [-1]
 ):
     maxexceptions = len(exceptions)
     return call_native_function(
@@ -1920,7 +1941,7 @@ def toggle_player_dynamic_race_cp(
 
 
 def toggle_player_all_dynamic_race_cps(
-    player_id: int, toggle: bool, exceptions: list[int] = -1
+    player_id: int, toggle: bool, exceptions: list[int] = [-1]
 ):
     maxexceptions = len(exceptions)
     return call_native_function(
@@ -1939,7 +1960,7 @@ def toggle_player_dynamic_area(player_id: int, area_id: int, toggle: bool):
 
 
 def toggle_player_all_dynamic_areas(
-    player_id: int, toggle: bool, exceptions: list[int] = -1
+    player_id: int, toggle: bool, exceptions: list[int] = [-1]
 ):
     maxexceptions = len(exceptions)
     return call_native_function(

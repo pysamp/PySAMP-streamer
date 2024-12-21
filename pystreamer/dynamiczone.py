@@ -40,10 +40,10 @@ from . import (
     is_toggle_dyn_area_spectate_mode,
 )
 from samp import INVALID_PLAYER_ID # type: ignore
-
+from .types import StreamerTypes
 
 class DynamicZone:
-    def __init__(self, id) -> None:
+    def __init__(self, id: int) -> None:
         self.id = id
 
     @classmethod
@@ -52,9 +52,9 @@ class DynamicZone:
         x: float,
         y: float,
         size: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -69,9 +69,9 @@ class DynamicZone:
         x: float,
         y: float,
         size: float,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -94,9 +94,9 @@ class DynamicZone:
         min_z: float,
         max_z: float,
         size: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -121,9 +121,9 @@ class DynamicZone:
         min_z: float,
         max_z: float,
         size: float,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -147,9 +147,9 @@ class DynamicZone:
         y: float,
         z: float,
         size: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -165,9 +165,9 @@ class DynamicZone:
         y: float,
         z: float,
         size: float,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -190,9 +190,9 @@ class DynamicZone:
         min_y: float,
         max_x: float,
         max_y: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -215,9 +215,9 @@ class DynamicZone:
         min_y: float,
         max_x: float,
         max_y: float,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -242,9 +242,9 @@ class DynamicZone:
         max_x: float,
         max_y: float,
         max_z: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -271,9 +271,9 @@ class DynamicZone:
         max_x: float,
         max_y: float,
         max_z: float,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -300,9 +300,9 @@ class DynamicZone:
         max_x: float,
         max_y: float,
         max_z: float,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -329,9 +329,9 @@ class DynamicZone:
         max_x: float,
         max_y: float,
         max_z: float,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -355,9 +355,9 @@ class DynamicZone:
         points: list[float],
         min_z: float = -2139095040.0,
         max_z: float = 2139095040.0,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -378,9 +378,9 @@ class DynamicZone:
         points: list[float],
         min_z: float = -2139095040.0,
         max_z: float = 2139095040.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -410,10 +410,14 @@ class DynamicZone:
     def get_polygon_number_points(self):
         return get_dynamic_polygon_number_points(self.id)
 
-    def is_player_in_area(self, player: "Player", recheck: bool = False) -> bool:
+    def is_player_in_area(
+        self, player: "Player", recheck: bool = False
+    ) -> bool:
         return is_player_in_dynamic_area(player.id, self.id, recheck)
 
-    def is_player_in_any_area(self, player: "Player", recheck: bool = False) -> bool:
+    def is_player_in_any_area(
+        self, player: "Player", recheck: bool = False
+    ) -> bool:
         return is_player_in_any_dynamic_area(player.id, recheck)
 
     def is_any_player_in_area(self, recheck: bool = False) -> bool:
@@ -428,7 +432,9 @@ class DynamicZone:
     def get_player_number_areas(self, player: "Player"):
         return get_player_number_dynamic_areas(player.id)
 
-    def is_point_in_area(self, area_id: int, x: float, y: float, z: float) -> bool:
+    def is_point_in_area(
+        self, area_id: int, x: float, y: float, z: float
+    ) -> bool:
         return is_point_in_dynamic_area(area_id, x, y, z)
 
     def is_point_in_any_area(self, x: float, y: float, z: float) -> bool:

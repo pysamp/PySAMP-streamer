@@ -4,10 +4,11 @@ from . import (
     destroy_dynamic_map_icon,
     is_valid_dynamic_map_icon,
 )
+from .types import StreamerTypes
 
 
 class DynamicMapIcon:
-    def __init__(self, id) -> None:
+    def __init__(self, id: int) -> None:
         self.id = id
 
     @classmethod
@@ -18,12 +19,12 @@ class DynamicMapIcon:
         z: float,
         type: int,
         color: int,
-        world_id: int = -1,
-        interior_id: int = -1,
-        player_id: int = -1,
-        stream_distance: float = 200.0,
+        world_id: int = StreamerTypes.ANY,
+        interior_id: int = StreamerTypes.ANY,
+        player_id: int = StreamerTypes.ANY,
+        stream_distance: float = StreamerTypes.MAP_ICON_SD,
         style: int = 0,
-        area_id: int = -1,
+        area_id: int = StreamerTypes.ANY,
         priority: int = 0,
     ) -> "DynamicMapIcon":
         return cls(
@@ -52,11 +53,11 @@ class DynamicMapIcon:
         type: int,
         color: int,
         style: int = 0,
-        stream_distance: float = 200.0,
-        worlds: list[int] = -1,
-        interiors: list[int] = -1,
-        players: list[int] = -1,
-        areas: list[int] = -1,
+        stream_distance: float = StreamerTypes.MAP_ICON_SD,
+        worlds: list[int] = [-1],
+        interiors: list[int] = [-1],
+        players: list[int] = [-1],
+        areas: list[int] = [-1],
         priority: int = 0,
     ) -> "DynamicMapIcon":
         return cls(
