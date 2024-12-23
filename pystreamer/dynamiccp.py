@@ -65,6 +65,7 @@ class DynamicCheckpoint:
                 x,
                 y,
                 z,
+                size,
                 stream_distance,
                 worlds,
                 interiors,
