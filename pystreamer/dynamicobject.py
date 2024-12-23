@@ -23,7 +23,7 @@ from . import (
     remove_dynamic_object_material_text,
     set_dynamic_object_material_text,
 )
-from typing import Tuple
+from typing import Optional
 from .types import StreamerTypes
 
 
@@ -111,10 +111,10 @@ class DynamicObject:
         rotation_z: float,
         stream_distance: float = StreamerTypes.OBJECT_SD,
         draw_distance: float = StreamerTypes.OBJECT_DD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicObject":
         return cls(
@@ -155,8 +155,8 @@ class DynamicObject:
         self._z = z
         return set_dynamic_object_pos(self.id, x, y, z)
 
-    def get_position(self) -> Tuple[float, float, float]:
-        return self._x, self._y, self._z
+    def get_position(self) -> tuple[float, float, float]:
+        return (self._x, self._y, self._z, )
 
     def set_rotation(
         self, rotation_x: float, rotation_y: float, rotation_z: float
@@ -168,8 +168,8 @@ class DynamicObject:
             self.id, rotation_x, rotation_y, rotation_z
         )
 
-    def get_rotation(self) -> Tuple[float, float, float]:
-        return self._rotation_x, self._rotation_y, self._rotation_z
+    def get_rotation(self) -> tuple[float, float, float]:
+        return (self._rotation_x, self._rotation_y, self._rotation_z, )
 
     def get_no_camera_col(self):
         return get_dynamic_object_no_camera_col(self.id)
@@ -292,8 +292,8 @@ class DynamicObject:
             material_color,
         )
 
-    def get_material(self) -> Tuple[int, int]:
-        return self._model_id, self._material_color
+    def get_material(self) -> tuple[int, int]:
+        return (self._model_id, self._material_color, )
 
     def is_material_text_used(self, material_index: int):
         return is_dynamic_object_material_text_used(self.id, material_index)
@@ -326,7 +326,7 @@ class DynamicObject:
             text_alignment,
         )
 
-    def get_material_text(self) -> Tuple[int, int, int, int, int, int, int]:
+    def get_material_text(self) -> tuple[int, int, int, int, int, int, int]:
         return (
             self._material_size,
             self._material_color,
