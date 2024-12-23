@@ -10,6 +10,7 @@ from . import (
     get_player_visible_dynamic_race_cp,
 )
 from .types import StreamerTypes
+from typing import Optional
 
 
 class DynamicRaceCheckpoint:
@@ -65,10 +66,10 @@ class DynamicRaceCheckpoint:
         next_z: float,
         size: float,
         stream_distance: float = StreamerTypes.RACE_CP_SD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicRaceCheckpoint":
         return cls(
@@ -100,7 +101,7 @@ class DynamicRaceCheckpoint:
         return toggle_player_dynamic_race_cp(player.id, self.id, toggle)
 
     def toggle_player_all(
-        self, player: "Player", toggle: bool, exceptions: list[int] = [-1]
+        self, player: "Player", toggle: bool, exceptions: Optional[list[int]] = None
     ):
         return toggle_player_all_dynamic_race_cps(
             player.id,

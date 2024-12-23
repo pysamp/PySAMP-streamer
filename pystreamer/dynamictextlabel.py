@@ -8,6 +8,7 @@ from . import (
 )
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID # type: ignore
 from .types import StreamerTypes
+from typing import Optional
 
 class DynamicTextLabel:
     def __init__(self, id) -> None:
@@ -65,10 +66,10 @@ class DynamicTextLabel:
         attached_vehicle: int = INVALID_VEHICLE_ID,
         testlos: bool = False,
         stream_distance: float = StreamerTypes.TEXT_LABEL_SD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicTextLabel":
         return cls(

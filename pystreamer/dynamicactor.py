@@ -17,7 +17,7 @@ from . import (
     get_player_target_dynamic_actor,
     get_player_camera_target_dyn_actor,
 )
-from typing import Tuple
+from typing import Optional
 from .types import StreamerTypes
 
 
@@ -89,10 +89,10 @@ class DynamicActor:
         invulnerable: bool = True,
         health: float = 100.0,
         stream_distance: float = StreamerTypes.ACTOR_SD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicActor":
         return cls(
@@ -166,8 +166,8 @@ class DynamicActor:
         self._rotation = angle
         return set_dynamic_actor_facing_angle(self.id, angle)
 
-    def get_position(self) -> Tuple[float, float, float]:
-        return self._x, self._y, self._z
+    def get_position(self) -> tuple[float, float, float]:
+        return (self._x, self._y, self._z, )
 
     def set_position(self, x: float, y: float, z: float):
         self._x = x

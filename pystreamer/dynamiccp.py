@@ -10,6 +10,7 @@ from . import (
     get_player_visible_dynamic_cp,
 )
 from .types import StreamerTypes
+from typing import Optional
 
 
 class DynamicCheckpoint:
@@ -53,10 +54,10 @@ class DynamicCheckpoint:
         z: float,
         size: float,
         stream_distance: float = StreamerTypes.CP_SD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicCheckpoint":
         return cls(

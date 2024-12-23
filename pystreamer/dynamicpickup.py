@@ -6,6 +6,7 @@ from . import (
     is_valid_dynamic_pickup,
 )
 from .types import StreamerTypes
+from typing import Optional
 
 
 class DynamicPickup:
@@ -52,10 +53,10 @@ class DynamicPickup:
         y: float,
         z: float,
         stream_distance: float = StreamerTypes.PICKUP_SD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicPickup":
         return cls(

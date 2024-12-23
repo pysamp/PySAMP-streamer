@@ -5,6 +5,7 @@ from . import (
     is_valid_dynamic_map_icon,
 )
 from .types import StreamerTypes
+from typing import Optional
 
 
 class DynamicMapIcon:
@@ -54,10 +55,10 @@ class DynamicMapIcon:
         color: int,
         style: int = 0,
         stream_distance: float = StreamerTypes.MAP_ICON_SD,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
-        areas: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
+        areas: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicMapIcon":
         return cls(

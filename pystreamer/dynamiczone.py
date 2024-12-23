@@ -41,6 +41,8 @@ from . import (
 )
 from samp import INVALID_PLAYER_ID # type: ignore
 from .types import StreamerTypes
+from typing import Optional
+
 
 class DynamicZone:
     def __init__(self, id: int) -> None:
@@ -69,9 +71,9 @@ class DynamicZone:
         x: float,
         y: float,
         size: float,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -121,9 +123,9 @@ class DynamicZone:
         min_z: float,
         max_z: float,
         size: float,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -165,9 +167,9 @@ class DynamicZone:
         y: float,
         z: float,
         size: float,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -215,9 +217,9 @@ class DynamicZone:
         min_y: float,
         max_x: float,
         max_y: float,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -271,9 +273,9 @@ class DynamicZone:
         max_x: float,
         max_y: float,
         max_z: float,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -329,9 +331,9 @@ class DynamicZone:
         max_x: float,
         max_y: float,
         max_z: float,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
@@ -378,9 +380,9 @@ class DynamicZone:
         points: list[float],
         min_z: float = -2139095040.0,
         max_z: float = 2139095040.0,
-        worlds: list[int] = [-1],
-        interiors: list[int] = [-1],
-        players: list[int] = [-1],
+        worlds: Optional[list[int]] = None,
+        interiors: Optional[list[int]] = None,
+        players: Optional[list[int]] = None,
         priority: int = 0,
     ) -> "DynamicZone":
         return cls(
