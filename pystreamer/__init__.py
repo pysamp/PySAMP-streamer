@@ -1,8 +1,9 @@
 from pysamp import call_native_function, register_callback
 from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID # type: ignore
+from typing import Optional
 
 
-def register_callbacks():
+def register_callbacks() -> None:
     register_callback("OnDynamicObjectMoved", "i")
     register_callback("OnPlayerEditDynamicObject", "iiiffffff")
     register_callback("OnPlayerSelectDynamicObject", "iiifff")
@@ -1360,12 +1361,24 @@ def create_dynamic_object_ex(
     rotation_z: float,
     stream_distance: float = 300.0,
     draw_distance: float = 0.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamicObjectEx",
         model_id,
@@ -1396,12 +1409,24 @@ def create_dynamic_pickup_ex(
     y: float,
     z: float,
     stream_distance: float = 200.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamicPickupEx",
         model_id,
@@ -1428,12 +1453,24 @@ def create_dynamic_cp_ex(
     z: float,
     size: float,
     stream_distance: float = 200.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamicCPEx",
         x,
@@ -1462,12 +1499,24 @@ def create_dynamic_race_cp_ex(
     next_z: float,
     size: float,
     stream_distance: float = 200.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamicRaceCPEx",
         type,
@@ -1499,12 +1548,24 @@ def create_dynamic_map_icon_ex(
     color: int,
     style: int = 0,
     stream_distance: float = 200.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamicMapIconEx",
         x,
@@ -1537,12 +1598,24 @@ def create_dynamic_3d_text_label_ex(
     attached_vehicle: int = INVALID_VEHICLE_ID,
     testlos: bool = False,
     stream_distance: float = 200.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamic3DTextLabelEx",
         text,
@@ -1571,11 +1644,20 @@ def create_dynamic_circle_ex(
     x: float,
     y: float,
     size: float,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
     return call_native_function(
         "CreateDynamicCircleEx",
         x,
@@ -1597,11 +1679,20 @@ def create_dynamic_cylinder_ex(
     min_z: float,
     max_z: float,
     size: float,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
     return call_native_function(
         "CreateDynamicCylinderEx",
         x,
@@ -1624,11 +1715,20 @@ def create_dynamic_sphere_ex(
     y: float,
     z: float,
     size: float,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
     return call_native_function(
         "CreateDynamicSphereEx",
         x,
@@ -1650,11 +1750,20 @@ def create_dynamic_rectangle_ex(
     min_y: float,
     max_x: float,
     max_y: float,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
     return call_native_function(
         "CreateDynamicRectangleEx",
         min_x,
@@ -1678,11 +1787,21 @@ def create_dynamic_cuboid_ex(
     max_x: float,
     max_y: float,
     max_z: float,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+
     return call_native_function(
         "CreateDynamicCuboidEx",
         min_x,
@@ -1708,11 +1827,20 @@ def create_dynamic_cube_ex(
     max_x: float,
     max_y: float,
     max_z: float,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
     return call_native_function(
         "CreateDynamicCubeEx",
         min_x,
@@ -1735,11 +1863,20 @@ def create_dynamic_polygon_ex(
     points: list[float],
     min_z: float = -2139095040.0,
     max_z: float = 2139095040.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
     return call_native_function(
         "CreateDynamicPolygonEx",
         points,
@@ -1765,12 +1902,24 @@ def create_dynamic_actor_ex(
     invulnerable: bool = True,
     health: float = 100.0,
     stream_distance: float = 200.0,
-    worlds: list[int] = [-1],
-    interiors: list[int] = [-1],
-    players: list[int] = [-1],
-    areas: list[int] = [-1],
+    worlds: Optional[list[int]] = None,
+    interiors: Optional[list[int]] = None,
+    players: Optional[list[int]] = None,
+    areas: Optional[list[int]] = None,
     priority: int = 0,
 ):
+    if worlds is None:
+        worlds = [-1]
+
+    if interiors is None:
+        interiors = [-1]
+
+    if players is None:
+        players = [-1]
+
+    if areas is None:
+        areas = [-1]
+
     return call_native_function(
         "CreateDynamicActorEx",
         model_id,
@@ -1859,8 +2008,11 @@ def toggle_player_dynamic_cp(player_id: int, checkpoint_id: int, toggle: bool):
 
 
 def toggle_player_all_dynamic_cps(
-    player_id: int, toggle: bool, exceptions: list[int] = [-1]
+    player_id: int, toggle: bool, exceptions: Optional[list[int]] = None
 ):
+    if exceptions is None:
+        exceptions = [-1]
+
     return call_native_function(
         "TogglePlayerAllDynamicCPs",
         player_id,
@@ -1879,8 +2031,11 @@ def toggle_player_dynamic_race_cp(
 
 
 def toggle_player_all_dynamic_race_cps(
-    player_id: int, toggle: bool, exceptions: list[int] = [-1]
+    player_id: int, toggle: bool, exceptions: Optional[list[int]] = None
 ):
+    if exceptions is None:
+        exceptions = [-1]
+
     return call_native_function(
         "TogglePlayerAllDynamicRaceCPs",
         player_id,
@@ -1897,8 +2052,11 @@ def toggle_player_dynamic_area(player_id: int, area_id: int, toggle: bool):
 
 
 def toggle_player_all_dynamic_areas(
-    player_id: int, toggle: bool, exceptions: list[int] = [-1]
+    player_id: int, toggle: bool, exceptions: Optional[list[int]] = None
 ):
+    if exceptions is None:
+        exceptions = [-1]
+
     return call_native_function(
         "TogglePlayerAllDynamicAreas",
         player_id,
