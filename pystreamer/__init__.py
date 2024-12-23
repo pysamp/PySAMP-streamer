@@ -1,5 +1,5 @@
 from pysamp import call_native_function, register_callback
-from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID # type: ignore
+from samp import INVALID_PLAYER_ID, INVALID_VEHICLE_ID  # type: ignore
 from typing import Optional
 
 
@@ -85,24 +85,24 @@ def set_visible_items(type, items, player_id: int = -1):
 
 def set_radius_multiplier(type, multiplier: float, player_id: int = -1):
     return call_native_function(
-        "Streamer_SetRadiusMultiplier", type, multiplier, player_id
+        "Streamer_SetRadiusMultiplier", type, float(multiplier), player_id
     )
 
 
-def get_type_priority(types: list, maxtypes=8):
+def get_type_priority(types: list, maxtypes: int = 8):
     return call_native_function("Streamer_GetTypePriority", types, maxtypes)
 
 
-def set_type_priority(types: list, maxtypes=8):
+def set_type_priority(types: list, maxtypes: int = 8):
     return call_native_function("Streamer_SetTypePriority", types, maxtypes)
 
 
 def set_cell_distance(distance: float):
-    return call_native_function("Streamer_SetCellDistance", distance)
+    return call_native_function("Streamer_SetCellDistance", float(distance))
 
 
 def set_cell_size(size: float):
-    return call_native_function("Streamer_SetCellSize", size)
+    return call_native_function("Streamer_SetCellSize", float(size))
 
 
 def toggle_item_static(type, id, toggle):
@@ -149,7 +149,7 @@ def process_active_items():
     return call_native_function("Streamer_ProcessActiveItems")
 
 
-def toggle_idle_update(player_id: int, toggle):
+def toggle_idle_update(player_id: int, toggle: bool):
     return call_native_function("Streamer_ToggleIdleUpdate", player_id, toggle)
 
 
@@ -195,9 +195,9 @@ def update_ex(
     return call_native_function(
         "Streamer_UpdateEx",
         player_id,
-        x,
-        y,
-        z,
+        float(x),
+        float(y),
+        float(z),
         world_id,
         interior_id,
         type,
@@ -207,7 +207,9 @@ def update_ex(
 
 
 def set_float_data(type, id, data, value: float) -> bool:
-    return call_native_function("Streamer_SetFloatData", type, id, data, value)
+    return call_native_function(
+        "Streamer_SetFloatData", type, id, data, float(value)
+    )
 
 
 def get_int_data(type, id, data):
@@ -335,9 +337,9 @@ def get_nearby_items(
 ):
     return call_native_function(
         "Streamer_GetNearbyItems",
-        x,
-        y,
-        z,
+        float(x),
+        float(y),
+        float(z),
         type,
         items,
         len(items),
@@ -353,15 +355,21 @@ def get_all_visible_items(player_id: int, type, items: list):
 
 
 def get_item_pos(type, id, x: float, y: float, z: float):
-    return call_native_function("Streamer_GetItemPos", type, id, x, y, z)
+    return call_native_function(
+        "Streamer_GetItemPos", type, id, float(x), float(y), float(z)
+    )
 
 
 def set_item_pos(type, id, x: float, y: float, z: float):
-    return call_native_function("Streamer_SetItemPos", type, id, x, y, z)
+    return call_native_function(
+        "Streamer_SetItemPos", type, id, float(x), float(y), float(z)
+    )
 
 
 def set_item_off_set(type, id, x: float, y: float, z: float):
-    return call_native_function("Streamer_SetItemOffset", type, id, x, y, z)
+    return call_native_function(
+        "Streamer_SetItemOffset", type, id, float(x), float(y), float(z)
+    )
 
 
 def create_dynamic_object(
@@ -383,17 +391,17 @@ def create_dynamic_object(
     return call_native_function(
         "CreateDynamicObject",
         model_id,
-        x,
-        y,
-        z,
-        rotation_x,
-        rotation_y,
-        rotation_z,
+        float(x),
+        float(y),
+        float(z),
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z),
         world_id,
         interior_id,
         player_id,
-        stream_distance,
-        draw_distance,
+        float(stream_distance),
+        float(draw_distance),
         area_id,
         priority,
     )
@@ -408,14 +416,20 @@ def is_valid_dynamic_object(object_id: int) -> bool:
 
 
 def set_dynamic_object_pos(object_id: int, x: float, y: float, z: float):
-    return call_native_function("SetDynamicObjectPos", object_id, x, y, z)
+    return call_native_function(
+        "SetDynamicObjectPos", object_id, float(x), float(y), float(z)
+    )
 
 
 def set_dynamic_object_rot(
     object_id: int, rotation_x: float, rotation_y: float, rotation_z: float
 ):
     return call_native_function(
-        "SetDynamicObjectRot", object_id, rotation_x, rotation_y, rotation_z
+        "SetDynamicObjectRot",
+        object_id,
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z)
     )
 
 
@@ -440,13 +454,13 @@ def move_dynamic_object(
     return call_native_function(
         "MoveDynamicObject",
         object_id,
-        x,
-        y,
-        z,
-        speed,
-        rotation_x,
-        rotation_y,
-        rotation_z,
+        float(x),
+        float(y),
+        float(z),
+        float(speed),
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z),
     )
 
 
@@ -479,12 +493,12 @@ def attach_dynamic_object_to_object(
         "AttachDynamicObjectToObject",
         object_id,
         attach_to_id,
-        offset_x,
-        offset_y,
-        offset_z,
-        rotation_x,
-        rotation_y,
-        rotation_z,
+        float(offset_x),
+        float(offset_y),
+        float(offset_z),
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z),
         syncrotation,
     )
 
@@ -503,12 +517,12 @@ def attach_dynamic_object_to_player(
         "AttachDynamicObjectToPlayer",
         object_id,
         player_id,
-        offset_x,
-        offset_y,
-        offset_z,
-        rotation_x,
-        rotation_y,
-        rotation_z,
+        float(offset_x),
+        float(offset_y),
+        float(offset_z),
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z),
     )
 
 
@@ -526,12 +540,12 @@ def attach_dynamic_object_to_vehicle(
         "AttachDynamicObjectToVehicle",
         object_id,
         vehicle_id,
-        offset_x,
-        offset_y,
-        offset_z,
-        rotation_x,
-        rotation_y,
-        rotation_z,
+        float(offset_x),
+        float(offset_y),
+        float(offset_z),
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z),
     )
 
 
@@ -632,13 +646,13 @@ def create_dynamic_pickup(
         "CreateDynamicPickup",
         model_id,
         type,
-        x,
-        y,
-        z,
+        float(x),
+        float(y),
+        float(z),
         world_id,
         interior_id,
         player_id,
-        stream_distance,
+        float(stream_distance),
         area_id,
         priority,
     )
@@ -666,14 +680,14 @@ def create_dynamic_cp(
 ):
     return call_native_function(
         "CreateDynamicCP",
-        x,
-        y,
-        z,
-        size,
+        float(x),
+        float(y),
+        float(z),
+        float(size),
         world_id,
         interior_id,
         player_id,
-        stream_distance,
+        float(stream_distance),
         area_id,
         priority,
     )
@@ -716,17 +730,17 @@ def create_dynamic_race_cp(
     return call_native_function(
         "CreateDynamicRaceCP",
         type,
-        x,
-        y,
-        z,
-        next_x,
-        next_y,
-        next_z,
-        size,
+        float(x),
+        float(y),
+        float(z),
+        float(next_x),
+        float(next_y),
+        float(next_z),
+        float(size),
         world_id,
         interior_id,
         player_id,
-        stream_distance,
+        float(stream_distance),
         area_id,
         priority,
     )
@@ -766,15 +780,15 @@ def create_dynamic_map_icon(
 ):
     return call_native_function(
         "CreateDynamicMapIcon",
-        x,
-        y,
-        z,
+        float(x),
+        float(y),
+        float(z),
         type,
         color,
         world_id,
         interior_id,
         player_id,
-        stream_distance,
+        float(stream_distance),
         style,
         area_id,
         priority,
@@ -810,17 +824,17 @@ def create_dynamic_3d_text_label(
         "CreateDynamic3DTextLabel",
         text,
         color,
-        x,
-        y,
-        z,
-        draw_distance,
+        float(x),
+        float(y),
+        float(z),
+        float(draw_distance),
         attached_player,
         attached_vehicle,
         testlos,
         world_id,
         interior_id,
         player_id,
-        stream_distance,
+        float(stream_distance),
         area_id,
         priority,
     )
@@ -857,9 +871,9 @@ def create_dynamic_circle(
 ):
     return call_native_function(
         "CreateDynamicCircle",
-        x,
-        y,
-        size,
+        float(x),
+        float(y),
+        float(size),
         world_id,
         interior_id,
         player_id,
@@ -880,11 +894,11 @@ def create_dynamic_cylinder(
 ):
     return call_native_function(
         "CreateDynamicCylinder",
-        x,
-        y,
-        min_z,
-        max_z,
-        size,
+        float(x),
+        float(y),
+        float(min_z),
+        float(max_z),
+        float(size),
         world_id,
         interior_id,
         player_id,
@@ -904,10 +918,10 @@ def create_dynamic_sphere(
 ):
     return call_native_function(
         "CreateDynamicSphere",
-        x,
-        y,
-        z,
-        size,
+        float(x),
+        float(y),
+        float(z),
+        float(size),
         world_id,
         interior_id,
         player_id,
@@ -927,10 +941,10 @@ def create_dynamic_rectangle(
 ):
     return call_native_function(
         "CreateDynamicRectangle",
-        min_x,
-        min_y,
-        max_x,
-        max_y,
+        float(min_x),
+        float(min_y),
+        float(max_x),
+        float(max_y),
         world_id,
         interior_id,
         player_id,
@@ -952,12 +966,12 @@ def create_dynamic_cuboid(
 ):
     return call_native_function(
         "CreateDynamicCuboid",
-        min_x,
-        min_y,
-        min_z,
-        max_x,
-        max_y,
-        max_z,
+        float(min_x),
+        float(min_y),
+        float(min_z),
+        float(max_x),
+        float(max_y),
+        float(max_z),
         world_id,
         interior_id,
         player_id,
@@ -979,12 +993,12 @@ def create_dynamic_cube(
 ):
     return call_native_function(
         "CreateDynamicCube",
-        min_x,
-        min_y,
-        min_z,
-        max_x,
-        max_y,
-        max_z,
+        float(min_x),
+        float(min_y),
+        float(min_z),
+        float(max_x),
+        float(max_y),
+        float(max_z),
         world_id,
         interior_id,
         player_id,
@@ -1004,8 +1018,8 @@ def create_dynamic_polygon(
     return call_native_function(
         "CreateDynamicPolygon",
         points,
-        min_z,
-        max_z,
+        float(min_z),
+        float(max_z),
         len(points),
         world_id,
         interior_id,
@@ -1080,7 +1094,13 @@ def is_point_in_dynamic_area(
     y: float,
     z: float
 ) -> bool:
-    return call_native_function("IsPointInDynamicArea", area_id, x, y, z)
+    return call_native_function(
+        "IsPointInDynamicArea",
+        area_id,
+        float(x),
+        float(y),
+        float(z)
+    )
 
 
 def is_point_in_any_dynamic_area(
@@ -1088,7 +1108,12 @@ def is_point_in_any_dynamic_area(
     y: float,
     z: float
 ) -> bool:
-    return call_native_function("IsPointInAnyDynamicArea", x, y, z)
+    return call_native_function(
+        "IsPointInAnyDynamicArea",
+        float(x),
+        float(y),
+        float(z)
+    )
 
 
 def is_line_in_dynamic_area(
@@ -1101,7 +1126,14 @@ def is_line_in_dynamic_area(
     z_1: float,
 ) -> bool:
     return call_native_function(
-        "IsLineInDynamicArea", area_id, x, y, z, x_1, y_1, z_1
+        "IsLineInDynamicArea",
+        area_id,
+        float(x),
+        float(y),
+        float(z),
+        float(x_1),
+        float(y_1),
+        float(z_1)
     )
 
 
@@ -1109,18 +1141,34 @@ def is_line_in_any_dynamic_area(
     x: float, y: float, z: float, x_1: float, y_1: float, z_1: float
 ) -> bool:
     return call_native_function(
-        "IsLineInAnyDynamicArea", x, y, z, x_1, y_1, z_1
+        "IsLineInAnyDynamicArea",
+        float(x),
+        float(y),
+        float(z),
+        float(x_1),
+        float(y_1),
+        float(z_1)
     )
 
 
 def get_dynamic_areas_for_point(x: float, y: float, z: float, areas: list):
     return call_native_function(
-        "GetDynamicAreasForPoint", x, y, z, tuple(areas), len(areas)
+        "GetDynamicAreasForPoint",
+        float(x),
+        float(y),
+        float(z),
+        tuple(areas),
+        len(areas)
     )
 
 
 def get_number_dynamic_areas_for_point(x: float, y: float, z: float):
-    return call_native_function("GetNumberDynamicAreasForPoint", x, y, z)
+    return call_native_function(
+        "GetNumberDynamicAreasForPoint",
+        float(x),
+        float(y),
+        float(z)
+    )
 
 
 def get_dynamic_areas_for_line(
@@ -1133,7 +1181,15 @@ def get_dynamic_areas_for_line(
     areas: list,
 ):
     return call_native_function(
-        "GetDynamicAreasForLine", x, y, z, x_1, y_1, z_1, tuple(areas), len(areas)
+        "GetDynamicAreasForLine",
+        float(x),
+        float(y),
+        float(z),
+        float(x_1),
+        float(y_1),
+        float(z_1),
+        tuple(areas),
+        len(areas)
     )
 
 
@@ -1141,7 +1197,13 @@ def get_number_dynamic_areas_for_line(
     x: float, y: float, z: float, x_1: float, y_1: float, z_1: float
 ):
     return call_native_function(
-        "GetNumberDynamicAreasForLine", x, y, z, x_1, y_1, z_1
+        "GetNumberDynamicAreasForLine",
+        float(x),
+        float(y),
+        float(z),
+        float(x_1),
+        float(y_1),
+        float(z_1)
     )
 
 
@@ -1160,9 +1222,9 @@ def attach_dynamic_area_to_object(
         object_id,
         type,
         player_id,
-        offset_x,
-        offset_y,
-        offset_z,
+        float(offset_x),
+        float(offset_y),
+        float(offset_z),
     )
 
 
@@ -1177,9 +1239,9 @@ def attach_dynamic_area_to_player(
         "AttachDynamicAreaToPlayer",
         area_id,
         player_id,
-        offset_x,
-        offset_y,
-        offset_z,
+        float(offset_x),
+        float(offset_y),
+        float(offset_z),
     )
 
 
@@ -1194,9 +1256,9 @@ def attach_dynamic_area_to_vehicle(
         "AttachDynamicAreaToVehicle",
         area_id,
         vehicle_id,
-        offset_x,
-        offset_y,
-        offset_z,
+        float(offset_x),
+        float(offset_y),
+        float(offset_z),
     )
 
 
@@ -1226,16 +1288,16 @@ def create_dynamic_actor(
     return call_native_function(
         "CreateDynamicActor",
         model_id,
-        x,
-        y,
-        z,
-        rotation,
+        float(x),
+        float(y),
+        float(z),
+        float(rotation),
         invulnerable,
-        health,
+        float(health),
         world_id,
         interior_id,
         player_id,
-        stream_distance,
+        float(stream_distance),
         area_id,
         priority,
     )
@@ -1269,7 +1331,7 @@ def get_dynamic_actor_animation(
     actor_id: int,
     anim_lib: str,
     anim_name: str,
-    fdelta: float,
+    delta: float,
     loop: int,
     lock_x: int,
     lock_y: int,
@@ -1281,7 +1343,7 @@ def get_dynamic_actor_animation(
         actor_id,
         anim_lib,
         anim_name,
-        fdelta,
+        float(delta),
         loop,
         lock_x,
         lock_y,
@@ -1296,7 +1358,7 @@ def apply_dynamic_actor_animation(
     actor_id: int,
     anim_lib: str,
     anim_name: str,
-    fdelta: float,
+    delta: float,
     loop: int,
     lock_x: int,
     lock_y: int,
@@ -1308,7 +1370,7 @@ def apply_dynamic_actor_animation(
         actor_id,
         anim_lib,
         anim_name,
-        fdelta,
+        float(delta),
         loop,
         lock_x,
         lock_y,
@@ -1322,15 +1384,21 @@ def clear_dynamic_actor_animations(actor_id: int):
 
 
 def set_dynamic_actor_facing_angle(actor_id: int, angle: float):
-    return call_native_function("SetDynamicActorFacingAngle", actor_id, angle)
+    return call_native_function(
+        "SetDynamicActorFacingAngle", actor_id, float(angle)
+    )
 
 
 def set_dynamic_actor_pos(actor_id: int, x: float, y: float, z: float):
-    return call_native_function("SetDynamicActorPos", actor_id, x, y, z)
+    return call_native_function(
+        "SetDynamicActorPos", actor_id, float(x), float(y), float(z)
+    )
 
 
 def set_dynamic_actor_health(actor_id: int, health: float):
-    return call_native_function("SetDynamicActorHealth", actor_id, health)
+    return call_native_function(
+        "SetDynamicActorHealth", actor_id, float(health)
+    )
 
 
 def set_dynamic_actor_invulnerable(actor_id: int, invulnerable: bool = True):
@@ -1382,14 +1450,14 @@ def create_dynamic_object_ex(
     return call_native_function(
         "CreateDynamicObjectEx",
         model_id,
-        x,
-        y,
-        z,
-        rotation_x,
-        rotation_y,
-        rotation_z,
-        stream_distance,
-        draw_distance,
+        float(x),
+        float(y),
+        float(z),
+        float(rotation_x),
+        float(rotation_y),
+        float(rotation_z),
+        float(stream_distance),
+        float(draw_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1431,10 +1499,10 @@ def create_dynamic_pickup_ex(
         "CreateDynamicPickupEx",
         model_id,
         type,
-        x,
-        y,
-        z,
-        stream_distance,
+        float(x),
+        float(y),
+        float(z),
+        float(stream_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1473,10 +1541,10 @@ def create_dynamic_cp_ex(
 
     return call_native_function(
         "CreateDynamicCPEx",
-        x,
-        y,
-        z,
-        stream_distance,
+        float(x),
+        float(y),
+        float(z),
+        float(stream_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1520,14 +1588,14 @@ def create_dynamic_race_cp_ex(
     return call_native_function(
         "CreateDynamicRaceCPEx",
         type,
-        x,
-        y,
-        z,
-        next_x,
-        next_y,
-        next_z,
-        size,
-        stream_distance,
+        float(x),
+        float(y),
+        float(z),
+        float(next_x),
+        float(next_y),
+        float(next_z),
+        float(size),
+        float(stream_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1568,13 +1636,13 @@ def create_dynamic_map_icon_ex(
 
     return call_native_function(
         "CreateDynamicMapIconEx",
-        x,
-        y,
-        z,
+        float(x),
+        float(y),
+        float(z),
         type,
         color,
         style,
-        stream_distance,
+        float(stream_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1620,14 +1688,14 @@ def create_dynamic_3d_text_label_ex(
         "CreateDynamic3DTextLabelEx",
         text,
         color,
-        x,
-        y,
-        z,
-        draw_distance,
+        float(x),
+        float(y),
+        float(z),
+        float(draw_distance),
         attached_player,
         attached_vehicle,
         testlos,
-        stream_distance,
+        float(stream_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1660,9 +1728,9 @@ def create_dynamic_circle_ex(
 
     return call_native_function(
         "CreateDynamicCircleEx",
-        x,
-        y,
-        size,
+        float(x),
+        float(y),
+        float(size),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1695,11 +1763,11 @@ def create_dynamic_cylinder_ex(
 
     return call_native_function(
         "CreateDynamicCylinderEx",
-        x,
-        y,
-        min_z,
-        max_z,
-        size,
+        float(x),
+        float(y),
+        float(min_z),
+        float(max_z),
+        float(size),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1731,10 +1799,10 @@ def create_dynamic_sphere_ex(
 
     return call_native_function(
         "CreateDynamicSphereEx",
-        x,
-        y,
-        z,
-        size,
+        float(x),
+        float(y),
+        float(z),
+        float(size),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1766,10 +1834,10 @@ def create_dynamic_rectangle_ex(
 
     return call_native_function(
         "CreateDynamicRectangleEx",
-        min_x,
-        min_y,
-        max_x,
-        max_y,
+        float(min_x),
+        float(min_y),
+        float(max_x),
+        float(max_y),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1801,15 +1869,14 @@ def create_dynamic_cuboid_ex(
     if players is None:
         players = [-1]
 
-
     return call_native_function(
         "CreateDynamicCuboidEx",
-        min_x,
-        min_y,
-        min_z,
-        max_x,
-        max_y,
-        max_z,
+        float(min_x),
+        float(min_y),
+        float(min_z),
+        float(max_x),
+        float(max_y),
+        float(max_z),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1843,12 +1910,12 @@ def create_dynamic_cube_ex(
 
     return call_native_function(
         "CreateDynamicCubeEx",
-        min_x,
-        min_y,
-        min_z,
-        max_x,
-        max_y,
-        max_z,
+        float(min_x),
+        float(min_y),
+        float(min_z),
+        float(max_x),
+        float(max_y),
+        float(max_z),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
@@ -1880,8 +1947,8 @@ def create_dynamic_polygon_ex(
     return call_native_function(
         "CreateDynamicPolygonEx",
         points,
-        min_z,
-        max_z,
+        float(min_z),
+        float(max_z),
         len(points),
         tuple(worlds),
         tuple(interiors),
@@ -1923,13 +1990,13 @@ def create_dynamic_actor_ex(
     return call_native_function(
         "CreateDynamicActorEx",
         model_id,
-        x,
-        y,
-        z,
-        rotation,
+        float(x),
+        float(y),
+        float(z),
+        float(rotation),
         invulnerable,
-        health,
-        stream_distance,
+        float(health),
+        float(stream_distance),
         tuple(worlds),
         tuple(interiors),
         tuple(players),
