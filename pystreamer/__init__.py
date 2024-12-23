@@ -1544,6 +1544,7 @@ def create_dynamic_cp_ex(
         float(x),
         float(y),
         float(z),
+        float(size),
         float(stream_distance),
         tuple(worlds),
         tuple(interiors),
