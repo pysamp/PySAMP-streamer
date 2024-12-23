@@ -284,7 +284,7 @@ def toggle_all_items(player_id: int, type, toggle, *exceptions):
         player_id,
         type,
         toggle,
-        exceptions,
+        tuple(exceptions),
         len(exceptions),
     )
 
@@ -348,7 +348,7 @@ def get_nearby_items(
 
 def get_all_visible_items(player_id: int, type, items: list):
     return call_native_function(
-        "Streamer_GetAllVisibleItems", player_id, type, len(items), maxitems
+        "Streamer_GetAllVisibleItems", player_id, type, len(items)
     )
 
 
@@ -1066,7 +1066,7 @@ def is_any_player_in_any_dynamic_area(recheck: bool = False):
 
 def get_player_dynamic_areas(player_id: int, areas: list):
     return call_native_function(
-        "GetPlayerDynamicAreas", player_id, areas, len(areas)
+        "GetPlayerDynamicAreas", player_id, tuple(areas), len(areas)
     )
 
 
@@ -1115,7 +1115,7 @@ def is_line_in_any_dynamic_area(
 
 def get_dynamic_areas_for_point(x: float, y: float, z: float, areas: list):
     return call_native_function(
-        "GetDynamicAreasForPoint", x, y, z, areas, len(areas)
+        "GetDynamicAreasForPoint", x, y, z, tuple(areas), len(areas)
     )
 
 
@@ -1133,7 +1133,7 @@ def get_dynamic_areas_for_line(
     areas: list,
 ):
     return call_native_function(
-        "GetDynamicAreasForLine", x, y, z, x_1, y_1, z_1, areas, len(areas)
+        "GetDynamicAreasForLine", x, y, z, x_1, y_1, z_1, tuple(areas), len(areas)
     )
 
 
@@ -1390,10 +1390,10 @@ def create_dynamic_object_ex(
         rotation_z,
         stream_distance,
         draw_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(worlds),
         len(interiors),
@@ -1435,10 +1435,10 @@ def create_dynamic_pickup_ex(
         y,
         z,
         stream_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(worlds),
         len(interiors),
@@ -1477,10 +1477,10 @@ def create_dynamic_cp_ex(
         y,
         z,
         stream_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(worlds),
         len(interiors),
@@ -1528,10 +1528,10 @@ def create_dynamic_race_cp_ex(
         next_z,
         size,
         stream_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(worlds),
         len(interiors),
@@ -1575,10 +1575,10 @@ def create_dynamic_map_icon_ex(
         color,
         style,
         stream_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(worlds),
         len(interiors),
@@ -1628,10 +1628,10 @@ def create_dynamic_3d_text_label_ex(
         attached_vehicle,
         testlos,
         stream_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(worlds),
         len(interiors),
@@ -1663,9 +1663,9 @@ def create_dynamic_circle_ex(
         x,
         y,
         size,
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1700,9 +1700,9 @@ def create_dynamic_cylinder_ex(
         min_z,
         max_z,
         size,
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1735,9 +1735,9 @@ def create_dynamic_sphere_ex(
         y,
         z,
         size,
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1770,9 +1770,9 @@ def create_dynamic_rectangle_ex(
         min_y,
         max_x,
         max_y,
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1810,9 +1810,9 @@ def create_dynamic_cuboid_ex(
         max_x,
         max_y,
         max_z,
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1849,9 +1849,9 @@ def create_dynamic_cube_ex(
         max_x,
         max_y,
         max_z,
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1883,9 +1883,9 @@ def create_dynamic_polygon_ex(
         min_z,
         max_z,
         len(points),
-        worlds,
-        interiors,
-        players,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
         priority,
         len(worlds),
         len(interiors),
@@ -1930,10 +1930,10 @@ def create_dynamic_actor_ex(
         invulnerable,
         health,
         stream_distance,
-        worlds,
-        interiors,
-        players,
-        areas,
+        tuple(worlds),
+        tuple(interiors),
+        tuple(players),
+        tuple(areas),
         priority,
         len(areas),
         len(worlds),
@@ -2017,7 +2017,7 @@ def toggle_player_all_dynamic_cps(
         "TogglePlayerAllDynamicCPs",
         player_id,
         toggle,
-        exceptions,
+        tuple(exceptions),
         len(exceptions),
     )
 
@@ -2040,7 +2040,7 @@ def toggle_player_all_dynamic_race_cps(
         "TogglePlayerAllDynamicRaceCPs",
         player_id,
         toggle,
-        exceptions,
+        tuple(exceptions),
         len(exceptions),
     )
 
@@ -2061,6 +2061,6 @@ def toggle_player_all_dynamic_areas(
         "TogglePlayerAllDynamicAreas",
         player_id,
         toggle,
-        exceptions,
+        tuple(exceptions),
         len(exceptions),
     )
