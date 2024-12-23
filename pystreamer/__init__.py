@@ -226,16 +226,14 @@ def has_int_data(type, id, data) -> bool:
 
 
 def get_array_data(type, id, data, dest: list) -> bool:
-    maxdest = len(dest)
     return call_native_function(
-        "Streamer_GetArrayData", type, id, dest, maxdest
+        "Streamer_GetArrayData", type, id, dest, len(dest)
     )
 
 
 def set_array_data(type, id, data, scr: list) -> bool:
-    maxscr = len(scr)
     return call_native_function(
-        "Streamer_SetArrayData", type, id, data, scr, maxscr
+        "Streamer_SetArrayData", type, id, data, scr, len(scr)
     )
 
 
@@ -280,14 +278,13 @@ def is_toggle_item(player_id: int, type, id) -> bool:
 
 
 def toggle_all_items(player_id: int, type, toggle, *exceptions):
-    maxexceptions = len(exceptions)
     return call_native_function(
         "Streamer_ToggleAllItems",
         player_id,
         type,
         toggle,
         exceptions,
-        maxexceptions,
+        len(exceptions),
     )
 
 
@@ -335,7 +332,6 @@ def get_nearby_items(
     range: float = 300.0,
     world_id: int = -1,
 ):
-    maxitems = len(items)
     return call_native_function(
         "Streamer_GetNearbyItems",
         x,
@@ -343,16 +339,15 @@ def get_nearby_items(
         z,
         type,
         items,
-        maxitems,
+        len(items),
         range,
         world_id,
     )
 
 
 def get_all_visible_items(player_id: int, type, items: list):
-    maxitems = len(items)
     return call_native_function(
-        "Streamer_GetAllVisibleItems", player_id, type, items, maxitems
+        "Streamer_GetAllVisibleItems", player_id, type, len(items), maxitems
     )
 
 
@@ -839,8 +834,9 @@ def is_valid_dynamic_3d_text_label(id: int) -> bool:
 
 
 def get_dynamic_3d_text_label_text(id: int, text: str) -> str:
-    maxtext = len(text)
-    return call_native_function("GetDynamic3DTextLabelText", id, text, maxtext)
+    return call_native_function(
+        "GetDynamic3DTextLabelText", id, text, len(text)
+    )
 
 
 def update_dynamic_3d_text_label_text(id: int, color: int, text: str):
@@ -1004,13 +1000,12 @@ def create_dynamic_polygon(
     player_id: int = -1,
     priority: int = 0,
 ):
-    max_points = len(points)
     return call_native_function(
         "CreateDynamicPolygon",
         points,
         min_z,
         max_z,
-        max_points,
+        len(points),
         world_id,
         interior_id,
         player_id,
@@ -1031,9 +1026,8 @@ def get_dynamic_area_type(area_id: int):
 
 
 def get_dynamic_polygon_points(area_id: int, points: list[float]):
-    maxpoints = len(points)
     return call_native_function(
-        "GetDynamicPolygonPoints", area_id, points, maxpoints
+        "GetDynamicPolygonPoints", area_id, points, len(points)
     )
 
 
@@ -1070,9 +1064,8 @@ def is_any_player_in_any_dynamic_area(recheck: bool = False):
 
 
 def get_player_dynamic_areas(player_id: int, areas: list):
-    maxareas = len(areas)
     return call_native_function(
-        "GetPlayerDynamicAreas", player_id, areas, maxareas
+        "GetPlayerDynamicAreas", player_id, areas, len(areas)
     )
 
 
@@ -1120,9 +1113,8 @@ def is_line_in_any_dynamic_area(
 
 
 def get_dynamic_areas_for_point(x: float, y: float, z: float, areas: list):
-    maxareas = len(areas)
     return call_native_function(
-        "GetDynamicAreasForPoint", x, y, z, areas, maxareas
+        "GetDynamicAreasForPoint", x, y, z, areas, len(areas)
     )
 
 
@@ -1139,9 +1131,8 @@ def get_dynamic_areas_for_line(
     z_1: float,
     areas: list,
 ):
-    maxareas = len(areas)
     return call_native_function(
-        "GetDynamicAreasForLine", x, y, z, x_1, y_1, z_1, areas, maxareas
+        "GetDynamicAreasForLine", x, y, z, x_1, y_1, z_1, areas, len(areas)
     )
 
 
@@ -1284,8 +1275,6 @@ def get_dynamic_actor_animation(
     freeze: int,
     time: int,
 ):
-    maxanimlib = len(anim_lib)
-    maxanimname = len(anim_name)
     return call_native_function(
         "GetDynamicActorAnimation",
         actor_id,
@@ -1297,8 +1286,8 @@ def get_dynamic_actor_animation(
         lock_y,
         freeze,
         time,
-        maxanimlib,
-        maxanimname,
+        len(anim_lib),
+        len(anim_name),
     )
 
 
@@ -1377,10 +1366,6 @@ def create_dynamic_object_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamicObjectEx",
         model_id,
@@ -1397,10 +1382,10 @@ def create_dynamic_object_ex(
         players,
         areas,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
-        maxareas,
+        len(worlds),
+        len(interiors),
+        len(players),
+        len(areas),
     )
 
 
@@ -1417,10 +1402,6 @@ def create_dynamic_pickup_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamicPickupEx",
         model_id,
@@ -1434,10 +1415,10 @@ def create_dynamic_pickup_ex(
         players,
         areas,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
-        maxareas,
+        len(worlds),
+        len(interiors),
+        len(players),
+        len(areas),
     )
 
 
@@ -1453,10 +1434,6 @@ def create_dynamic_cp_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamicCPEx",
         x,
@@ -1468,10 +1445,10 @@ def create_dynamic_cp_ex(
         players,
         areas,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
-        maxareas,
+        len(worlds),
+        len(interiors),
+        len(players),
+        len(areas),
     )
 
 
@@ -1491,10 +1468,6 @@ def create_dynamic_race_cp_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamicRaceCPEx",
         type,
@@ -1511,10 +1484,10 @@ def create_dynamic_race_cp_ex(
         players,
         areas,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
-        maxareas,
+        len(worlds),
+        len(interiors),
+        len(players),
+        len(areas),
     )
 
 
@@ -1532,10 +1505,6 @@ def create_dynamic_map_icon_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamicMapIconEx",
         x,
@@ -1550,10 +1519,10 @@ def create_dynamic_map_icon_ex(
         players,
         areas,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
-        maxareas,
+        len(worlds),
+        len(interiors),
+        len(players),
+        len(areas),
     )
 
 
@@ -1574,10 +1543,6 @@ def create_dynamic_3d_text_label_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamic3DTextLabelEx",
         text,
@@ -1595,10 +1560,10 @@ def create_dynamic_3d_text_label_ex(
         players,
         areas,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
-        maxareas,
+        len(worlds),
+        len(interiors),
+        len(players),
+        len(areas),
     )
 
 
@@ -1611,9 +1576,6 @@ def create_dynamic_circle_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicCircleEx",
         x,
@@ -1623,9 +1585,9 @@ def create_dynamic_circle_ex(
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1640,9 +1602,6 @@ def create_dynamic_cylinder_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicCylinderEx",
         x,
@@ -1654,9 +1613,9 @@ def create_dynamic_cylinder_ex(
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1670,9 +1629,6 @@ def create_dynamic_sphere_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicSphereEx",
         x,
@@ -1683,9 +1639,9 @@ def create_dynamic_sphere_ex(
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1699,9 +1655,6 @@ def create_dynamic_rectangle_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicRectangleEx",
         min_x,
@@ -1712,9 +1665,9 @@ def create_dynamic_rectangle_ex(
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1730,9 +1683,6 @@ def create_dynamic_cuboid_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicCuboidEx",
         min_x,
@@ -1745,9 +1695,9 @@ def create_dynamic_cuboid_ex(
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1763,9 +1713,6 @@ def create_dynamic_cube_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicCubeEx",
         min_x,
@@ -1778,9 +1725,9 @@ def create_dynamic_cube_ex(
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1793,23 +1740,19 @@ def create_dynamic_polygon_ex(
     players: list[int] = [-1],
     priority: int = 0,
 ):
-    maxpoints = len(points)
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
     return call_native_function(
         "CreateDynamicPolygonEx",
         points,
         min_z,
         max_z,
-        maxpoints,
+        len(points),
         worlds,
         interiors,
         players,
         priority,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1828,10 +1771,6 @@ def create_dynamic_actor_ex(
     areas: list[int] = [-1],
     priority: int = 0,
 ):
-    maxworlds = len(worlds)
-    maxinteriors = len(interiors)
-    maxplayers = len(players)
-    maxareas = len(areas)
     return call_native_function(
         "CreateDynamicActorEx",
         model_id,
@@ -1847,10 +1786,10 @@ def create_dynamic_actor_ex(
         players,
         areas,
         priority,
-        maxareas,
-        maxworlds,
-        maxinteriors,
-        maxplayers,
+        len(areas),
+        len(worlds),
+        len(interiors),
+        len(players),
     )
 
 
@@ -1922,13 +1861,12 @@ def toggle_player_dynamic_cp(player_id: int, checkpoint_id: int, toggle: bool):
 def toggle_player_all_dynamic_cps(
     player_id: int, toggle: bool, exceptions: list[int] = [-1]
 ):
-    maxexceptions = len(exceptions)
     return call_native_function(
         "TogglePlayerAllDynamicCPs",
         player_id,
         toggle,
         exceptions,
-        maxexceptions,
+        len(exceptions),
     )
 
 
@@ -1943,13 +1881,12 @@ def toggle_player_dynamic_race_cp(
 def toggle_player_all_dynamic_race_cps(
     player_id: int, toggle: bool, exceptions: list[int] = [-1]
 ):
-    maxexceptions = len(exceptions)
     return call_native_function(
         "TogglePlayerAllDynamicRaceCPs",
         player_id,
         toggle,
         exceptions,
-        maxexceptions,
+        len(exceptions),
     )
 
 
@@ -1962,11 +1899,10 @@ def toggle_player_dynamic_area(player_id: int, area_id: int, toggle: bool):
 def toggle_player_all_dynamic_areas(
     player_id: int, toggle: bool, exceptions: list[int] = [-1]
 ):
-    maxexceptions = len(exceptions)
     return call_native_function(
         "TogglePlayerAllDynamicAreas",
         player_id,
         toggle,
         exceptions,
-        maxexceptions,
+        len(exceptions),
     )
